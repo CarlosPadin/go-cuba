@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { NextIntlClientProvider } from "next-intl";
+import { Navbar } from "../components/navbar";
+
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -16,6 +18,7 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <NextIntlClientProvider>
+          <Navbar />
           {children}
         </NextIntlClientProvider>
       </body>

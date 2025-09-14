@@ -1,3 +1,11 @@
 {
-  "helloworld": "Hola Mundo"
+  "helloworld": "Hola Mundo",
+  "Navbar": {
+    "login": "Entrar",
+    "register": "Registrarse",
+    "logout": "Salir",
+    "aboutUs": "Acerca de",
+    "support": "Soporte",
+    "close": "Cerrar"
+  }
 }
