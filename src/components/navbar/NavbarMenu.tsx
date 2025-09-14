@@ -1,4 +1,4 @@
-import { FC, use } from "react";
+import { FC } from "react";
 import Link from "next/link";
 
 import {
@@ -9,8 +9,8 @@ import {
   ListItemText,
 } from "@mui/material";
 import { Close } from "@mui/icons-material";
-import { links } from "@/src/constants";
 import { useTranslations } from "next-intl";
+import { links } from "@/src/constants";
 
 interface Props {
   anchorEl: null | HTMLElement;
