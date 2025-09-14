@@ -1,5 +1,16 @@
-import { FC } from "react";
-import { Menu, MenuItem, Divider } from "@mui/material";
+import { FC, use } from "react";
+import Link from "next/link";
+
+import {
+  Menu,
+  MenuItem,
+  Divider,
+  ListItemIcon,
+  ListItemText,
+} from "@mui/material";
+import { Close } from "@mui/icons-material";
+import { links } from "@/src/constants";
+import { useTranslations } from "next-intl";
 
 interface Props {
   anchorEl: null | HTMLElement;
@@ -12,20 +23,64 @@ const NavbarMenu: FC<Props> = ({
   open,
   handleClose,
 }) => {
+  const t = useTranslations("Navbar");
+
   return (
     <Menu
       open={open}
       onClose={handleClose}
       anchorEl={anchorEl}
+      transformOrigin={{
+        horizontal: "right",
+        vertical: "top",
+      }}
+      anchorOrigin={{
+        horizontal: "right",
+        vertical: "bottom",
+      }}
+      slotProps={{
+        paper: {
+          sx: {
+            width: 200,
+            bgcolor: "rgba(255, 255, 255, 0.5)",
+            backdropFilter: "blur(10px)",
+            borderRadius: 5,
+            "& .MuiMenuItem-root:hover": {
+              bgcolor: "black",
+              color: "white",
+            },
+            "& .MuiMenuItem-root:hover .MuiListItemIcon-root":
+              {
+                color: "white",
+              },
+            "& .MuiMenuItem-root:hover .MuiListItemText-root":
+              {
+                color: "white",
+              },
+          },
+        },
+      }}
     >
-      <MenuItem>Entrar</MenuItem>
-      <MenuItem>Registrarse</MenuItem>
+      {links.map(
+        (link) =>
+          link.show && (
+            <Link href={link.link} key={link.page}>
+              <MenuItem>
+                <ListItemIcon>{link.icon}</ListItemIcon>
+                <ListItemText>{t(link.page)}</ListItemText>
+              </MenuItem>
+            </Link>
+          )
+      )}
       <Divider />
-      <MenuItem>Soporte</MenuItem>
-      <MenuItem>Acerca de</MenuItem>
-      <Divider />
-      <MenuItem>Salir</MenuItem>
-      <MenuItem onClick={handleClose}>Cerrar</MenuItem>
+      <MenuItem>
+        <ListItemIcon>
+          <Close />
+        </ListItemIcon>
+        <ListItemText onClick={handleClose}>
+          {t("close")}
+        </ListItemText>
+      </MenuItem>
     </Menu>
   );
 };
