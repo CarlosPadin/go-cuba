@@ -7,5 +7,9 @@
     "aboutUs": "Acerca de",
     "support": "Soporte",
     "close": "Cerrar"
+  },
+  "Footer": {
+    "rights": "© 2024 Yava. Todos los derechos reservados.",
+    "followUs": "Síguenos"
   }
 }
