@@ -16,26 +16,22 @@ import { swiperImages } from "@/src/constants";
 
 const ImageCarousel: FC = () => {
   return (
-    <>
-      <Swiper
-        modules={[Navigation, Autoplay, EffectFade]}
-        loop={true}
-        effect={"fade"}
-        className="mySwiper"
-        autoplay={{
-          delay: 8000,
-          disableOnInteraction: false,
-        }}
-      >
-        {
-          swiperImages.map((image) => (
-            <SwiperSlide key={image.alt}>
-              <Image src={image.url} alt={image.alt} />
-            </SwiperSlide>
-          ))
-        }
-      </Swiper>
-    </>
+    <Swiper
+      modules={[Navigation, Autoplay, EffectFade]}
+      loop={true}
+      effect={"fade"}
+      className="mySwiper"
+      autoplay={{
+        delay: 8000,
+        disableOnInteraction: false,
+      }}
+    >
+      {swiperImages.map((image) => (
+        <SwiperSlide key={image.alt}>
+          <Image src={image.url} alt={image.alt} fill />
+        </SwiperSlide>
+      ))}
+    </Swiper>
   );
 };
 
