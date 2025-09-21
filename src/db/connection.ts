@@ -1,5 +1,6 @@
 import sql from 'better-sqlite3';
 import { Car } from '../interfaces';
+import { parseCar } from './parse';
 
 const db = sql('yava.db');
 
@@ -12,7 +13,9 @@ export const getCarsByType = ({carType, limit}: {carType: string, limit?: number
   let query = 'SELECT * FROM cars WHERE carType = ?';
   if (limit) {
     query += ' LIMIT ?';
-    return db.prepare(query).all(carType, limit) as Car[];
+    const data = db.prepare(query).all(carType, limit) as Car[];
+    return data.map(parseCar);
   }
-  return db.prepare(query).all(carType) as Car[];
+  const data = db.prepare(query).all(carType) as Car[]; 
+  return data.map(parseCar);
 };
