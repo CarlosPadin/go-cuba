@@ -21,11 +21,11 @@ export const mockCars = [
       included: ["Insurance", "Roadside Assistance"],
     },
     carImage: {
-      mainImage: "/images/mock/audi.jpeg",
+      mainImage: "/mock/audi.jpeg",
       images: [
-        "/images/mock/audi_frontal.jpeg",
-        "/images/mock/audi_lateral.jpeg",
-        "/images/mock/audi_trasera.jpeg",
+        "/mock/audi_frontal.jpeg",
+        "/mock/audi_lateral.jpeg",
+        "/mock/audi_trasera.jpeg",
       ],
     },
     carType: "suv",
@@ -64,11 +64,11 @@ export const mockCars = [
       included: ["Insurance", "Roadside Assistance"],
     },
     carImage: {
-      mainImage: "/images/mock/byd.jpeg",
+      mainImage: "/mock/byd.jpeg",
       images: [
-        "/images/mock/byd_frontal.jpeg",
-        "/images/mock/byd_lateral.jpeg",
-        "/images/mock/byd_trasera.jpeg",
+        "/mock/byd_frontal.jpeg",
+        "/mock/byd_lateral.jpeg",
+        "/mock/byd_trasera.jpeg",
       ],
     },
     carType: "sedan",
@@ -107,11 +107,11 @@ export const mockCars = [
       included: ["Insurance", "Roadside Assistance"],
     },
     carImage: {
-      mainImage: "/images/mock/cayene.jpeg",
+      mainImage: "/mock/cayene.jpeg",
       images: [
-        "/images/mock/cayene_frontal.jpeg",
-        "/images/mock/cayene_lateral.jpeg",
-        "/images/mock/cayene_trasera.jpeg",
+        "/mock/cayene_frontal.jpeg",
+        "/mock/cayene_lateral.jpeg",
+        "/mock/cayene_trasera.jpeg",
       ],
     },
     carType: "sports",
@@ -150,11 +150,11 @@ export const mockCars = [
       included: ["Insurance", "Roadside Assistance"],
     },
     carImage: {
-      mainImage: "/images/mock/cerato.jpeg",
+      mainImage: "/mock/cerato.jpeg",
       images: [
-        "/images/mock/cerato_frontal.jpeg",
-        "/images/mock/cerato_lateral.jpeg",
-        "/images/mock/cerato_trasera.jpeg",
+        "/mock/cerato_frontal.jpeg",
+        "/mock/cerato_lateral.jpeg",
+        "/mock/cerato_trasera.jpeg",
       ],
     },
     carType: "sedan",
@@ -193,11 +193,11 @@ export const mockCars = [
       included: ["Insurance", "Roadside Assistance"],
     },
     carImage: {
-      mainImage: "/images/mock/lada.jpeg",
+      mainImage: "/mock/lada.jpeg",
       images: [
-        "/images/mock/lada_frontal.jpeg",
-        "/images/mock/lada_lateral.jpeg",
-        "/images/mock/lada_trasera.jpeg",
+        "/mock/lada_frontal.jpeg",
+        "/mock/lada_lateral.jpeg",
+        "/mock/lada_trasera.jpeg",
       ],
     },
     carType: "sedan",
@@ -236,11 +236,11 @@ export const mockCars = [
       included: ["Insurance", "Roadside Assistance"],
     },
     carImage: {
-      mainImage: "/images/mock/sf.jpeg",
+      mainImage: "/mock/sf.jpeg",
       images: [
-        "/images/mock/sf_frontal.jpeg",
-        "/images/mock/sf_lateral.jpeg",
-        "/images/mock/sf_trasera.jpeg",
+        "/mock/sf_frontal.jpeg",
+        "/mock/sf_lateral.jpeg",
+        "/mock/sf_trasera.jpeg",
       ],
     },
     carType: "suv",
@@ -279,11 +279,11 @@ export const mockCars = [
       included: ["Insurance", "Roadside Assistance"],
     },
     carImage: {
-      mainImage: "/images/mock/sonata.jpeg",
+      mainImage: "/mock/sonata.jpeg",
       images: [
-        "/images/mock/sonata_frontal.jpeg",
-        "/images/mock/sonata_lateral.jpeg",
-        "/images/mock/sonata_trasera.jpeg",
+        "/mock/sonata_frontal.jpeg",
+        "/mock/sonata_lateral.jpeg",
+        "/mock/sonata_trasera.jpeg",
       ],
     },
     carType: "sedan",
@@ -322,11 +322,11 @@ export const mockCars = [
       included: ["Insurance", "Roadside Assistance"],
     },
     carImage: {
-      mainImage: "/images/mock/stonic.jpeg",
+      mainImage: "/mock/stonic.jpeg",
       images: [
-        "/images/mock/stonic_frontal.jpeg",
-        "/images/mock/stonic_lateral.jpeg",
-        "/images/mock/stonic_trasera.jpeg",
+        "/mock/stonic_frontal.jpeg",
+        "/mock/stonic_lateral.jpeg",
+        "/mock/stonic_trasera.jpeg",
       ],
     },
     carType: "suv",
@@ -365,11 +365,11 @@ export const mockCars = [
       included: ["Insurance", "Roadside Assistance"],
     },
     carImage: {
-      mainImage: "/images/mock/tesla.jpeg",
+      mainImage: "/mock/tesla.jpeg",
       images: [
-        "/images/mock/tesla_frontal.jpeg",
-        "/images/mock/tesla_lateral.jpeg",
-        "/images/mock/tesla_trasera.jpeg",
+        "/mock/tesla_frontal.jpeg",
+        "/mock/tesla_lateral.jpeg",
+        "/mock/tesla_trasera.jpeg",
       ],
     },
     carType: "sedan",
@@ -489,7 +489,7 @@ export const createCarsTable = (db) => {
   db.prepare(
     `CREATE TABLE IF NOT EXISTS cars (
     id INTEGER PRIMARY KEY,
-    brand_id TEXT NOT NULL,
+    brand TEXT NOT NULL,
     caracteristics TEXT NOT NULL,
     carImage TEXT NOT NULL,
     carType TEXT NOT NULL,
@@ -513,7 +513,7 @@ export const createCarsTable = (db) => {
 export const seedCars = (db) => {
 const insertCar = db.prepare(`
     INSERT OR REPLACE INTO cars (
-      brand_id,
+      brand,
       caracteristics,
       carImage,
       carType,
@@ -530,7 +530,7 @@ const insertCar = db.prepare(`
       transmissionType,
       year
     ) VALUES (
-      @brand_id,
+      @brand,
       @caracteristics,
       @carImage,
       @carType,
@@ -550,7 +550,7 @@ const insertCar = db.prepare(`
 
    mockCars.forEach((car) => {
     insertCar.run({
-      brand_id: car.brand.id,
+      brand: JSON.stringify(car.brand),
       caracteristics: JSON.stringify(car.caracteristics),
       carImage: JSON.stringify(car.carImage),
       carType: car.carType,
