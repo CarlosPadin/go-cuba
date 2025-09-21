@@ -2,6 +2,7 @@ import { useTranslations } from "next-intl";
 import styles from "./page.module.css";
 import { Box, Typography } from "@mui/material";
 import SearchBarHolder from "../components/search-bar/searchBarHolder";
+import MainCars from "../components/cars/MainCars";
 
 export default function Home() {
   const t = useTranslations();
@@ -18,6 +19,7 @@ export default function Home() {
         >
           <Typography variant="h1">Hello YaVa Client!!!</Typography>
           <h3>{t('helloworld')}</h3>
+          <MainCars />
 
         </Box>
       </main>
