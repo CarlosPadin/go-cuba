@@ -35,10 +35,9 @@ const SearchBar: FC = () => {
           display="flex"
           justifyContent="space-around"
           border={"1px solid rgba(0, 0, 0, 0.1)"}
-          borderRadius="50px"
+          borderRadius="15px"
           sx={{
-            background: "rgba(255, 255, 255, 0.71)",
-            backdropFilter: "blur(10px)",
+            background: "rgba(255, 255, 255, 1)",
             boxShadow: "0 2px 8px rgba(0,0,0,0.12)",
             padding: "12px",
           }}
@@ -54,7 +53,8 @@ const SearchBar: FC = () => {
                 {...params}
                 label="Ciudad"
                 color="primary"
-                variant="standard"
+                variant="outlined"
+                size="small"
               />
             )}
           />
@@ -68,7 +68,8 @@ const SearchBar: FC = () => {
                 field: { clearable: true },
                 textField: {
                   color: "primary",
-                  variant: "standard",
+                  variant: "outlined",
+                  size: "small",
                 },
               }}
             />
@@ -81,7 +82,8 @@ const SearchBar: FC = () => {
                 field: { clearable: true },
                 textField: {
                   color: "primary",
-                  variant: "standard",
+                  variant: "outlined",
+                  size: "small",
                 },
               }}
             />
