@@ -1,7 +1,8 @@
 import styles from "./page.module.css";
 import { Box } from "@mui/material";
-import SearchBarHolder from "../components/search-bar/searchBarHolder";
 import ExploreCars from "../components/sections/explore/ExploreCars";
+import SearchBarHolder from "../components/ui/search-bar/searchBarHolder";
+import Banner from "../components/sections/banner";
 
 
 export default function Home() {
@@ -9,7 +10,8 @@ export default function Home() {
   return (
     <div className={styles.page}>
       <main>
-        <SearchBarHolder />
+        {/* <SearchBarHolder /> */}
+        <Banner /> 
         <Box
           display="flex"
           flexDirection="column"
@@ -17,7 +19,6 @@ export default function Home() {
           alignItems="center"
           width="100%"
         >
-          
           <ExploreCars />
 
         </Box>
