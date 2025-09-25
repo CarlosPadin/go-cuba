@@ -1,6 +1,6 @@
+import { FC } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { FC } from "react";
 
 import {
   AppBar,
@@ -14,10 +14,10 @@ const Navbar: FC = () => {
   return (
     <>
       <AppBar
-        position="static"
+        position="fixed"
         sx={{
-          background: "rgba(255, 255, 255, 0.1)",
-          backdropFilter: "blur(10px)",
+          background: "rgba(255, 255, 255, 0.51)",
+          backdropFilter: "blur(20px)",
           boxShadow: "0 2px 8px rgba(0,0,0,0.12)",
           paddingY: "10px",
         }}
