@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { NextIntlClientProvider } from "next-intl";
 import Box from "@mui/material/Box";
-import { Navbar } from "../components/navbar";
-import Footer from "../components/footer/footer";
+import { Navbar } from "../components/layout/navbar";
+import Footer from "../components/layout/footer/footer";
 
 export const metadata: Metadata = {
   title: "Create Next App",
