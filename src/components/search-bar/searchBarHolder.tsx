@@ -1,5 +1,5 @@
 import { Box } from "@mui/material"
-import ImageCarousel from "../image-carousel/ImageCarousel"
+import ImageCarousel from "../sections/image-carousel/ImageCarousel"
 import SearchBar from "./searchBar"
 
 const SearchBarHolder = () => {

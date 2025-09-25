@@ -1,5 +1,11 @@
 {
-  "helloworld": "Hola Mundo",
+  "Explore": {
+    "caption": "Encuentre el auto perfecto para usted entre todas las opciones.",
+    "sports": "Deportivos",
+    "suv": "SUVs",
+    "sedan": "Sedanes",
+    "seeMore": "Ver más"
+  },
   "Navbar": {
     "login": "Entrar",
     "register": "Registrarse",

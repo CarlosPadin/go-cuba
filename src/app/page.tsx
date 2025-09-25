@@ -1,10 +1,11 @@
-import { useTranslations } from "next-intl";
 import styles from "./page.module.css";
-import { Box, Typography } from "@mui/material";
+import { Box } from "@mui/material";
 import SearchBarHolder from "../components/search-bar/searchBarHolder";
+import ExploreCars from "../components/sections/explore/ExploreCars";
+
 
 export default function Home() {
-  const t = useTranslations();
+
   return (
     <div className={styles.page}>
       <main>
@@ -16,8 +17,8 @@ export default function Home() {
           alignItems="center"
           width="100%"
         >
-          <Typography variant="h1">Hello YaVa Client!!!</Typography>
-          <h3>{t('helloworld')}</h3>
+          
+          <ExploreCars />
 
         </Box>
       </main>
