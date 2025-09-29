@@ -403,7 +403,7 @@ export const mockOwners = [
     email: "carlos@example.com",
     phone: "+53 555-1234",
     address: "123 Main St, Havana",
-    profileImage: "/mock/owners/carlos.jpeg",
+    profileImage: "/mock/owners/carlos.jpg",
     rating: 4.8,
   },
   {
@@ -414,7 +414,7 @@ export const mockOwners = [
     email: "jessica@example.com",
     phone: "+53 555-5678",
     address: "456 Elm St, Havana",
-    profileImage: "/mock/owners/jessica.jpeg",
+    profileImage: "/mock/owners/jessica.jpg",
     rating: 4.5,
   },
   {
@@ -425,7 +425,7 @@ export const mockOwners = [
     email: "luis@example.com",
     phone: "+53 555-9012",
     address: "789 Oak St, Havana",
-    profileImage: "/mock/owners/luis.jpeg",
+    profileImage: "/mock/owners/luis.jpg",
     rating: 4.7,
   },
   {
@@ -436,7 +436,7 @@ export const mockOwners = [
     email: "sophia@example.com",
     phone: "+53 555-3456",
     address: "321 Pine St, Havana",
-    profileImage: "/mock/owners/sophia.jpeg",
+    profileImage: "/mock/owners/sophia.jpg",
     rating: 4.6,
   },
   {
@@ -447,7 +447,7 @@ export const mockOwners = [
     email: "mateo@example.com",
     phone: "+53 555-6789",
     address: "654 Cedar St, Havana",
-    profileImage: "/mock/owners/mateo.jpeg",
+    profileImage: "/mock/owners/mateo.jpg",
     rating: 4.5,
   },
   {
@@ -458,7 +458,7 @@ export const mockOwners = [
     email: "isabella@example.com",
     phone: "+53 555-9012",
     address: "789 Oak St, Havana",
-    profileImage: "/mock/owners/isabella.jpeg",
+    profileImage: "/mock/owners/isabella.jpg",
     rating: 4.7,
   }, 
   {
@@ -469,7 +469,7 @@ export const mockOwners = [
     email: "daniel@example.com",
     phone: "+53 555-3456",
     address: "321 Pine St, Havana",
-    profileImage: "/mock/owners/daniel.jpeg",
+    profileImage: "/mock/owners/daniel.jpg",
     rating: 4.6,
   },
   {
@@ -480,7 +480,7 @@ export const mockOwners = [
     email: "valentina@example.com",
     phone: "+53 555-7890",
     address: "987 Maple St, Havana",
-    profileImage: "/mock/owners/valentina.jpeg",
+    profileImage: "/mock/owners/valentina.jpg",
     rating: 5.0,
   },
 ];
