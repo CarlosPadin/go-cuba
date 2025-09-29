@@ -22,3 +22,9 @@ export const powerTypeIcon: Record<string, ReactElement> = {
   gasoline: <LocalGasStation sx={style} />,
   hybrid: <EnergySavingsLeaf sx={style} />,
 };
+
+export const carTypes = [
+  { name: "sports", label: "Sport" },
+  { name: "sedan", label: "Sedan" },
+  { name: "suv", label: "SUV" },
+];

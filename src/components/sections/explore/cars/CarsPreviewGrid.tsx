@@ -35,7 +35,7 @@ const CarsPreviewGrid: FC<Props> = ({ carType }) => {
         >
           {t(carType)}
         </Typography>
-        <Link href={"#"}>
+        <Link href={"/cars/" + carType}>
           <Tooltip title={t("seeMore")} placement="top">
             <ArrowForwardIos
               sx={{
