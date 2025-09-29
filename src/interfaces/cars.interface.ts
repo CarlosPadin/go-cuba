@@ -17,7 +17,7 @@ export interface CarImage {
 export interface Caracteristics {
   general: string[],
   rules: string[],
-  included: string[],
+  included: string[],  //features
 }
 
 export interface Car {
