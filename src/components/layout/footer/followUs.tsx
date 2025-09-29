@@ -1,17 +1,17 @@
-import { FC, use } from "react";
+import { FC } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Box, Typography, Divider } from "@mui/material";
+import { useTranslations } from "next-intl";
+import { Box, Typography } from "@mui/material";
 import facebook from "@/public/logo/facebook.png";
 import instagram from "@/public/logo/instagram.png";
 import tiktok from "@/public/logo/tiktok.png";
-import { useTranslations } from "next-intl";
 
 const FollowUs: FC = () => {
   const t = useTranslations("Footer");
 
   return (
-    <Box padding={2} width={"10vw"}>
+    <Box padding={2}>
       <Typography
         variant="h6"
         gutterBottom

@@ -3,12 +3,11 @@ import Image from "next/image";
 import {
   Box,
   Container,
-  Divider,
   Typography,
 } from "@mui/material";
 import classes from "./footer.module.css";
 import logotype from "@/public/logo/Logotype.png";
-import FollowUs from "./followUs";
+import FollowUs from "./FollowUs";
 import { useTranslations } from "next-intl";
 
 const Footer: FC = () => {
@@ -25,13 +24,14 @@ const Footer: FC = () => {
           display={"flex"}
           justifyContent={"space-between"}
           alignItems={"center"}
+          sx={{ flexDirection: { xs: 'column', md: 'row' }, gap: { xs: 2, md: 0 } }}
         >
           <Image
             src={logotype}
             alt="Logo"
             className={classes.logo}
           />
-          <Box maxWidth={"400px"}>
+          <Box maxWidth={"400px"} padding={3}>
             <Typography variant="body2" align="justify">
               Lorem ipsum, dolor sit amet consectetur
               adipisicing elit. Delectus ab consequuntur
