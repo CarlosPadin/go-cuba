@@ -18,7 +18,7 @@ export const mockCars = [
         "Bluetooth",
       ],
       rules: ["No Smoking", "No Pets"],
-      included: ["Insurance", "Roadside Assistance"],
+      features: ["Insurance", "Roadside Assistance"],
     },
     carImage: {
       mainImage: "/mock/audi.jpeg",
@@ -61,7 +61,7 @@ export const mockCars = [
         "Bluetooth",
       ],
       rules: ["No Smoking", "No Pets"],
-      included: ["Insurance", "Roadside Assistance"],
+      features: ["Insurance", "Roadside Assistance"],
     },
     carImage: {
       mainImage: "/mock/byd.jpeg",
@@ -104,7 +104,7 @@ export const mockCars = [
         "Bluetooth",
       ],
       rules: ["No Smoking", "No Pets"],
-      included: ["Insurance", "Roadside Assistance"],
+      features: ["Insurance", "Roadside Assistance"],
     },
     carImage: {
       mainImage: "/mock/cayene.jpeg",
@@ -147,7 +147,7 @@ export const mockCars = [
         "Bluetooth",
       ],
       rules: ["No Smoking", "No Pets"],
-      included: ["Insurance", "Roadside Assistance"],
+      features: ["Insurance", "Roadside Assistance"],
     },
     carImage: {
       mainImage: "/mock/cerato.jpeg",
@@ -190,7 +190,7 @@ export const mockCars = [
         "Bluetooth",
       ],
       rules: ["No Smoking", "No Pets"],
-      included: ["Insurance", "Roadside Assistance"],
+      features: ["Insurance", "Roadside Assistance"],
     },
     carImage: {
       mainImage: "/mock/lada.jpeg",
@@ -233,7 +233,7 @@ export const mockCars = [
         "Bluetooth",
       ],
       rules: ["No Smoking", "No Pets"],
-      included: ["Insurance", "Roadside Assistance"],
+      features: ["Insurance", "Roadside Assistance"],
     },
     carImage: {
       mainImage: "/mock/sf.jpeg",
@@ -276,7 +276,7 @@ export const mockCars = [
         "Bluetooth",
       ],
       rules: ["No Smoking", "No Pets"],
-      included: ["Insurance", "Roadside Assistance"],
+      features: ["Insurance", "Roadside Assistance"],
     },
     carImage: {
       mainImage: "/mock/sonata.jpeg",
@@ -319,7 +319,7 @@ export const mockCars = [
         "Bluetooth",
       ],
       rules: ["No Smoking", "No Pets"],
-      included: ["Insurance", "Roadside Assistance"],
+      features: ["Insurance", "Roadside Assistance"],
     },
     carImage: {
       mainImage: "/mock/stonic.jpeg",
@@ -362,7 +362,7 @@ export const mockCars = [
         "Bluetooth",
       ],
       rules: ["No Smoking", "No Pets"],
-      included: ["Insurance", "Roadside Assistance"],
+      features: ["Insurance", "Roadside Assistance"],
     },
     carImage: {
       mainImage: "/mock/tesla.jpeg",
@@ -403,7 +403,7 @@ export const mockOwners = [
     email: "carlos@example.com",
     phone: "+53 555-1234",
     address: "123 Main St, Havana",
-    profileImage: "/images/mock/carlos.jpeg",
+    profileImage: "/mock/owners/carlos.jpeg",
     rating: 4.8,
   },
   {
@@ -414,7 +414,7 @@ export const mockOwners = [
     email: "jessica@example.com",
     phone: "+53 555-5678",
     address: "456 Elm St, Havana",
-    profileImage: "/images/mock/jessica.jpeg",
+    profileImage: "/mock/owners/jessica.jpeg",
     rating: 4.5,
   },
   {
@@ -425,7 +425,7 @@ export const mockOwners = [
     email: "luis@example.com",
     phone: "+53 555-9012",
     address: "789 Oak St, Havana",
-    profileImage: "/images/mock/luis.jpeg",
+    profileImage: "/mock/owners/luis.jpeg",
     rating: 4.7,
   },
   {
@@ -436,7 +436,7 @@ export const mockOwners = [
     email: "sophia@example.com",
     phone: "+53 555-3456",
     address: "321 Pine St, Havana",
-    profileImage: "/images/mock/sophia.jpeg",
+    profileImage: "/mock/owners/sophia.jpeg",
     rating: 4.6,
   },
   {
@@ -447,7 +447,7 @@ export const mockOwners = [
     email: "mateo@example.com",
     phone: "+53 555-6789",
     address: "654 Cedar St, Havana",
-    profileImage: "/images/mock/mateo.jpeg",
+    profileImage: "/mock/owners/mateo.jpeg",
     rating: 4.5,
   },
   {
@@ -458,7 +458,7 @@ export const mockOwners = [
     email: "isabella@example.com",
     phone: "+53 555-9012",
     address: "789 Oak St, Havana",
-    profileImage: "/images/mock/isabella.jpeg",
+    profileImage: "/mock/owners/isabella.jpeg",
     rating: 4.7,
   }, 
   {
@@ -469,7 +469,7 @@ export const mockOwners = [
     email: "daniel@example.com",
     phone: "+53 555-3456",
     address: "321 Pine St, Havana",
-    profileImage: "/images/mock/daniel.jpeg",
+    profileImage: "/mock/owners/daniel.jpeg",
     rating: 4.6,
   },
   {
@@ -480,8 +480,8 @@ export const mockOwners = [
     email: "valentina@example.com",
     phone: "+53 555-7890",
     address: "987 Maple St, Havana",
-    profileImage: "/images/mock/valentina.jpeg",
-    rating: 4.9,
+    profileImage: "/mock/owners/valentina.jpeg",
+    rating: 5.0,
   },
 ];
 

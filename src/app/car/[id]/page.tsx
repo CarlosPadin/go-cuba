@@ -15,7 +15,7 @@ const CarPage: NextPage = async ({params}: any) => {
         brand={car.brand.name}
         model={car.model.name}
         year={car.year}
-        features={car.caracteristics.included}
+        features={car.caracteristics.features}
       />
       <Divider />
     </Container>
