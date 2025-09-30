@@ -17,5 +17,19 @@
   "Footer": {
     "rights": "© 2024 Yava. Todos los derechos reservados.",
     "followUs": "Síguenos"
+  },
+  "Car": {
+    "generalCaracteristics": "Características Generales",
+    "rules": "Reglas",
+    "powerType": {
+      "gasoline": "Gasolina",
+      "diesel": "Diésel",
+      "electric": "Eléctrico",
+      "hybrid": "Híbrido"
+    },
+    "transmissionType": {
+      "manual": "Manual",
+      "automatic": "Automático"
+    }
   }
 }

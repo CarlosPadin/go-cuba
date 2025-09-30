@@ -1,5 +1,5 @@
 import sql from 'better-sqlite3';
-import { Car } from '../interfaces';
+import { Car, Owner } from '../interfaces';
 import { parseCar } from './parse';
 
 const db = sql('yava.db');
@@ -27,3 +27,15 @@ export const getCarById = (id: string): Car => {
   if (!car) throw new Error('Car not found');
   return parseCar(car);
 }
+
+
+// Function to get one owner by its ID
+export const getOwnerById = (id: string): Owner => {
+  const owner = db.prepare('SELECT * FROM owners WHERE id = ?').get(id) as Owner;
+  if (!owner) throw new Error('Owner not found');
+  return owner;
+}
+
+
+
+

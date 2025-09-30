@@ -28,7 +28,7 @@ const CarItem: FC<Props> = ({ car }) => {
         easing="ease-out"
         initialOpacity={0}
       >
-        <Link href={"#"}>
+        <Link href={"/car/" + car.id}>
           <Card
             elevation={10}
             sx={{

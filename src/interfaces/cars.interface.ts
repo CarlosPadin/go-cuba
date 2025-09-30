@@ -39,3 +39,13 @@ export interface Car {
   transmissionType: 'manual' | 'automatic',
   year: number,
 }
+
+export interface CarHeaderProps {
+  brand: string;
+  model: string;
+  year: number;
+  evaluation?: number;
+  features: string[]; 
+  powerType: 'gasoline' | 'diesel' | 'electric' | 'hybrid';
+  transmissionType: 'manual' | 'automatic';
+}
