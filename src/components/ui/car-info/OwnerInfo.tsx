@@ -1,3 +1,4 @@
+'use server'
 import { FC } from "react";
 import Image from "next/image";
 
@@ -8,7 +9,7 @@ import {
   Typography,
 } from "@mui/material";
 import { Star } from "@mui/icons-material";
-import { getOwnerById } from "@/src/db/connection";
+import { getOwnerById } from "@/src/db/getOwners";
 
 interface OwnerInfoProps {
   ownerId: string;
