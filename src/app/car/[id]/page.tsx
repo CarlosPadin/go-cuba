@@ -7,6 +7,7 @@ import {
   CarAside,
   CarHeader,
   CarMain,
+  RelatedCars,
 } from "@/src/components/ui/car-info";
 
 const CarPage: NextPage = async ({ params }: any) => {
@@ -22,7 +23,6 @@ const CarPage: NextPage = async ({ params }: any) => {
         features={car.caracteristics.features}
         powerType={car.powerType}
         transmissionType={car.transmissionType}
-
       />
       <Divider />
       <Grid container spacing={2} mt={2}>
@@ -41,6 +41,9 @@ const CarPage: NextPage = async ({ params }: any) => {
           />
         </Grid>
       </Grid>
+
+      <Divider sx={{ my: 4 }} />
+      <RelatedCars carType={car.carType} limit={3} excludeId={car.id} />
     </Container>
   );
 };

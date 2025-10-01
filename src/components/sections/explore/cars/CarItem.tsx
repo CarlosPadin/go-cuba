@@ -52,7 +52,7 @@ const CarItem: FC<Props> = ({ car }) => {
                 position={"absolute"}
                 zIndex={2}
                 top={"5%"}
-                left={"75%"}
+                left={"70%"}
               >
                 <b>{car.year}</b>
               </Typography>

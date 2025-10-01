@@ -10,14 +10,21 @@ export const getCars = () => {
 };
 
 // Function to get cars by their type, with an optional limit
-export const getCarsByType = ({carType, limit}: {carType: string, limit?: number}): Car[] => {
+export const getCarsByType = ({carType, limit, excludeId}: {carType: string, limit?: number, excludeId?: string}): Car[] => {
   let query = 'SELECT * FROM cars WHERE carType = ?';
+  const params: (string | number)[] = [carType];
+
+  if (excludeId) {
+    query += ' AND id != ?';
+    params.push(excludeId);
+  }
+
   if (limit) {
     query += ' LIMIT ?';
-    const data = db.prepare(query).all(carType, limit) as Car[];
-    return data.map(parseCar);
+    params.push(limit);
   }
-  const data = db.prepare(query).all(carType) as Car[]; 
+
+  const data = db.prepare(query).all(...params) as Car[];
   return data.map(parseCar);
 };
 
