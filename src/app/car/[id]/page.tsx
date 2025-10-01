@@ -6,6 +6,7 @@ import { Car } from "@/src/interfaces/cars.interface";
 import {
   CarAside,
   CarHeader,
+  CarImages,
   CarMain,
   RelatedCars,
 } from "@/src/components/ui/car-info";
@@ -16,6 +17,7 @@ const CarPage: NextPage = async ({ params }: any) => {
 
   return (
     <Container sx={{ mt: 10, mb: 4 }}>
+      <CarImages images={car.carImage} />
       <CarHeader
         brand={car.brand.name}
         model={car.model.name}

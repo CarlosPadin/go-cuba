@@ -23,9 +23,9 @@ export const mockCars = [
     carImage: {
       mainImage: "/mock/audi.jpeg",
       images: [
-        "/mock/audi_frontal.jpeg",
-        "/mock/audi_lateral.jpeg",
-        "/mock/audi_trasera.jpeg",
+        "/mock/audi-frontal.png",
+        "/mock/audi-lateral.png",
+        "/mock/audi-trasera.png",
       ],
     },
     carType: "suv",
@@ -66,9 +66,9 @@ export const mockCars = [
     carImage: {
       mainImage: "/mock/byd.jpeg",
       images: [
-        "/mock/byd_frontal.jpeg",
-        "/mock/byd_lateral.jpeg",
-        "/mock/byd_trasera.jpeg",
+        "/mock/byd-frontal.png",
+        "/mock/byd-lateral.png",
+        "/mock/byd-trasera.png",
       ],
     },
     carType: "sedan",
@@ -109,9 +109,9 @@ export const mockCars = [
     carImage: {
       mainImage: "/mock/cayene.jpeg",
       images: [
-        "/mock/cayene_frontal.jpeg",
-        "/mock/cayene_lateral.jpeg",
-        "/mock/cayene_trasera.jpeg",
+        "/mock/cayene-frontal.png",
+        "/mock/cayene-lateral.png",
+        "/mock/cayene-trasera.png",
       ],
     },
     carType: "sports",
@@ -152,9 +152,9 @@ export const mockCars = [
     carImage: {
       mainImage: "/mock/cerato.jpeg",
       images: [
-        "/mock/cerato_frontal.jpeg",
-        "/mock/cerato_lateral.jpeg",
-        "/mock/cerato_trasera.jpeg",
+        "/mock/cerato-frontal.png",
+        "/mock/cerato-lateral.png",
+        "/mock/cerato-trasera.png",
       ],
     },
     carType: "sedan",
@@ -195,9 +195,9 @@ export const mockCars = [
     carImage: {
       mainImage: "/mock/lada.jpeg",
       images: [
-        "/mock/lada_frontal.jpeg",
-        "/mock/lada_lateral.jpeg",
-        "/mock/lada_trasera.jpeg",
+        "/mock/lada-frontal.png",
+        "/mock/lada-lateral.png",
+        "/mock/lada-trasera.png",
       ],
     },
     carType: "sedan",
@@ -238,9 +238,9 @@ export const mockCars = [
     carImage: {
       mainImage: "/mock/sf.jpeg",
       images: [
-        "/mock/sf_frontal.jpeg",
-        "/mock/sf_lateral.jpeg",
-        "/mock/sf_trasera.jpeg",
+        "/mock/sf-frontal.png",
+        "/mock/sf-lateral.png",
+        "/mock/sf-trasera.png",
       ],
     },
     carType: "suv",
@@ -281,9 +281,9 @@ export const mockCars = [
     carImage: {
       mainImage: "/mock/sonata.jpeg",
       images: [
-        "/mock/sonata_frontal.jpeg",
-        "/mock/sonata_lateral.jpeg",
-        "/mock/sonata_trasera.jpeg",
+        "/mock/sonata-frontal.png",
+        "/mock/sonata-lateral.png",
+        "/mock/sonata-trasera.png",
       ],
     },
     carType: "sedan",
@@ -324,9 +324,9 @@ export const mockCars = [
     carImage: {
       mainImage: "/mock/stonic.jpeg",
       images: [
-        "/mock/stonic_frontal.jpeg",
-        "/mock/stonic_lateral.jpeg",
-        "/mock/stonic_trasera.jpeg",
+        "/mock/stonic-frontal.png",
+        "/mock/stonic-lateral.png",
+        "/mock/stonic-trasera.png",
       ],
     },
     carType: "suv",
@@ -367,9 +367,9 @@ export const mockCars = [
     carImage: {
       mainImage: "/mock/tesla.jpeg",
       images: [
-        "/mock/tesla_frontal.jpeg",
-        "/mock/tesla_lateral.jpeg",
-        "/mock/tesla_trasera.jpeg",
+        "/mock/tesla-frontal.png",
+        "/mock/tesla-lateral.png",
+        "/mock/tesla-trasera.png",
       ],
     },
     carType: "sedan",

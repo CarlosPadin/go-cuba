@@ -9,4 +9,5 @@ export interface Owner {
   phone: string,
   profileImage: string,
   rating: number,
+  //licence
 }
