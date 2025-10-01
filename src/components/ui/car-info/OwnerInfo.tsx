@@ -9,7 +9,7 @@ import {
   Typography,
 } from "@mui/material";
 import { Star } from "@mui/icons-material";
-import { getOwnerById } from "@/src/db/getOwners";
+import { getOwnerById } from "@/src/db/connection";
 
 interface OwnerInfoProps {
   ownerId: string;

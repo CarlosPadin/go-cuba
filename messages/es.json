@@ -1,4 +1,8 @@
 {
+  "initialDate": "Fecha Inicial",
+  "finalDate": "Fecha Final",
+  "date": "Fecha",
+  "hour": "Hora",
   "Explore": {
     "caption": "Encuentre el auto perfecto para usted entre todas las opciones.",
     "sports": "Deportivos",
@@ -21,6 +25,14 @@
   "Car": {
     "generalCaracteristics": "Características Generales",
     "rules": "Reglas",
+    "rentalCost": "Costo de Renta",
+    "bookNow": "Reservar Ahora",
+    "pickupLocation": "Lugar de Recogida",
+    "totalPrice": "Precio Total",
+    "perDay": "Precio diario",
+    "discounts": "Descuento",
+    "applyDiscount": "Aplicar Descuento",
+    "daysCount": "Días",
     "powerType": {
       "gasoline": "Gasolina",
       "diesel": "Diésel",

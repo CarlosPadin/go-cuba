@@ -35,7 +35,10 @@ const CarPage: NextPage = async ({ params }: any) => {
           />
         </Grid>
         <Grid size={{ sm: 12, md: 5 }}>
-          <CarAside />
+          <CarAside
+            price={car.price}
+            pickupLocation={car.pickupLocation}
+          />
         </Grid>
       </Grid>
     </Container>
