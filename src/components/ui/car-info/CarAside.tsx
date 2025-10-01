@@ -30,7 +30,7 @@ const CarAside: FC<CarAsideProps> = ({
   const currentDate = dayjs();
 
   return (
-    <Paper elevation={3} sx={{ p: 2 }}>
+    <Paper elevation={3} sx={{ p: 4 }}>
       <Typography
         variant="h4"
         mb={2}
