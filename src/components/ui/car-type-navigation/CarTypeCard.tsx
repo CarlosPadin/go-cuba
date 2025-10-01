@@ -18,7 +18,7 @@ const CarTypeCard: FC<CarTypeCardProps> = ({
 
   return (
     <Link
-      href={`/cars/${name}`}
+      href={`/${name}`}
       style={{ textDecoration: "none" }}
     >
       <SpotlightCard
