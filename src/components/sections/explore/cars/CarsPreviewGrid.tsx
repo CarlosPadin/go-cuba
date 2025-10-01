@@ -16,13 +16,14 @@ import { Car } from "@/src/interfaces";
 
 interface Props {
   carType: string;
+  limit?: number;
 }
 
-const CarsPreviewGrid: FC<Props> = ({ carType }) => {
+const CarsPreviewGrid: FC<Props> = ({ carType, limit }) => {
   const t = useTranslations("Explore");
   const cars: Car[] = getCarsByType({
     carType: carType,
-    limit: 3,
+    limit: limit,
   });
 
   return (
