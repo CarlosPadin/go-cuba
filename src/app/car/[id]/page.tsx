@@ -4,12 +4,12 @@ import { Container, Divider, Grid } from "@mui/material";
 import { getCarById } from "@/src/db/connection";
 import { Car } from "@/src/interfaces/cars.interface";
 import {
-  CarAside,
+  RentDetails,
   CarHeader,
-  CarImages,
   CarMain,
   RelatedCars,
 } from "@/src/components/ui/car-info";
+import ImageSwiper from "@/src/components/ui/image-swiper/ImageSwiper";
 
 const CarPage: NextPage = async ({ params }: any) => {
   const { id } = await params;
@@ -17,7 +17,7 @@ const CarPage: NextPage = async ({ params }: any) => {
 
   return (
     <Container sx={{ mt: 10, mb: 4 }}>
-      <CarImages images={car.carImage} />
+      <ImageSwiper images={car.carImage} />
       <CarHeader
         brand={car.brand.name}
         model={car.model.name}
@@ -37,7 +37,7 @@ const CarPage: NextPage = async ({ params }: any) => {
           />
         </Grid>
         <Grid size={{ sm: 12, md: 5 }}>
-          <CarAside
+          <RentDetails
             price={car.price}
             pickupLocation={car.pickupLocation}
           />
@@ -45,7 +45,11 @@ const CarPage: NextPage = async ({ params }: any) => {
       </Grid>
 
       <Divider sx={{ my: 4 }} />
-      <RelatedCars carType={car.carType} limit={3} excludeId={car.id} />
+      <RelatedCars
+        carType={car.carType}
+        limit={3}
+        excludeId={car.id}
+      />
     </Container>
   );
 };

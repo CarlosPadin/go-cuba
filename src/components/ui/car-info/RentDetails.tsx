@@ -5,6 +5,7 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import dayjs from "dayjs";
 import {
   Box,
+  Button,
   Divider,
   Paper,
   Stack,
@@ -22,7 +23,7 @@ interface CarAsideProps {
   pickupLocation: string;
 }
 
-const CarAside: FC<CarAsideProps> = ({
+const RentDetails: FC<CarAsideProps> = ({
   price,
   pickupLocation,
 }) => {
@@ -88,8 +89,17 @@ const CarAside: FC<CarAsideProps> = ({
       <RentCost price={price} />
       <Divider />
       <PickupLocation pickupLocation={pickupLocation} />
+      <Button
+        variant="contained"
+        color="primary"
+        fullWidth
+        size="large"
+        sx={{ mt: 5 }}
+      >
+        {t("pay")}
+      </Button>
     </Paper>
   );
 };
 
-export default CarAside;
+export default RentDetails;
