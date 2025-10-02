@@ -17,7 +17,7 @@ export interface CarImage {
 export interface Caracteristics {
   general: string[],
   rules: string[],
-  included: string[],
+  features: string[],
 }
 
 export interface Car {
@@ -38,4 +38,14 @@ export interface Car {
   reservedDates: Date[],
   transmissionType: 'manual' | 'automatic',
   year: number,
+}
+
+export interface CarHeaderProps {
+  brand: string;
+  model: string;
+  year: number;
+  evaluation?: number;
+  features: string[]; 
+  powerType: 'gasoline' | 'diesel' | 'electric' | 'hybrid';
+  transmissionType: 'manual' | 'automatic';
 }

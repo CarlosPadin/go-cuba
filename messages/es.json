@@ -1,4 +1,9 @@
 {
+  "initialDate": "Fecha Inicial",
+  "finalDate": "Fecha Final",
+  "date": "Fecha",
+  "hour": "Hora",
+  "pay": "Pagar",
   "Explore": {
     "caption": "Encuentre el auto perfecto para usted entre todas las opciones.",
     "sports": "Deportivos",
@@ -17,5 +22,29 @@
   "Footer": {
     "rights": "© 2024 Yava. Todos los derechos reservados.",
     "followUs": "Síguenos"
+  },
+  "Car": {
+    "generalCaracteristics": "Características Generales",
+    "rules": "Reglas",
+    "rentalCost": "Costo de Renta",
+    "bookNow": "Reservar Ahora",
+    "pickupLocation": "Lugar de Recogida",
+    "totalPrice": "Precio Total",
+    "perDay": "Precio diario",
+    "discounts": "Descuento",
+    "applyDiscount": "Aplicar Descuento",
+    "daysCount": "Días",
+    "relatedCars": "Autos Relacionados",
+    "seeMoreImages": "Ver más imágenes",
+    "powerType": {
+      "gasoline": "Gasolina",
+      "diesel": "Diésel",
+      "electric": "Eléctrico",
+      "hybrid": "Híbrido"
+    },
+    "transmissionType": {
+      "manual": "Manual",
+      "automatic": "Automático"
+    }
   }
 }

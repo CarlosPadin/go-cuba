@@ -28,7 +28,7 @@ const CarItem: FC<Props> = ({ car }) => {
         easing="ease-out"
         initialOpacity={0}
       >
-        <Link href={"#"}>
+        <Link href={"/car/" + car.id}>
           <Card
             elevation={10}
             sx={{
@@ -52,7 +52,7 @@ const CarItem: FC<Props> = ({ car }) => {
                 position={"absolute"}
                 zIndex={2}
                 top={"5%"}
-                left={"75%"}
+                left={"70%"}
               >
                 <b>{car.year}</b>
               </Typography>

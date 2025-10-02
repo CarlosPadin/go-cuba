@@ -16,9 +16,9 @@ const ExploreCars: FC = () => {
         {t("Explore.caption")}
       </Typography>
       <Container>
-        <CarsPreviewGrid carType="sports" />
-        <CarsPreviewGrid carType="sedan" />
-        <CarsPreviewGrid carType="suv" />
+        <CarsPreviewGrid carType="sports" limit={3} />
+        <CarsPreviewGrid carType="sedan" limit={3} />
+        <CarsPreviewGrid carType="suv" limit={3} />
       </Container>
     </>
   );
