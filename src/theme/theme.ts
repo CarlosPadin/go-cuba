@@ -1,5 +1,6 @@
 "use client";
 import { createTheme } from "@mui/material/styles";
+import { brunoAceSC, montserrat, robotoMono } from ".";
 
 // // Extender la interfaz de MUI para aceptar un nuevo color
 // declare module "@mui/material/styles" {
@@ -35,8 +36,38 @@ const theme = createTheme({
       secondary: "#757575",
     },
   },
+
   typography: {
-    fontFamily: "'Roboto', sans-serif",
+    fontFamily: montserrat.style.fontFamily,
+    h1: {
+      fontFamily: brunoAceSC.style.fontFamily,
+      fontWeight: 700,
+    },
+    h2: {
+      fontFamily: brunoAceSC.style.fontFamily,
+      fontWeight: 600,
+    },
+    h3: {
+      fontFamily: brunoAceSC.style.fontFamily,
+      fontWeight: 400,
+    },
+    h4: {
+      fontFamily: brunoAceSC.style.fontFamily,
+      fontWeight: 400,
+    },
+    h5: {
+      fontFamily: montserrat.style.fontFamily,
+      fontWeight: 400,
+    },
+    h6: {
+      fontFamily: montserrat.style.fontFamily,
+      fontWeight: 400,
+    },
+    caption: {
+      fontFamily: robotoMono.style.fontFamily,
+      fontWeight: 300,
+      fontSize: "2vh",
+    },
   },
 });
 

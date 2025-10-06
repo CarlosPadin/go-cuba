@@ -35,6 +35,7 @@ const CarsPreviewGrid: FC<Props> = ({ carType, limit }) => {
           variant="h3"
           display={"flex"}
           justifyContent={"center"}
+          sx={{ fontSize: {xs: '32px', sm: '40px', md: '50px'}}}
         >
           {t(carType)}
         </Typography>
@@ -45,7 +46,7 @@ const CarsPreviewGrid: FC<Props> = ({ carType, limit }) => {
                 position: "absolute",
                 zIndex: 2,
                 right: "0",
-                top: "40%",
+                top: {xs: "30%", md: '40%'},
               }}
             />
         </CustomTooltip>

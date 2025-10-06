@@ -8,9 +8,11 @@ const ExploreCars: FC = () => {
   return (
     <>
       <Typography
-        variant="subtitle1"
+        variant="caption"
         marginTop={10}
         marginBottom={4}
+        p={2}
+        textAlign={'center'}
         sx={{ color: 'gray'}}
       >
         {t("Explore.caption")}

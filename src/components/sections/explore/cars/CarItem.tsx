@@ -36,18 +36,23 @@ const CarItem: FC<Props> = ({ car }) => {
             elevation={10}
             sx={{
               maxWidth: 300,
-              margin: 2,
-              borderRadius: 5,
-              paddingX: 1,
+              m: 1,
+              mb: 2,
+              borderRadius: {xs: 3, sm: 5},
               maxHeight: 500,
             }}
           >
-            <Box display={"flex"} justifyContent={"center"}>
+            <Box
+              display={"flex"}
+              justifyContent={"center"}
+              width={"100%"}
+              position={"relative"}
+              sx={{ height: { xs: "170px", sm: "270px" } }}
+            >
               <Image
                 src={car.carImage.mainImage}
                 alt={`${car.id} ${car.brand} ${car.model}`}
-                width={230}
-                height={230}
+                fill
                 className={classes.image}
               />
               <Typography
@@ -62,14 +67,22 @@ const CarItem: FC<Props> = ({ car }) => {
               </Typography>
             </Box>
             <CardContent>
-              <Typography variant="h6">
+              <Typography
+                variant="h6"
+                sx={{
+                  fontSize: { xs: "18px", md: "20px" },
+                }}
+              >
                 <b>{car.brand.name.toUpperCase()}</b>{" "}
                 {car.model.name}
               </Typography>
 
               <Typography
                 variant="body2"
-                sx={{ color: theme.palette.text.secondary }}
+                sx={{
+                  color: theme.palette.text.secondary,
+                  fontSize: { xs: "12px", md: "18px" },
+                }}
               >
                 {`${car.powerType.toUpperCase()} (${car.kilometers.toString()} km)`}
               </Typography>
@@ -84,9 +97,17 @@ const CarItem: FC<Props> = ({ car }) => {
                   ]}
                   animationSpeed={5}
                   showBorder={false}
-                  className="custom-class"
+                  // className="custom-class"
                 >
-                  <Typography variant="h6">
+                  <Typography
+                    variant="h6"
+                    display={'flex'}
+                    flexDirection={'row'}
+                    justifyContent={'center'}
+                    sx={{
+                      fontSize: { xs: "15px", md: "20px" },
+                    }}
+                  >
                     {`$${car.price} per day`}
                   </Typography>
                 </GradientText>
