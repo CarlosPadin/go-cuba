@@ -8,11 +8,13 @@ import {
   Grid,
   Tooltip,
   Typography,
+  useTheme,
 } from "@mui/material";
 import { ArrowForwardIos } from "@mui/icons-material";
 import { getCarsByType } from "@/src/db/connection";
 import { CarItem } from ".";
 import { Car } from "@/src/interfaces";
+import { CustomTooltip } from "@/src/components/ui/custom-components";
 
 interface Props {
   carType: string;
@@ -37,7 +39,7 @@ const CarsPreviewGrid: FC<Props> = ({ carType, limit }) => {
           {t(carType)}
         </Typography>
         <Link href={carType}>
-          <Tooltip title={t("seeMore")} placement="top">
+        <CustomTooltip title={t("seeMore")}>
             <ArrowForwardIos
               sx={{
                 position: "absolute",
@@ -46,7 +48,7 @@ const CarsPreviewGrid: FC<Props> = ({ carType, limit }) => {
                 top: "40%",
               }}
             />
-          </Tooltip>
+        </CustomTooltip>
         </Link>
       </Box>
 

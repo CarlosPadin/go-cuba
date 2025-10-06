@@ -1,9 +1,11 @@
+'use client'
 import { FC } from "react";
 import Image from "next/image";
 import {
   Box,
   Container,
   Typography,
+  useTheme,
 } from "@mui/material";
 import classes from "./footer.module.css";
 import logotype from "@/public/logo/Logotype.png";
@@ -12,10 +14,12 @@ import { useTranslations } from "next-intl";
 
 const Footer: FC = () => {
   const t = useTranslations("Footer");
+  const theme = useTheme();
+
   return (
     <Box
-      bgcolor={"black"}
-      color={"white"}
+      bgcolor={theme.palette.primary.main}
+      color={theme.palette.background.default}
       paddingTop={10}
       paddingBottom={5}
     >

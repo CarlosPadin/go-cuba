@@ -1,12 +1,13 @@
+'use client'
 import { FC } from "react";
 import { useTranslations } from "next-intl";
 import {
-  Divider,
   Grid,
   Stack,
   Typography,
+  useTheme,
 } from "@mui/material";
-import CustomChip from "../custom-chip/CustomChip";
+import { CustomChip } from "../custom-components";
 import { CarHeaderProps } from "@/src/interfaces";
 
 const CarHeader: FC<CarHeaderProps> = ({
@@ -18,6 +19,7 @@ const CarHeader: FC<CarHeaderProps> = ({
   transmissionType,
 }) => {
   const t = useTranslations("Car");
+  const theme = useTheme()
   return (
     <>
       <Stack
@@ -37,20 +39,20 @@ const CarHeader: FC<CarHeaderProps> = ({
         </Typography>
         
         <Grid container spacing={1} my={1}>
-          <CustomChip color="lightblue">
-            <Typography variant="body2">
+          <CustomChip color={theme.palette.primary.main}>
+            <Typography variant="body2" sx={{ color: 'white'}}>
               {t(`powerType.${powerType}`)}
             </Typography>
           </CustomChip>
-          <CustomChip color="lightgreen">
-            <Typography variant="body2">
+          <CustomChip color={theme.palette.success.main}>
+            <Typography variant="body2" sx={{ color: 'white'}}>
               {t(`transmissionType.${transmissionType}`)}
             </Typography>
           </CustomChip>
 
           {features.map((feature) => (
-            <CustomChip key={feature}>
-              <Typography variant="body2">
+            <CustomChip key={feature} color={theme.palette.primary.main} outlined >
+              <Typography variant="body2" sx={{ color: theme.palette.primary.main}}>
                 {feature}
               </Typography>
             </CustomChip>

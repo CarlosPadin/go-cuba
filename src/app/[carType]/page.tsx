@@ -12,7 +12,7 @@ const CarTypePage: NextPage = async ({ params }: any) => {
   const cars: Car[] = await getCarsByType({ carType });
 
   return (
-    <Container sx={{ marginTop: 10, marginBottom: 10 }}>
+    <Container sx={{ marginTop: 15, marginBottom: 10 }}>
       <CarTypeNavigation carType={carType} />
       <Grid container marginBottom={10}>
         {cars.map((car) => (

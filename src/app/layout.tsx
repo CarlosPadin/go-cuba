@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { ThemeRegistry } from "../theme";
 import { NextIntlClientProvider } from "next-intl";
+
 import Box from "@mui/material/Box";
 import { Navbar } from "../components/layout/navbar";
 import Footer from "../components/layout/footer/footer";
@@ -18,19 +20,21 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <NextIntlClientProvider>
-          <Box
-            minHeight={"100vh"}
-            display={"flex"}
-            flexDirection={"column"}
-          >
-            <Navbar />
-            <Box component="main" flex="1">
-              {children}
+        <ThemeRegistry>
+          <NextIntlClientProvider>
+            <Box
+              minHeight={"100vh"}
+              display={"flex"}
+              flexDirection={"column"}
+            >
+              <Navbar />
+              <Box component="main" flex="1">
+                {children}
+              </Box>
+              <Footer />
             </Box>
-            <Footer />
-          </Box>
-        </NextIntlClientProvider>
+          </NextIntlClientProvider>
+        </ThemeRegistry>
       </body>
     </html>
   );

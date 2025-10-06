@@ -52,7 +52,7 @@ const SearchBar: FC = () => {
               <TextField
                 {...params}
                 label="Ciudad"
-                color="primary"
+                color="success"
                 variant="outlined"
                 size="small"
               />
@@ -67,7 +67,7 @@ const SearchBar: FC = () => {
               slotProps={{
                 field: { clearable: true },
                 textField: {
-                  color: "primary",
+                  color: "success",
                   variant: "outlined",
                   size: "small",
                 },
@@ -81,14 +81,14 @@ const SearchBar: FC = () => {
               slotProps={{
                 field: { clearable: true },
                 textField: {
-                  color: "primary",
+                  color: "success",
                   variant: "outlined",
                   size: "small",
                 },
               }}
             />
           </LocalizationProvider>
-          <IconButton>
+          <IconButton color="primary">
             <Search />
           </IconButton>
         </Box>

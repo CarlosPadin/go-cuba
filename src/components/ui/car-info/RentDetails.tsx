@@ -45,7 +45,7 @@ const RentDetails: FC<CarAsideProps> = ({
         <LocalizationProvider dateAdapter={AdapterDayjs}>
           <DateTimePicker
             label={t("initialDate")}
-            format="DD/MM/YYYY HH:mm A"
+            format="DD/MM/YYYY hh:mm A"
             minDate={currentDate}
             slotProps={{
               field: { clearable: true },
@@ -57,7 +57,7 @@ const RentDetails: FC<CarAsideProps> = ({
           />
           <DateTimePicker
             label={t("finalDate")}
-            format="DD/MM/YYYY HH:mm A"
+            format="DD/MM/YYYY hh:mm A"
             minDate={currentDate}
             slotProps={{
               field: { clearable: true },

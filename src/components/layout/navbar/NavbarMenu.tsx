@@ -1,3 +1,4 @@
+'use client'
 import { FC } from "react";
 import Link from "next/link";
 
@@ -7,6 +8,7 @@ import {
   Divider,
   ListItemIcon,
   ListItemText,
+  useTheme,
 } from "@mui/material";
 import { Close } from "@mui/icons-material";
 import { useTranslations } from "next-intl";
@@ -24,6 +26,7 @@ const NavbarMenu: FC<Props> = ({
   handleClose,
 }) => {
   const t = useTranslations("Navbar");
+  const theme = useTheme();
 
   return (
     <Menu
@@ -47,16 +50,16 @@ const NavbarMenu: FC<Props> = ({
             backdropFilter: "blur(10px)",
             borderRadius: 5,
             "& .MuiMenuItem-root:hover": {
-              bgcolor: "black",
-              color: "white",
+              bgcolor: theme.palette.primary.main,
+              color: theme.palette.primary.contrastText,
             },
             "& .MuiMenuItem-root:hover .MuiListItemIcon-root":
               {
-                color: "white",
+                color: theme.palette.background.default,
               },
             "& .MuiMenuItem-root:hover .MuiListItemText-root":
               {
-                color: "white",
+                color: theme.palette.background.default,
               },
           },
         },
@@ -67,18 +70,18 @@ const NavbarMenu: FC<Props> = ({
           link.show && (
             <Link href={link.link} key={link.page}>
               <MenuItem>
-                <ListItemIcon>{link.icon}</ListItemIcon>
-                <ListItemText>{t(link.page)}</ListItemText>
+                <ListItemIcon sx={{ color: theme.palette.text.primary}}>{link.icon}</ListItemIcon>
+                <ListItemText sx={{ color: theme.palette.text.primary}}>{t(link.page)}</ListItemText>
               </MenuItem>
             </Link>
           )
       )}
       <Divider />
       <MenuItem>
-        <ListItemIcon>
+        <ListItemIcon sx={{ color: theme.palette.text.primary }}>
           <Close />
         </ListItemIcon>
-        <ListItemText onClick={handleClose}>
+        <ListItemText onClick={handleClose} sx={{ color: theme.palette.text.primary }}>
           {t("close")}
         </ListItemText>
       </MenuItem>

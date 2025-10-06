@@ -1,16 +1,21 @@
-'use client'
+"use client";
 
 import { FC, useState } from "react";
 
-import { AccountCircle, Menu as MenuIcon } from "@mui/icons-material";
-import { Button} from "@mui/material";
+import {
+  AccountCircle,
+  Menu as MenuIcon,
+} from "@mui/icons-material";
+import { Button } from "@mui/material";
 import { NavbarMenu } from ".";
 
-
 const NavbarMenuButton: FC = () => {
-  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+  const [anchorEl, setAnchorEl] =
+    useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
-  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+  const handleClick = (
+    event: React.MouseEvent<HTMLButtonElement>
+  ) => {
     setAnchorEl(event.currentTarget);
   };
   const handleClose = () => {
@@ -19,19 +24,21 @@ const NavbarMenuButton: FC = () => {
   return (
     <>
       <Button
-        color="inherit"
+        color="primary"
+        variant="contained"
+        size="large"
         sx={{
-          border: "1px solid #000",
-          borderRadius: "15px",
-          backdropFilter: "blur(4px)",
-          color: "#000",
+          borderRadius: "12px",
         }}
         onClick={handleClick}
-      >
-        <MenuIcon />
-        <AccountCircle />
-      </Button>
-      <NavbarMenu anchorEl={anchorEl} open={open} handleClose={handleClose} />
+        startIcon={<MenuIcon />}
+        endIcon={<AccountCircle />}
+      />
+      <NavbarMenu
+        anchorEl={anchorEl}
+        open={open}
+        handleClose={handleClose}
+      />
     </>
   );
 };

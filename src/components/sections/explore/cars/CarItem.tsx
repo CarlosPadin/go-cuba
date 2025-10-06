@@ -1,3 +1,4 @@
+"use client";
 import { FC } from "react";
 import Image from "next/image";
 import Link from "next/link";
@@ -8,11 +9,12 @@ import {
   Card,
   CardContent,
   Typography,
+  useTheme,
 } from "@mui/material";
 import classes from "./CarItem.module.css";
 import {
   FadeContent,
-  ShinyText,
+  GradientText,
 } from "@/src/components/ui/react-bits";
 
 interface Props {
@@ -20,6 +22,7 @@ interface Props {
 }
 
 const CarItem: FC<Props> = ({ car }) => {
+  const theme = useTheme();
   return (
     <>
       <FadeContent
@@ -53,34 +56,40 @@ const CarItem: FC<Props> = ({ car }) => {
                 zIndex={2}
                 top={"5%"}
                 left={"70%"}
+                color="primary"
               >
                 <b>{car.year}</b>
               </Typography>
             </Box>
             <CardContent>
               <Typography variant="h6">
-                <b>{car.brand.name.toLocaleUpperCase()}</b>{" "}
+                <b>{car.brand.name.toUpperCase()}</b>{" "}
                 {car.model.name}
               </Typography>
 
               <Typography
                 variant="body2"
-                sx={{ color: "gray" }}
+                sx={{ color: theme.palette.text.secondary }}
               >
-                {`${car.powerType.toUpperCase()} (${car.kilometers.toLocaleString()} km)`}
+                {`${car.powerType.toUpperCase()} (${car.kilometers.toString()} km)`}
               </Typography>
               <Box marginTop={3}>
-                <Typography
-                  variant="h6"
-                  display={"flex"}
-                  justifyContent={"flex-end"}
+                <GradientText
+                  colors={[
+                    theme.palette.text.primary,
+                    theme.palette.success.main,
+                    theme.palette.text.primary,
+                    theme.palette.success.main,
+                    theme.palette.text.primary,
+                  ]}
+                  animationSpeed={5}
+                  showBorder={false}
+                  className="custom-class"
                 >
-                  <ShinyText
-                    text={`$${car.price} per day`}
-                    disabled={false}
-                    speed={3}
-                  />
-                </Typography>
+                  <Typography variant="h6">
+                    {`$${car.price} per day`}
+                  </Typography>
+                </GradientText>
               </Box>
             </CardContent>
           </Card>

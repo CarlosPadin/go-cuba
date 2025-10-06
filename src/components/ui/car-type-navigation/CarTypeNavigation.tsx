@@ -14,8 +14,8 @@ const CarTypeNavigation: FC<CarTypeNavigationProps> = ({
     <Box
       display="flex"
       justifyContent="center"
+      height={200}
       gap={2}
-      marginY={4}
     >
       {carTypes.map((type) => (
         <CarTypeCard
