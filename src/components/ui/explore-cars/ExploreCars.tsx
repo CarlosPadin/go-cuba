@@ -1,20 +1,14 @@
 import { FC } from "react";
-import { Container, Typography } from "@mui/material";
 import { useTranslations } from "next-intl";
-import { CarsPreviewGrid } from "./cars";
+import { Container } from "@mui/material";
+import { CarsPreviewGrid } from "../cars";
+import CustomCaption from "../caption/CustomCaption";
 
 const ExploreCars: FC = () => {
   const t = useTranslations();
   return (
     <>
-      <Typography
-        variant="subtitle1"
-        marginTop={10}
-        marginBottom={4}
-        sx={{ color: 'gray'}}
-      >
-        {t("Explore.caption")}
-      </Typography>
+    <CustomCaption text={t("Explore.caption")} />
       <Container>
         <CarsPreviewGrid carType="sports" limit={3} />
         <CarsPreviewGrid carType="sedan" limit={3} />

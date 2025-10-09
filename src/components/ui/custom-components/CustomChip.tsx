@@ -4,7 +4,8 @@ import { Box } from "@mui/material";
 const CustomChip: FC<{
   children: ReactNode;
   color?: string;
-}> = ({ children, color }) => {
+  outlined?: boolean
+}> = ({ children, color, outlined }) => {
   return (
     <Box
       display={"flex"}
@@ -14,7 +15,7 @@ const CustomChip: FC<{
       minHeight={50}
       minWidth={100}
       padding={2}
-      bgcolor={color}
+      bgcolor={outlined ? '' : color}
       sx={{
         border: "1px solid",
         borderColor: color || "black",

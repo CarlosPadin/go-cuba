@@ -7,7 +7,7 @@ const Banner: FC = () => {
   return (
     <Box width={'100%'} height={500} position={'relative'}>
       <LiquidEther
-        colors={["#ffffffff", "#ffffffff", "#000000ff"]}
+        colors={["#3E92CC", "#3E92CC", "#D8315B"]}
         mouseForce={20}
         cursorSize={100}
         isViscous={false}

@@ -10,6 +10,7 @@ import {
 } from "@mui/material";
 import { OwnerInfo } from ".";
 import { Caracteristics } from "@/src/interfaces";
+import { CountUp, PixelCard } from "../react-bits";
 
 interface CarMainProps {
   caracteristics: Caracteristics;
@@ -30,10 +31,27 @@ const CarMain: FC<CarMainProps> = ({
     <>
       <OwnerInfo ownerId={ownerId} />
       <Divider sx={{ my: 2 }} />
-      <Typography variant="body1">{description}</Typography>
+      <Typography variant="body2">{description}</Typography>
 
-      <Chip label={`${kilometers} km`} color="success" sx={{ my: 2 }} />
-      
+      <PixelCard variant="blue">
+        <Typography
+          variant="subtitle1"
+          mt={2}
+          mb={1}
+          position={"absolute"}
+        >
+          <CountUp
+            from={0}
+            to={kilometers}
+            separator=","
+            direction="up"
+            duration={1}
+            className="count-up-text"
+          />
+          {` km`}
+        </Typography>
+      </PixelCard>
+
       <Typography variant="h6" mt={2} mb={1}>
         {t("generalCaracteristics")}
       </Typography>
@@ -41,18 +59,22 @@ const CarMain: FC<CarMainProps> = ({
         {caracteristics.general.map((item) => (
           <Chip
             key={item}
-            variant="outlined"
+            // variant="outlined"
             label={item}
+            color="success"
           />
         ))}
       </Grid>
+
       <Typography variant="h6" mt={2}>
         {t("rules")}
       </Typography>
       <List dense>
         {caracteristics.rules.map((item) => (
           <ListItem key={item}>
-            <Typography variant="body2">- {item}</Typography>
+            <Typography variant="body2">
+              - {item}
+            </Typography>
           </ListItem>
         ))}
       </List>

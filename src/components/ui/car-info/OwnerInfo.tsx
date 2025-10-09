@@ -34,7 +34,7 @@ const OwnerInfo: FC<OwnerInfoProps> = ({ ownerId }) => {
         />
       </Avatar>
       <Stack direction={"column"} spacing={0}>
-        <Typography variant="h6">
+        <Typography variant="h5">
           {owner.name} {owner.lastName}
         </Typography>
         <Rating
@@ -42,10 +42,11 @@ const OwnerInfo: FC<OwnerInfoProps> = ({ ownerId }) => {
           value={owner.rating}
           readOnly
           precision={0.5}
+          sx={{ color: '#ec6d19' }}
           emptyIcon={
             <Star
-              style={{ opacity: 0.55 }}
               fontSize="inherit"
+              sx={{ opacity: 0.55 }}
             />
           }
         />

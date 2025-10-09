@@ -9,7 +9,9 @@
     "sports": "Deportivos",
     "suv": "SUVs",
     "sedan": "Sedanes",
-    "seeMore": "Ver más"
+    "seeMore": "Ver más",
+    "search": "Buscar",
+    "city": "Ciudad"
   },
   "Navbar": {
     "login": "Entrar",

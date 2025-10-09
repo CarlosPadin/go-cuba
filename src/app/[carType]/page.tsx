@@ -4,7 +4,7 @@ import { Container } from "@mui/material";
 
 import { getCarsByType } from "@/src/db/connection";
 import { Car } from "@/src/interfaces/cars.interface";
-import CarItem from "@/src/components/sections/explore/cars/CarItem";
+import CarItem from "@/src/components/ui/cars/CarItem";
 import CarTypeNavigation from "@/src/components/ui/car-type-navigation/CarTypeNavigation";
 
 const CarTypePage: NextPage = async ({ params }: any) => {
@@ -12,7 +12,7 @@ const CarTypePage: NextPage = async ({ params }: any) => {
   const cars: Car[] = await getCarsByType({ carType });
 
   return (
-    <Container sx={{ marginTop: 10, marginBottom: 10 }}>
+    <Container sx={{ marginTop: 15, marginBottom: 10 }}>
       <CarTypeNavigation carType={carType} />
       <Grid container marginBottom={10}>
         {cars.map((car) => (

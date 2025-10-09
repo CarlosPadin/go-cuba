@@ -6,13 +6,13 @@ import {
   Box,
   Divider,
   Grid,
-  Tooltip,
   Typography,
 } from "@mui/material";
 import { ArrowForwardIos } from "@mui/icons-material";
 import { getCarsByType } from "@/src/db/connection";
 import { CarItem } from ".";
 import { Car } from "@/src/interfaces";
+import { CustomTooltip } from "@/src/components/ui/custom-components";
 
 interface Props {
   carType: string;
@@ -33,24 +33,26 @@ const CarsPreviewGrid: FC<Props> = ({ carType, limit }) => {
           variant="h3"
           display={"flex"}
           justifyContent={"center"}
+          sx={{ fontSize: {xs: '32px', sm: '40px', md: '50px'}}}
         >
           {t(carType)}
         </Typography>
         <Link href={carType}>
-          <Tooltip title={t("seeMore")} placement="top">
+        <CustomTooltip title={t("seeMore")}>
             <ArrowForwardIos
               sx={{
                 position: "absolute",
                 zIndex: 2,
                 right: "0",
-                top: "40%",
+                top: {xs: "30%", md: '40%'},
               }}
             />
-          </Tooltip>
+        </CustomTooltip>
         </Link>
       </Box>
 
-      <Divider variant="middle" />
+      <Divider variant="middle" sx={{ mb: 2}}/>
+      
       <Grid container marginBottom={10}>
         {cars.map((car) => (
           <Grid size={{ xs: 6, md: 4, lg: 3 }} key={car.id}>

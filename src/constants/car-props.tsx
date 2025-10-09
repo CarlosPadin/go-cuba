@@ -5,7 +5,6 @@ import {
   LocalGasStation,
   OilBarrel,
 } from "@mui/icons-material";
-import "../components/ui/react-bits/ShinyText.css";
 
 const style = {
   position: "absolute",

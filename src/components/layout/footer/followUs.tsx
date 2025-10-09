@@ -34,18 +34,18 @@ const FollowUs: FC = () => {
             height={30}
           />
         </Link>
-        <Link href="https://www.instagram.com">
-          <Image
-            src={instagram}
-            alt="Instagram"
-            width={30}
-            height={30}
-          />
-        </Link>
         <Link href="https://www.tiktok.com">
           <Image
             src={tiktok}
             alt="TikTok"
+            width={30}
+            height={30}
+          />
+        </Link>
+        <Link href="https://www.instagram.com">
+          <Image
+            src={instagram}
+            alt="Instagram"
             width={30}
             height={30}
           />

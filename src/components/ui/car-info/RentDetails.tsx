@@ -37,6 +37,7 @@ const RentDetails: FC<CarAsideProps> = ({
         mb={2}
         display={"flex"}
         justifyContent={"center"}
+        textAlign={'center'}
       >
         {t("Car.rentalCost")}
       </Typography>
@@ -45,7 +46,7 @@ const RentDetails: FC<CarAsideProps> = ({
         <LocalizationProvider dateAdapter={AdapterDayjs}>
           <DateTimePicker
             label={t("initialDate")}
-            format="DD/MM/YYYY HH:mm A"
+            format="DD/MM/YYYY hh:mm A"
             minDate={currentDate}
             slotProps={{
               field: { clearable: true },
@@ -57,7 +58,7 @@ const RentDetails: FC<CarAsideProps> = ({
           />
           <DateTimePicker
             label={t("finalDate")}
-            format="DD/MM/YYYY HH:mm A"
+            format="DD/MM/YYYY hh:mm A"
             minDate={currentDate}
             slotProps={{
               field: { clearable: true },
@@ -74,6 +75,7 @@ const RentDetails: FC<CarAsideProps> = ({
         direction={"row"}
         justifyContent={"space-between"}
         alignItems={"center"}
+        gap={1}
         my={3}
       >
         <Typography variant="body1">
@@ -87,7 +89,7 @@ const RentDetails: FC<CarAsideProps> = ({
       </Stack>
 
       <RentCost price={price} />
-      <Divider />
+      <Divider sx={{ mb: 5}} />
       <PickupLocation pickupLocation={pickupLocation} />
       <Button
         variant="contained"

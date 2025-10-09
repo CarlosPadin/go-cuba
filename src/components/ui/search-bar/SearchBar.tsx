@@ -15,9 +15,13 @@ import {
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import dayjs from "dayjs";
 import { cities } from "@/src/constants";
+import { useResponsive } from "@/src/hooks";
+import { useTranslations } from "next-intl";
 
 const SearchBar: FC = () => {
   const currentDate = dayjs(); //Debe ser la fecha que el usuario escoja mas uno en el segundo DatePicker
+  const { isDesktop } = useResponsive();
+  const t = useTranslations();
 
   return (
     <>
@@ -42,53 +46,67 @@ const SearchBar: FC = () => {
             padding: "12px",
           }}
         >
-          <Autocomplete
-            disablePortal
-            options={cities}
-            sx={{
-              width: 200,
-            }}
-            renderInput={(params) => (
-              <TextField
-                {...params}
-                label="Ciudad"
-                color="primary"
-                variant="outlined"
-                size="small"
+          {!isDesktop ? (
+            <TextField
+              label={t('Explore.search')}
+              variant="outlined"
+              color="success"
+              size="small"
+              fullWidth
+            />
+          ) : (
+            <>
+              <Autocomplete
+                disablePortal
+                options={cities}
+                sx={{
+                  width: 200,
+                }}
+                renderInput={(params) => (
+                  <TextField
+                    {...params}
+                    label={t('Explore.city')}
+                    color="success"
+                    variant="outlined"
+                    size="small"
+                  />
+                )}
               />
-            )}
-          />
 
-          <LocalizationProvider dateAdapter={AdapterDayjs}>
-            <DatePicker
-              label="Fecha inicial"
-              format="DD/MM/YYYY"
-              minDate={currentDate}
-              slotProps={{
-                field: { clearable: true },
-                textField: {
-                  color: "primary",
-                  variant: "outlined",
-                  size: "small",
-                },
-              }}
-            />
+              <LocalizationProvider
+                dateAdapter={AdapterDayjs}
+              >
+                <DatePicker
+                  label={t('initialDate')}
+                  format="DD/MM/YYYY"
+                  minDate={currentDate}
+                  slotProps={{
+                    field: { clearable: true },
+                    textField: {
+                      color: "success",
+                      variant: "outlined",
+                      size: "small",
+                    },
+                  }}
+                />
 
-            <DatePicker
-              label="Fecha final"
-              format="DD/MM/YYYY"
-              minDate={currentDate}
-              slotProps={{
-                field: { clearable: true },
-                textField: {
-                  color: "primary",
-                  variant: "outlined",
-                  size: "small",
-                },
-              }}
-            />
-          </LocalizationProvider>
-          <IconButton>
+                <DatePicker
+                  label={t('finalDate')}
+                  format="DD/MM/YYYY"
+                  minDate={currentDate}
+                  slotProps={{
+                    field: { clearable: true },
+                    textField: {
+                      color: "success",
+                      variant: "outlined",
+                      size: "small",
+                    },
+                  }}
+                />
+              </LocalizationProvider>
+            </>
+          )}
+          <IconButton color="primary">
             <Search />
           </IconButton>
         </Box>

@@ -1,12 +1,13 @@
+"use client";
 import { FC } from "react";
 import Link from "next/link";
-import { Box, Typography } from "@mui/material";
+import { Box, Typography, useTheme } from "@mui/material";
 import { SpotlightCard } from "../react-bits";
 
 interface CarTypeCardProps {
   name: string;
   label: string;
-  carType: string
+  carType: string;
 }
 
 const CarTypeCard: FC<CarTypeCardProps> = ({
@@ -15,17 +16,15 @@ const CarTypeCard: FC<CarTypeCardProps> = ({
   carType,
 }) => {
   const isActive = carType === name;
+  const theme = useTheme();
 
   return (
-    <Link
-      href={`/${name}`}
-      style={{ textDecoration: "none" }}
-    >
+    <Link href={`/${name}`}>
       <SpotlightCard
         className={`custom-spotlight-card ${
           isActive ? "active" : ""
         }`}
-        spotlightColor="rgba(0, 229, 255, 0.99)"
+        spotlightColor={theme.palette.background.default}
       >
         <Box
           display="flex"
@@ -36,8 +35,9 @@ const CarTypeCard: FC<CarTypeCardProps> = ({
           <Typography
             variant="h4"
             sx={{
-              color: isActive ? "white" : "black",
+              color: "white",
               fontWeight: "bold",
+              fontSize: {xs: '22px', sm: '40px' }
             }}
           >
             {label}

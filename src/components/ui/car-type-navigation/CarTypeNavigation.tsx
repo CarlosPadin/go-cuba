@@ -15,7 +15,10 @@ const CarTypeNavigation: FC<CarTypeNavigationProps> = ({
       display="flex"
       justifyContent="center"
       gap={2}
-      marginY={4}
+      sx={{
+        height: { xs: 90, sm: 150 },
+        pb: { xs: 18, sm: 25 },
+      }}
     >
       {carTypes.map((type) => (
         <CarTypeCard
