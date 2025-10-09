@@ -37,6 +37,7 @@ const CarTypeCard: FC<CarTypeCardProps> = ({
             sx={{
               color: "white",
               fontWeight: "bold",
+              fontSize: {xs: '22px', sm: '40px' }
             }}
           >
             {label}

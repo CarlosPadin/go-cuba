@@ -12,7 +12,35 @@
   --spotlight-color: rgba(255, 255, 255, 0.05);
   transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
     box-shadow 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
 }
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .card-spotlight {
+    width: 180px;
+    height: 140px;
+    padding: 1.5rem;
+  }
+}
+
+/* Small devices */
+@media (max-width: 475px) {
+  .card-spotlight {
+    width: 100px;
+    height: 95px;
+    padding: 1.2rem;
+  }
+}
+
+/* X-Small devices */
+@media (max-width: 321px) {
+  .card-spotlight {
+    width: 90px;
+    padding: 1rem;
+  }
+} 
 
 .custom-spotlight-card:hover {
   transform: translateY(-8px);
@@ -44,5 +72,5 @@
 .active {
   background-color: #0a2463;
   box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
-  transform: translateY(-4px);
+  /* transform: translateY(-4px); */
 }
