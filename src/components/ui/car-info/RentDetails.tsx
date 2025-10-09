@@ -37,6 +37,7 @@ const RentDetails: FC<CarAsideProps> = ({
         mb={2}
         display={"flex"}
         justifyContent={"center"}
+        textAlign={'center'}
       >
         {t("Car.rentalCost")}
       </Typography>
@@ -74,6 +75,7 @@ const RentDetails: FC<CarAsideProps> = ({
         direction={"row"}
         justifyContent={"space-between"}
         alignItems={"center"}
+        gap={1}
         my={3}
       >
         <Typography variant="body1">
@@ -87,7 +89,7 @@ const RentDetails: FC<CarAsideProps> = ({
       </Stack>
 
       <RentCost price={price} />
-      <Divider />
+      <Divider sx={{ mb: 5}} />
       <PickupLocation pickupLocation={pickupLocation} />
       <Button
         variant="contained"

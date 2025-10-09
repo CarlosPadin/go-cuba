@@ -57,17 +57,24 @@ const theme = createTheme({
     },
     h5: {
       fontFamily: montserrat.style.fontFamily,
-      fontWeight: 400,
+      fontWeight: 500,
     },
     h6: {
       fontFamily: montserrat.style.fontFamily,
-      fontWeight: 400,
+      fontWeight: 600,
+    },
+    subtitle1: {
+      fontFamily: montserrat.style.fontFamily,
+      fontWeight: 500,
     },
     caption: {
       fontFamily: robotoMono.style.fontFamily,
       fontWeight: 300,
-      fontSize: "2vh",
     },
+    button: {
+      fontFamily: montserrat.style.fontFamily,
+      fontWeight: 600,
+    }
   },
 });
 

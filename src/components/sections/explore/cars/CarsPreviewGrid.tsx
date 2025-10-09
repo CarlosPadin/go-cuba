@@ -53,7 +53,8 @@ const CarsPreviewGrid: FC<Props> = ({ carType, limit }) => {
         </Link>
       </Box>
 
-      <Divider variant="middle" />
+      <Divider variant="middle" sx={{ mb: 2}}/>
+      
       <Grid container marginBottom={10}>
         {cars.map((car) => (
           <Grid size={{ xs: 6, md: 4, lg: 3 }} key={car.id}>

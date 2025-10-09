@@ -27,10 +27,11 @@ const RelatedCars: FC<RelatedCarsProps> = ({
   return (
     <Box mt={4}>
       <Typography
-        variant="h3"
+        variant="h4"
         my={2}
         display={"flex"}
         justifyContent={"center"}
+        textAlign={'center'}
       >
         {t("relatedCars")}
       </Typography>
@@ -41,7 +42,6 @@ const RelatedCars: FC<RelatedCarsProps> = ({
           </Grid>
         ))}
       </Grid>
-      {/* RelatedCars Component */}
     </Box>
   );
 };

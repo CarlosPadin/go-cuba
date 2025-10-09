@@ -34,7 +34,7 @@ const OwnerInfo: FC<OwnerInfoProps> = ({ ownerId }) => {
         />
       </Avatar>
       <Stack direction={"column"} spacing={0}>
-        <Typography variant="h6">
+        <Typography variant="h5">
           {owner.name} {owner.lastName}
         </Typography>
         <Rating

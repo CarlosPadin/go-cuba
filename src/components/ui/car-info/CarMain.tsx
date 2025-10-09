@@ -31,11 +31,11 @@ const CarMain: FC<CarMainProps> = ({
     <>
       <OwnerInfo ownerId={ownerId} />
       <Divider sx={{ my: 2 }} />
-      <Typography variant="body1">{description}</Typography>
+      <Typography variant="body2">{description}</Typography>
 
       <PixelCard variant="blue">
         <Typography
-          variant="h6"
+          variant="subtitle1"
           mt={2}
           mb={1}
           position={"absolute"}
