@@ -4,7 +4,7 @@ import { Box, Grid, Typography } from "@mui/material";
 import { useTranslations } from "next-intl";
 import { Car } from "@/src/interfaces";
 import { getCarsByType } from "@/src/db/connection";
-import { CarItem } from "../../sections/explore/cars";
+import { CarItem } from "../cars";
 
 interface RelatedCarsProps {
   carType: string;

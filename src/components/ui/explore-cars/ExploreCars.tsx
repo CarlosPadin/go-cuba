@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { Container, Typography } from "@mui/material";
 import { useTranslations } from "next-intl";
-import { CarsPreviewGrid } from "./cars";
+import { CarsPreviewGrid } from "../cars";
 
 const ExploreCars: FC = () => {
   const t = useTranslations();

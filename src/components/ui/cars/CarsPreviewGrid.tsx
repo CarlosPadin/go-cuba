@@ -6,9 +6,7 @@ import {
   Box,
   Divider,
   Grid,
-  Tooltip,
   Typography,
-  useTheme,
 } from "@mui/material";
 import { ArrowForwardIos } from "@mui/icons-material";
 import { getCarsByType } from "@/src/db/connection";
