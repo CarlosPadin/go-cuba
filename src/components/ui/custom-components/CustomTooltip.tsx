@@ -16,7 +16,7 @@ const CustomTooltip: FC<{
         popper: {
           sx: {
             "& .MuiTooltip-tooltip": {
-              backgroundColor: theme.palette.secondary.main,
+              backgroundColor: theme.palette.success.main,
             },
           },
         },

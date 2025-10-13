@@ -14,7 +14,7 @@ import {
 } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import dayjs from "dayjs";
-import { cities } from "@/src/constants";
+import { cubanCities } from "@/src/constants";
 import { useResponsive } from "@/src/hooks";
 import { useTranslations } from "next-intl";
 
@@ -58,7 +58,7 @@ const SearchBar: FC = () => {
             <>
               <Autocomplete
                 disablePortal
-                options={cities}
+                options={cubanCities}
                 sx={{
                   width: 200,
                 }}

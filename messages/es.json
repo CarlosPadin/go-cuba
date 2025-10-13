@@ -48,5 +48,25 @@
       "manual": "Manual",
       "automatic": "Automático"
     }
+  },
+  "UserRegistration": {
+    "name": "Nombre",
+    "lastName": "Apellido",
+    "email": "Correo electrónico",
+    "dateOfBirth": "Fecha de Nacimiento",
+    "phone": "Teléfono",
+    "ci": "Carnet de Identidad",
+    "passport": "Pasaporte",
+    "address1": "Dirección 1",
+    "address2": "Dirección 2",
+    "country": "País",
+    "province": "Estado o Provincia",
+    "postalCode": "Código Postal",
+    "profileImage": "Foto de perfil",
+    "licence": "Licencia de conducción",
+    "username": "Nombre de usuario",
+    "password": "Contraseña",
+    "confirmPassword": "Confirmar contraseña",
+    "register": "Registrarse"
   }
 }
