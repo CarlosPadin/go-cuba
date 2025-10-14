@@ -2,102 +2,87 @@ import * as yup from "yup";
 import { isOldEnough } from "../functions";
 
 export const userValidationSchemas = [
-  //Personal information
+  // Información personal
   yup.object({
-    name: yup.string().required("El nombre es obligatorio"),
+    name: yup
+      .string()
+      .required("name"),
     lastName: yup
       .string()
-      .required("El apellido es obligatorio"),
+      .required("lastName"),
     dateOfBirth: yup
       .date()
-      .typeError("Debe ser una fecha válida")
-      .required("La fecha de nacimiento es obligatoria")
+      .typeError("DOB.validation")
+      .required("DOB.mandatory")
       .test(
         "is-18",
-        "Debes tener al menos 18 años",
+        "DOB.oldEnaough",
         (value) => (value ? isOldEnough(value, 18) : false)
       ),
     ci: yup
       .string()
-      .required("El pasaporte es obligatorio"),
+      .required("ci"),
     phone: yup
       .string()
-      .matches(/^[0-9]+$/, "Solo se permiten números")
-      .min(8, "El teléfono debe tener al menos 8 dígitos")
-      .required("El teléfono es obligatorio"),
-
+      .matches(/^[0-9]+$/, "phone.numbersOnly")
+      .min(8, "phone.minLength")
+      .required("phone.mandatory"),
     licence: yup
       .string()
       .matches(
         /^[A-Za-z0-9-]+$/,
-        "La licencia solo puede contener letras, números y guiones"
+        "licence.invalidChars"
       )
-      .min(
-        5,
-        "La licencia debe tener al menos 5 caracteres"
-      )
-      .required("El número de licencia es obligatorio"),
+      .min(5, "licence.minLength")
+      .required("licence.mandatory"),
   }),
-  //Address information
+
+  // Información de dirección
   yup.object({
     address1: yup
       .string()
-      .required("La dirección es obligatoria"),
+      .required("address1"),
     address2: yup.string(),
     country: yup
       .string()
-      .required("Seleccione su país de residencia"),
+      .required("country"),
     province: yup
       .string()
-      .required("La provincia o estado es obligatoria"),
+      .required("province"),
     postalCode: yup
       .string()
-      .matches(
-        /^[A-Za-z0-9\s-]+$/,
-        "Código postal inválido"
-      )
-      .required("El código postal es obligatorio"),
+      .matches(/^[A-Za-z0-9\s-]+$/, "postalCode.invalid")
+      .required("postalCode.mandatory"),
   }),
-  //Account information
+
+  // Información de cuenta
   yup.object({
     profileImage: yup
       .string()
       .nullable()
-      .required("La imagen es obligatoria"),
+      .required("profileImage"),
     username: yup
       .string()
-      .required("El nombre de usuario es obligatorio"),
+      .required("username"),
     password: yup
       .string()
-      .required("La contraseña es obligatoria")
-      .min(
-        8,
-        "La contraseña debe tener al menos 8 caracteres"
-      )
-      .matches(
-        /[A-Z]/,
-        "Debe contener al menos una letra mayúscula"
-      )
-      .matches(
-        /[a-z]/,
-        "Debe contener al menos una letra minúscula"
-      )
-      .matches(/[0-9]/, "Debe contener al menos un número")
-      .matches(
-        /[^A-Za-z0-9]/,
-        "Debe contener al menos un carácter especial"
-      )
-      .matches(/^\S*$/, "No debe contener espacios"),
+      .required("password.mandatory")
+      .min(8, "password.minLength")
+      .matches(/[A-Z]/, "password.uppercase")
+      .matches(/[a-z]/, "password.lowercase")
+      .matches(/[0-9]/, "password.number")
+      .matches(/[^A-Za-z0-9]/, "password.specialChar")
+      .matches(/^\S*$/, "password.noSpaces"),
     confirmPassword: yup
       .string()
       .oneOf(
         [yup.ref("password")],
-        "Las contraseñas no coinciden"
+        "confirmPassword.mismatch"
       )
-      .required("Debes confirmar tu contraseña"),
+      .required("confirmPassword.mandatory"),
     email: yup
       .string()
-      .email("Debe ser un correo válido")
-      .required("El correo es obligatorio"),
+      .email("email.invalid")
+      .required("email.mandatory"),
   }),
 ];

@@ -57,9 +57,10 @@
     "phone": "Teléfono",
     "ci": "Carnet de Identidad",
     "passport": "Pasaporte",
+    "address": "Dirección",
     "address1": "Dirección 1",
     "address2": "Dirección 2",
-    "country": "País",
+    "country": "País de residencia",
     "province": "Estado o Provincia",
     "postalCode": "Código Postal",
     "profileImage": "Foto de perfil",
@@ -67,6 +68,62 @@
     "username": "Nombre de usuario",
     "password": "Contraseña",
     "confirmPassword": "Confirmar contraseña",
-    "register": "Registrarse"
+    "register": "Registrarse",
+    "personalData": "Datos personales",
+    "account": "Cuenta",
+    "goBack": "Atrás",
+    "goForward": "Siguiente",
+    "send": "Enviar",
+    "uploadImage": "Cargar Imagen",
+    "Tooltips": {
+      "ciHelp": "Número de pasaporte en caso de vivir en el extranjero",
+      "licenceHelp": "Licencia de conducción de su país de residencia"
+    },
+    "Errors": {
+      "name": "El nombre es obligatorio",
+      "lastName": "El apellido es obligatorio",
+      "DOB": {
+        "validation": "Debe ser una fecha válida",
+        "mandatory": "La fecha de nacimiento es obligatoria",
+        "oldEnaough": "Debes tener al menos 18 años"
+      },
+      "ci": "El pasaporte es obligatorio",
+      "phone": {
+        "numbersOnly": "Solo se permiten números",
+        "minLength": "El teléfono debe tener al menos 8 dígitos",
+        "mandatory": "El teléfono es obligatorio"
+      },
+      "licence": {
+        "invalidChars": "La licencia solo puede contener letras, números y guiones",
+        "minLength": "La licencia debe tener al menos 5 caracteres",
+        "mandatory": "El número de licencia es obligatorio"
+      },
+      "address1": "La dirección es obligatoria",
+      "country": "Seleccione su país de residencia",
+      "province": "La provincia o estado es obligatoria",
+      "postalCode": {
+        "invalid": "Código postal inválido",
+        "mandatory": "El código postal es obligatorio"
+      },
+      "profileImage": "La imagen es obligatoria",
+      "username": "El nombre de usuario es obligatorio",
+      "password": {
+        "mandatory": "La contraseña es obligatoria",
+        "minLength": "La contraseña debe tener al menos 8 caracteres",
+        "uppercase": "Debe contener al menos una letra mayúscula",
+        "lowercase": "Debe contener al menos una letra minúscula",
+        "number": "Debe contener al menos un número",
+        "specialChar": "Debe contener al menos un carácter especial",
+        "noSpaces": "No debe contener espacios"
+      },
+      "confirmPassword": {
+        "mismatch": "Las contraseñas no coinciden",
+        "mandatory": "Debes confirmar tu contraseña"
+      },
+      "email": {
+        "invalid": "Debe ser un correo válido",
+        "mandatory": "El correo es obligatorio"
+      }
+    }
   }
 }

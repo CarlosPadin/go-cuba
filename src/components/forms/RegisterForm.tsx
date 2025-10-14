@@ -5,6 +5,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import {
   Box,
   Button,
+  SnackbarCloseReason,
   Step,
   StepLabel,
   Stepper,
@@ -19,13 +20,15 @@ import {
   personalInfoFields,
 } from "@/src/constants";
 import { useResponsive } from "@/src/hooks";
+import { CustomSnackbar } from "../ui/custom-components";
 
-const steps = ["Datos personales", "Dirección", "Cuenta"];
+const steps = ["personalData", "address", "account"];
 
 const RegisterForm: FC = () => {
   const t = useTranslations("UserRegistration");
-  const {isMobile} = useResponsive();
+  const { isMobile } = useResponsive();
   const [activeStep, setActiveStep] = useState(0);
+  const [snackbar, setSnackbar] = useState(false);
 
   const methods = useForm({
     resolver: yupResolver(getSchemaForStep(activeStep)),
@@ -37,8 +40,20 @@ const RegisterForm: FC = () => {
       setActiveStep((prev) => prev + 1);
     } else {
       console.log("Datos finales:", data);
-      alert("Formulario completado 🎉");
+      setSnackbar(true);
+      // alert("Formulario completado 🎉");
     }
+  };
+
+  const handleClose = (
+    event?: React.SyntheticEvent | Event,
+    reason?: SnackbarCloseReason,
+  ) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+
+    setSnackbar(false);
   };
 
   const handleBack = () =>
@@ -50,7 +65,7 @@ const RegisterForm: FC = () => {
         <Stepper activeStep={activeStep} sx={{ mb: 4 }}>
           {steps.map((label) => (
             <Step key={label}>
-              <StepLabel>{!isMobile && label}</StepLabel>
+              <StepLabel>{!isMobile && t(label)}</StepLabel>
             </Step>
           ))}
         </Stepper>
@@ -77,14 +92,20 @@ const RegisterForm: FC = () => {
               disabled={activeStep === 0}
               onClick={handleBack}
             >
-              Atrás
+              {t("goBack")}
             </Button>
             <Button variant="contained" type="submit">
               {activeStep === steps.length - 1
-                ? "Enviar"
-                : "Siguiente"}
+                ? t("send")
+                : t("goForward")}
             </Button>
           </Box>
+          <CustomSnackbar 
+            open={snackbar}
+            closeHandler={handleClose}
+            severity="success"
+            text="Formulario completado 🎉"
+          />
         </form>
       </Box>
     </FormProvider>

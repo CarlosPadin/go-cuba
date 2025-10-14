@@ -4,16 +4,16 @@ import {
   Container,
   Paper,
   Typography,
-  useTheme,
 } from "@mui/material";
+import { useTranslations } from "next-intl";
 import RegisterForm from "@/src/components/forms/RegisterForm";
 
 const Signup: NextPage = () => {
-  const theme = useTheme();
+  const t = useTranslations('UserRegistration')
   return (
     <Container sx={{ my: 15 }}>
-      <Paper sx={{p: 5}}>
-        <Typography variant="h3" marginBottom={5}>Register</Typography>
+      <Paper elevation={10} sx={{p: 5}}>
+        <Typography variant="h3" marginBottom={5}>{t('register')}</Typography>
         <RegisterForm />
       </Paper>
     </Container>

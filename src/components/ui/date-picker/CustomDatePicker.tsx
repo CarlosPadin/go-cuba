@@ -25,7 +25,6 @@ interface CustomDatePickerProps {
 }
 
 const CustomDatePicker: FC<CustomDatePickerProps> = ({
-  label,
   value,
   onChange,
   minDate,
@@ -37,7 +36,6 @@ const CustomDatePicker: FC<CustomDatePickerProps> = ({
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
       <DatePicker
-        // label={label}
         value={value}
         onChange={onChange}
         format="DD/MM/YYYY"

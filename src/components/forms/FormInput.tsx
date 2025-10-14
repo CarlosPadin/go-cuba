@@ -64,8 +64,8 @@ const FormInput: FC<FormInputProps> = ({
           <CustomTooltip
             title={
               name == "ci"
-                ? "Numero de pasaporte en caso de vivir en el extranjero"
-                : "Licencia de conduccion de su pais de origen"
+                ? t("Tooltips.ciHelp")
+                : t("Tooltips.licenceHelp")
             }
           >
             <Help sx={{ height: 14 }} color="action" />
@@ -122,6 +122,7 @@ const FormInput: FC<FormInputProps> = ({
         <OutlinedInput
           type={showPassword ? "text" : "password"}
           {...register}
+          onPaste={(e) => e.preventDefault()}
           endAdornment={
             <InputAdornment position="end">
               <IconButton
@@ -143,7 +144,7 @@ const FormInput: FC<FormInputProps> = ({
           {...register}
           type={type}
           fullWidth
-          multiline
+          multiline={type === "text"}
           error={!!error}
         />
       )}
@@ -153,7 +154,7 @@ const FormInput: FC<FormInputProps> = ({
           color="secondary"
           fontWeight={500}
         >
-          {error.message}
+          {t(`Errors.${error.message}`)}
         </Typography>
       )}
     </Stack>

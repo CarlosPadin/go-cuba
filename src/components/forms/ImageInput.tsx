@@ -1,6 +1,7 @@
 'use client'
 import { ChangeEvent, FC, useState } from "react";
 import { Button, Avatar } from "@mui/material";
+import { useTranslations } from "next-intl";
 
 interface ImageInputProps {
   value?: string | null;
@@ -8,6 +9,7 @@ interface ImageInputProps {
 }
 
 const ImageInput: FC<ImageInputProps> = ({value, onChange}) => {
+  const t = useTranslations('UserRegistration')
   const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (file) {
@@ -27,14 +29,14 @@ const ImageInput: FC<ImageInputProps> = ({value, onChange}) => {
       />
       <label htmlFor="upload-image">
         <Button variant="contained" component="span">
-          Subir Imagen
+          {t('uploadImage')}
         </Button>
       </label>
 
       {value && (
         <Avatar
           src={value}
-          alt="Preview"
+          alt="Image Preview"
           sx={{ width: 100, height: 100, mt: 2 }}
         />
       )}
