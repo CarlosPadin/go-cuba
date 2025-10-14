@@ -21,3 +21,13 @@ export const robotoMono = Roboto_Mono({
   weight: ["300", "400", "500", "700"],
   variable: "--font-roboto-mono",
 });
+
+import localFont from "next/font/local";
+
+// Fuente Blanka (local)
+export const blanka = localFont({
+  src: "../assets/fonts/Blanka-Regular.otf", 
+  variable: "--font-blanka",
+  // display: "swap",
+  weight: "400",
+});

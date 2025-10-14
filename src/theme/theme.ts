@@ -1,6 +1,6 @@
 "use client";
 import { createTheme } from "@mui/material/styles";
-import { brunoAceSC, montserrat, robotoMono } from ".";
+import { blanka, montserrat, robotoMono } from ".";
 
 // // Extender la interfaz de MUI para aceptar un nuevo color
 // declare module "@mui/material/styles" {
@@ -40,19 +40,19 @@ const theme = createTheme({
   typography: {
     fontFamily: montserrat.style.fontFamily,
     h1: {
-      fontFamily: brunoAceSC.style.fontFamily,
+      fontFamily: blanka.style.fontFamily,
       fontWeight: 700,
     },
     h2: {
-      fontFamily: brunoAceSC.style.fontFamily,
+      fontFamily: blanka.style.fontFamily,
       fontWeight: 600,
     },
     h3: {
-      fontFamily: brunoAceSC.style.fontFamily,
+      fontFamily: blanka.style.fontFamily,
       fontWeight: 400,
     },
     h4: {
-      fontFamily: brunoAceSC.style.fontFamily,
+      fontFamily: blanka.style.fontFamily,
       fontWeight: 400,
     },
     h5: {
