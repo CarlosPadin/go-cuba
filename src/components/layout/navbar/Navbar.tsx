@@ -2,12 +2,9 @@ import { FC } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
-import {
-  AppBar,
-  Container,
-  Toolbar,
-} from "@mui/material";
-import logoImg from "@/public/logo/Logo.png";
+import { AppBar, Container, Toolbar } from "@mui/material";
+import logotypeImg from "@/public/logo/logotype.png";
+import isotypeImg from "@/public/logo/isotype.png";
 import { NavbarMenuButton } from ".";
 
 const Navbar: FC = () => {
@@ -28,11 +25,19 @@ const Navbar: FC = () => {
             sx={{ justifyContent: "space-between" }}
           >
             <Link href={"/"}>
-              <Image src={logoImg} alt={"Yava Logo"} height={50}/>
+              <Image
+                src={isotypeImg}
+                alt={"GoCuba isotype"}
+                height={60}
+              />
             </Link>
+            <Image
+              src={logotypeImg}
+              alt={"GoCuba logotype"}
+              height={50}
+            />
             <NavbarMenuButton />
           </Toolbar>
-          
         </Container>
       </AppBar>
     </>

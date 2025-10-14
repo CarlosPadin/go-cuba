@@ -5,9 +5,9 @@ import {
   Login,
   SupportAgent,
 } from "@mui/icons-material";
-import { navbarLink } from "../interfaces";
+import { navbarLink, socialLink } from "../interfaces";
 
-export const links: navbarLink[] = [
+export const navLinks: navbarLink[] = [
   {
     link: "/login",
     page: "login",
@@ -39,3 +39,21 @@ export const links: navbarLink[] = [
     show: false,
   },
 ];
+
+export const socialLinks: socialLink[] = [
+  {
+    alt: 'Facebook',
+    href: 'https://www.facebook.com',
+    src: '/logo/facebook.png'
+  },
+  {
+    alt: 'TikTok',
+    href: 'https://www.tiktok.com',
+    src: '/logo/tiktok.png'
+  },
+  {
+    alt: 'Instagram',
+    href: 'https://www.instagram.com',
+    src: '/logo/instagram.png'
+  },
+]
