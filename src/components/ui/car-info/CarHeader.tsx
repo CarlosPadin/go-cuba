@@ -27,7 +27,7 @@ const CarHeader: FC<CarHeaderProps> = ({
         alignItems="baseline"
         mb={2}
       >
-        <Typography variant="h2" component="h1">
+        <Typography variant="h2" component="h1" letterSpacing={2}>
           {brand.toUpperCase()} {model}
         </Typography>
         <Typography

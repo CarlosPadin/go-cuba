@@ -1,5 +1,4 @@
-"use client";
-import { NextPage } from "next";
+import { Metadata, NextPage } from "next";
 import {
   Container,
   Paper,
@@ -7,6 +6,11 @@ import {
 } from "@mui/material";
 import { useTranslations } from "next-intl";
 import RegisterForm from "@/src/components/forms/RegisterForm";
+
+export const metadata: Metadata = {
+  title: "GoCuba | Register",
+  description: "Register in our web app to make the proccess of renting faster",
+};
 
 const Signup: NextPage = () => {
   const t = useTranslations('UserRegistration')

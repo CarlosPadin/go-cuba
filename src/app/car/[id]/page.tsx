@@ -11,6 +11,20 @@ import {
 } from "@/src/components/ui/car-info";
 import ImageSwiper from "@/src/components/ui/image-swiper/ImageSwiper";
 
+interface MetadataProps { 
+  params: Promise<{ id: string }>
+}
+
+export const generateMetadata = async ({ params }: MetadataProps) => {
+  const {id} = await params;
+  const {model, description}: Car = getCarById(id);
+
+  return {
+    title: `${model.carBrand.toUpperCase()} ${model.name}`,
+    description: {description}
+  };
+}
+
 const CarPage: NextPage = async ({ params }: any) => {
   const { id } = await params;
   const car: Car = getCarById(id);
