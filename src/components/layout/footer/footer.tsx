@@ -1,11 +1,7 @@
 "use client";
 import { FC } from "react";
 import Image from "next/image";
-import {
-  Box,
-  Grid,
-  useTheme,
-} from "@mui/material";
+import { Box, Grid, useTheme } from "@mui/material";
 
 import brandImg from "@/public/logo/brand-dark.png";
 import { FooterDescription, FooterLegal } from ".";
@@ -21,9 +17,11 @@ const Footer: FC = () => {
       pt={8}
       pb={1}
     >
-      <Grid container alignItems={"center"}>
+      <Grid container alignItems={"center"} >
         <Grid
           size={{ xs: 12, sm: 6 }}
+          display={"flex"}
+          justifyContent={{ xs: "center", sm: "initial" }}
         >
           <Box
             position={"relative"}

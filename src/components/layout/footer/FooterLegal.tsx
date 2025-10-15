@@ -1,31 +1,36 @@
 "use client";
 import { FC } from "react";
+import Link from "next/link";
 import { Stack, Typography } from "@mui/material";
 import { useTranslations } from "next-intl";
-import Link from "next/link";
 
 const FooterLegal: FC = () => {
   const t = useTranslations("Footer");
 
   return (
     <Stack
-      direction={"row"}
+      direction={{ xs: "column-reverse", sm: "row" }}
       justifyContent={"space-between"}
       alignItems={"center"}
       mt={5}
     >
-      <Typography variant="caption">
+      <Typography
+        variant="caption"
+        mt={2}
+        textAlign={{ xs: "center", sm: "initial" }}
+      >
         {t("rights")}
       </Typography>
-      <Stack direction={"row"} gap={2} mr={2}>
+      <Stack direction={"row"} mt={2} gap={2} mr={2}>
         <Link href={"#"}>
-          <Typography variant="caption">
-            Cancellation Policy
+          <Typography variant="subtitle2">
+            {t("cancellationPolicy")}
           </Typography>
         </Link>
-        {" - "}
         <Link href={"#"}>
-          <Typography variant="caption">Privacy</Typography>
+          <Typography variant="subtitle2">
+            {t("privacy")}
+          </Typography>
         </Link>
       </Stack>
     </Stack>

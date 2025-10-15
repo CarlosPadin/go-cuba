@@ -67,6 +67,10 @@ const theme = createTheme({
       fontFamily: montserrat.style.fontFamily,
       fontWeight: 500,
     },
+    subtitle2: {
+      fontFamily: robotoMono.style.fontFamily,
+      fontWeight: 400,
+    },
     caption: {
       fontFamily: robotoMono.style.fontFamily,
       fontWeight: 300,

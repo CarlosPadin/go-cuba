@@ -33,6 +33,7 @@ const CarsPreviewGrid: FC<Props> = ({ carType, limit }) => {
           variant="h3"
           display={"flex"}
           justifyContent={"center"}
+          mb={2}
           sx={{ fontSize: {xs: '32px', sm: '40px', md: '50px'}}}
         >
           {t(carType)}

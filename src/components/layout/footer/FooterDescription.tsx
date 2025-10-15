@@ -7,7 +7,7 @@ import { socialLinks } from "@/src/constants";
 const FooterDescription: FC = () => {
   return (
     <Stack direction={"column"} gap={2}>
-      <Typography variant="body2" textAlign={{xs: 'center', sm: 'initial'}}>
+      <Typography variant="body2" textAlign={{sm: 'center', md: 'initial'}}>
         Lorem ipsum, dolor sit amet consectetur adipisicing
         elit. Delectus ab consequuntur saepe facere,
         blanditiis vitae ullam! Totam saepe officia culpa!
