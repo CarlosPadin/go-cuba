@@ -6,6 +6,21 @@ import { getCarsByType } from "@/src/db/connection";
 import { Car } from "@/src/interfaces/cars.interface";
 import CarItem from "@/src/components/ui/cars/CarItem";
 import CarTypeNavigation from "@/src/components/ui/car-type-navigation/CarTypeNavigation";
+import { metadata } from "../layout";
+
+
+interface MetadataProps { 
+  params: Promise<{ carType: string }>
+}
+
+export const generateMetadata = async ({ params }: MetadataProps) => {
+  const {carType} = await params;
+
+  return {
+    title: `${metadata.title} | ${carType.toUpperCase()}`,
+    description: `${carType} cars for use`
+  };
+}
 
 const CarTypePage: NextPage = async ({ params }: any) => {
   const { carType } = await params;

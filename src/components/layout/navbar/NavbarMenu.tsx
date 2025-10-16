@@ -12,7 +12,7 @@ import {
 } from "@mui/material";
 import { Close } from "@mui/icons-material";
 import { useTranslations } from "next-intl";
-import { links } from "@/src/constants";
+import { navLinks } from "@/src/constants";
 
 interface Props {
   anchorEl: null | HTMLElement;
@@ -65,7 +65,7 @@ const NavbarMenu: FC<Props> = ({
         },
       }}
     >
-      {links.map(
+      {navLinks.map(
         (link) =>
           link.show && (
             <Link href={link.link} key={link.page}>

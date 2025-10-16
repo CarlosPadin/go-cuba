@@ -4,6 +4,7 @@
   "date": "Fecha",
   "hour": "Hora",
   "pay": "Pagar",
+  "registerPageDesc": "Register in our web app to make the proccess of renting faster",
   "Explore": {
     "caption": "Encuentre el auto perfecto para usted entre todas las opciones.",
     "sports": "Deportivos",
@@ -22,8 +23,10 @@
     "close": "Cerrar"
   },
   "Footer": {
-    "rights": "© 2024 Yava. Todos los derechos reservados.",
-    "followUs": "Síguenos"
+    "rights": "© 2025 GoCuba. Todos los derechos reservados.",
+    "followUs": "Síguenos",
+    "cancellationPolicy": "Política de cancelación",
+    "privacy": "Privacidad"
   },
   "Car": {
     "generalCaracteristics": "Características Generales",

@@ -1,16 +1,16 @@
+"use client";
 import { FC } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
-import {
-  AppBar,
-  Container,
-  Toolbar,
-} from "@mui/material";
-import logoImg from "@/public/logo/Logo.png";
+import { AppBar, Container, Toolbar } from "@mui/material";
+import logotypeImg from "@/public/logo/logotype.png";
+import isotypeImg from "@/public/logo/isotype.png";
 import { NavbarMenuButton } from ".";
+import { useResponsive } from "@/src/hooks";
 
 const Navbar: FC = () => {
+  const { isMobile } = useResponsive();
   return (
     <>
       <AppBar
@@ -27,12 +27,24 @@ const Navbar: FC = () => {
             variant="dense"
             sx={{ justifyContent: "space-between" }}
           >
+            {!isMobile && (
+              <Link href={"/"}>
+                <Image
+                  src={isotypeImg}
+                  alt={"GoCuba isotype"}
+                  height={60}
+                />
+              </Link>
+            )}
             <Link href={"/"}>
-              <Image src={logoImg} alt={"Yava Logo"} height={50}/>
+              <Image
+                src={logotypeImg}
+                alt={"GoCuba logotype"}
+                height={50}
+              />
             </Link>
             <NavbarMenuButton />
           </Toolbar>
-          
         </Container>
       </AppBar>
     </>
