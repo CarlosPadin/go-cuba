@@ -20,7 +20,7 @@ import {
   personalInfoFields,
 } from "@/src/constants";
 import { useResponsive } from "@/src/hooks";
-import { CustomSnackbar } from "../ui/custom-components";
+import { CustomSnackbar } from "../custom-components";
 
 const steps = ["personalData", "address", "account"];
 

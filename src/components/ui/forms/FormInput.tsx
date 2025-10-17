@@ -1,19 +1,12 @@
 "use client";
-import { FC, useState } from "react";
+import { FC } from "react";
 import {
   Autocomplete,
-  IconButton,
-  InputAdornment,
-  OutlinedInput,
   Stack,
   TextField,
   Typography,
 } from "@mui/material";
-import {
-  Help,
-  Visibility,
-  VisibilityOff,
-} from "@mui/icons-material";
+import { Help } from "@mui/icons-material";
 import {
   Control,
   Controller,
@@ -23,9 +16,9 @@ import {
 import { useTranslations } from "next-intl";
 
 import { countries } from "@/src/constants";
-import CustomDatePicker from "../ui/date-picker/CustomDatePicker";
-import { CustomTooltip } from "../ui/custom-components";
-import { ImageInput } from ".";
+import CustomDatePicker from "../date-picker/CustomDatePicker";
+import { CustomTooltip } from "../custom-components";
+import { ImageInput, PasswordInput } from ".";
 
 interface FormInputProps {
   label: string;
@@ -46,9 +39,6 @@ const FormInput: FC<FormInputProps> = ({
   control,
 }) => {
   const t = useTranslations("UserRegistration");
-  const [showPassword, setShowPassword] = useState(false);
-  const handleClickShowPassword = () =>
-    setShowPassword((show) => !show);
 
   return (
     <Stack
@@ -119,24 +109,15 @@ const FormInput: FC<FormInputProps> = ({
           )}
         />
       ) : type == "password" ? (
-        <OutlinedInput
-          type={showPassword ? "text" : "password"}
-          {...register}
-          onPaste={(e) => e.preventDefault()}
-          endAdornment={
-            <InputAdornment position="end">
-              <IconButton
-                onClick={handleClickShowPassword}
-                edge="end"
-              >
-                {showPassword ? (
-                  <VisibilityOff />
-                ) : (
-                  <Visibility />
-                )}
-              </IconButton>
-            </InputAdornment>
-          }
+        <Controller
+          name={name}
+          control={control}
+          render={({ field }) => (
+            <PasswordInput
+              value={field.value}
+              onChange={field.onChange}
+            />
+          )}
         />
       ) : (
         <TextField

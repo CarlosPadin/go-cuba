@@ -1,4 +1,5 @@
 export { default as CountUp } from './CountUp';
+export { default as DotGrid } from './DotGrid';
 export { default as GradientText } from './GradientText';
 export { default as FadeContent } from './FadeContent';
 export { default as LiquidEther } from './LiquidEther';

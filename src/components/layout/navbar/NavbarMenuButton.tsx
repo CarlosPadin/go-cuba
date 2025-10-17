@@ -1,7 +1,5 @@
 "use client";
-
-import { FC, useState } from "react";
-
+import { FC, useState, MouseEvent } from "react";
 import {
   AccountCircle,
   Menu as MenuIcon,
@@ -14,7 +12,7 @@ const NavbarMenuButton: FC = () => {
     useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
   const handleClick = (
-    event: React.MouseEvent<HTMLButtonElement>
+    event: MouseEvent<HTMLButtonElement>
   ) => {
     setAnchorEl(event.currentTarget);
   };
