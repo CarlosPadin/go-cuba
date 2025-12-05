@@ -68,7 +68,7 @@ const NavbarMenu: FC<Props> = ({
       {navLinks.map(
         (link) =>
           link.show && (
-            <Link href={link.link} key={link.page}>
+            <Link href={link.link} key={link.page} onClick={handleClose}>
               <MenuItem>
                 <ListItemIcon sx={{ color: theme.palette.text.primary}}>{link.icon}</ListItemIcon>
                 <ListItemText sx={{ color: theme.palette.text.primary}}>{t(link.page)}</ListItemText>
