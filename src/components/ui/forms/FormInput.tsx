@@ -72,15 +72,24 @@ const FormInput: FC<FormInputProps> = ({
           error={!!error}
         />
       ) : type == "select" ? (
-        <Autocomplete
-          disablePortal
-          options={countries}
-          renderInput={(params) => (
-            <TextField
-              {...params}
-              {...register}
-              fullWidth
-              error={!!error}
+        <Controller
+          name={name}
+          control={control}
+          render={({ field }) => (
+            <Autocomplete
+              disablePortal
+              options={countries}
+              value={field.value || null}
+              onChange={(_, newValue) =>
+                field.onChange(newValue)
+              }
+              renderInput={(params) => (
+                <TextField
+                  {...params}
+                  fullWidth
+                  error={!!error}
+                />
+              )}
             />
           )}
         />
