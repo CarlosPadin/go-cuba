@@ -6,10 +6,12 @@ import { NextIntlClientProvider } from "next-intl";
 import Box from "@mui/material/Box";
 import { Navbar } from "../components/layout/navbar";
 import { Footer } from "../components/layout/footer";
+import { QueryProvider } from "../components/layout/providers/QueryProvider";
 
 export const metadata: Metadata = {
   title: "GoCuba",
-  description: "GoCuba is a web app used for renting cars to travel in Cuba",
+  description:
+    "GoCuba is a web app used for renting cars to travel in Cuba",
 };
 
 export default function RootLayout({
@@ -22,17 +24,19 @@ export default function RootLayout({
       <body>
         <ThemeRegistry>
           <NextIntlClientProvider>
-            <Box
-              minHeight={"100vh"}
-              display={"flex"}
-              flexDirection={"column"}
-            >
-              <Navbar />
-              <Box component="main" flex="1">
-                {children}
+            <QueryProvider>
+              <Box
+                minHeight={"100vh"}
+                display={"flex"}
+                flexDirection={"column"}
+              >
+                <Navbar />
+                <Box component="main" flex="1">
+                  {children}
+                </Box>
+                <Footer />
               </Box>
-              <Footer />
-            </Box>
+            </QueryProvider>
           </NextIntlClientProvider>
         </ThemeRegistry>
       </body>

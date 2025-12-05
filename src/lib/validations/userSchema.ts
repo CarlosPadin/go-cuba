@@ -2,7 +2,7 @@ import * as yup from "yup";
 import { isOldEnough } from "../functions";
 
 export const userValidationSchemas = [
-  // Información personal
+  // Personal Information
   yup.object({
     name: yup
       .string()
@@ -37,7 +37,7 @@ export const userValidationSchemas = [
       .required("licence.mandatory"),
   }),
 
-  // Información de dirección
+  // Address Information
   yup.object({
     address1: yup
       .string()
@@ -55,7 +55,7 @@ export const userValidationSchemas = [
       .required("postalCode.mandatory"),
   }),
 
-  // Información de cuenta
+  // Account Information
   yup.object({
     profileImage: yup
       .string()
@@ -86,3 +86,4 @@ export const userValidationSchemas = [
       .required("email.mandatory"),
   }),
 ];
+
