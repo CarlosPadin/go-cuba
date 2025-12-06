@@ -1,5 +1,6 @@
 "use client";
 import { FC } from "react";
+import Link from "next/link";
 import {
   Box,
   Button,
@@ -12,7 +13,7 @@ import * as yup from "yup";
 import { Controller, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { PasswordInput } from ".";
-import Link from "next/link";
+import { useLogin } from "@/src/hooks/mutations";
 
 const loginSchema = yup
   .object({
@@ -27,6 +28,7 @@ const loginSchema = yup
 
 const LogInForm: FC = () => {
   const t = useTranslations("UserRegistration");
+  const loginUser = useLogin();
   const {
     register,
     handleSubmit,
@@ -37,7 +39,15 @@ const LogInForm: FC = () => {
   });
 
   const submitHandler = (data: any) => {
-    console.log("Datos finales: ", data);
+    loginUser.mutate(data, {
+      onSuccess: (user) => {
+        console.log("Usuario logeado:", user);
+        // Aquí puedes redirigir o guardar token
+      },
+      onError: (error: any) => {
+        alert(error.message);
+      },
+    });
   };
 
   return (

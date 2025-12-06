@@ -12,7 +12,6 @@ interface StepFormProps {
 const StepForm: FC<StepFormProps> = ({fields}) => {
   const { register, control, formState: {errors}, getValues } = useFormContext<UserFormData>();
 
-  console.log('cotrol: ', getValues());
   return (
     <Grid container spacing={2} mt={5}>
       {fields.map((field) => (
