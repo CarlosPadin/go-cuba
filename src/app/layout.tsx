@@ -6,7 +6,7 @@ import { NextIntlClientProvider } from "next-intl";
 import Box from "@mui/material/Box";
 import { Navbar } from "../components/layout/navbar";
 import { Footer } from "../components/layout/footer";
-import { QueryProvider } from "../components/layout/providers/QueryProvider";
+import { QueryProvider } from "../providers/QueryProvider";
 
 export const metadata: Metadata = {
   title: "GoCuba",
