@@ -614,10 +614,35 @@ export const seedOwners = (db) => {
 };
 
 
+export const createUsersTable = (db) => {
+  db.prepare(
+    `CREATE TABLE IF NOT EXISTS users (
+      id INTEGER PRIMARY KEY,
+      name TEXT NOT NULL,
+      lastName TEXT NOT NULL,
+      ci TEXT NOT NULL,
+      dateOfBirth TEXT NOT NULL,
+      licence TEXT NOT NULL,
+      phone TEXT NOT NULL,
+      address1 TEXT NOT NULL,
+      address2 TEXT,
+      country TEXT NOT NULL,
+      province TEXT NOT NULL,
+      postalCode TEXT NOT NULL,
+      email TEXT NOT NULL,
+      profileImage TEXT NOT NULL,
+      rating REAL NOT NULL DEFAULT 0,
+      username TEXT NOT NULL,
+      password TEXT NOT NULL
+    )`
+  ).run();
+};
+
 // Create tables
 
 createCarsTable(db);
 createOwnersTable(db);
+createUsersTable(db);
 
 // Insert mock data
 seedCars(db);

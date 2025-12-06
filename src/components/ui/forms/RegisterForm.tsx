@@ -1,6 +1,7 @@
 "use client";
 import { FC, useState } from "react";
 import { useForm, FormProvider } from "react-hook-form";
+import { useRouter } from "next/navigation";
 import { yupResolver } from "@hookform/resolvers/yup";
 import {
   Box,
@@ -21,35 +22,51 @@ import {
 } from "@/src/constants";
 import { useResponsive } from "@/src/hooks";
 import { CustomSnackbar } from "../custom-components";
+import { useCreateUser } from "@/src/hooks/mutations/useCreateUser";
 
 const steps = ["personalData", "address", "account"];
 
 const RegisterForm: FC = () => {
   const t = useTranslations("UserRegistration");
+  const router = useRouter();
   const { isMobile } = useResponsive();
   const [activeStep, setActiveStep] = useState(0);
   const [snackbar, setSnackbar] = useState(false);
-
+  const [error, setError] = useState(false);
+  const createUser = useCreateUser();
   const methods = useForm({
     resolver: yupResolver(getSchemaForStep(activeStep)),
     mode: "onTouched",
   });
 
-  const onSubmit = (data: any) => {
+  const onSubmit = async (data: any) => {
     if (activeStep < steps.length - 1) {
       setActiveStep((prev) => prev + 1);
     } else {
-      console.log("Datos finales:", data);
-      setSnackbar(true);
-      // alert("Formulario completado 🎉");
+      createUser.mutate(data, {
+        onSuccess: () => {
+          setSnackbar(true);
+          router.push("/");
+        },
+
+        onError: () => {
+          setSnackbar(true);
+          setError(true);
+
+          setTimeout(() => {
+            setSnackbar(false);
+            setError(false);
+          }, 5000);
+        },
+      });
     }
   };
 
   const handleClose = (
     event?: React.SyntheticEvent | Event,
-    reason?: SnackbarCloseReason,
+    reason?: SnackbarCloseReason
   ) => {
-    if (reason === 'clickaway') {
+    if (reason === "clickaway") {
       return;
     }
 
@@ -100,11 +117,15 @@ const RegisterForm: FC = () => {
                 : t("goForward")}
             </Button>
           </Box>
-          <CustomSnackbar 
+          <CustomSnackbar
             open={snackbar}
             closeHandler={handleClose}
-            severity="success"
-            text="Formulario completado 🎉"
+            severity={error ? "error" : "success"}
+            text={
+              error
+                ? t('formError')
+                : t('completedForm')
+            }
           />
         </form>
       </Box>
