@@ -11,12 +11,6 @@ export async function POST(request: Request) {
   try {
     const { username, password } = await request.json();
 
-    if (!username || !password) {
-      return NextResponse.json(
-        { message: "Missing credentials" },
-        { status: 400 }
-      );
-    }
     // Find user
     const user = db
       .prepare("SELECT * FROM users WHERE username = ?")
@@ -24,7 +18,7 @@ export async function POST(request: Request) {
 
     if (!user) {
       return NextResponse.json(
-        { message: "User not found" },
+        { message: "USER_NOT_FOUND" },
         { status: 401 }
       );
     }
@@ -36,7 +30,7 @@ export async function POST(request: Request) {
     );
     if (!isValid) {
       return NextResponse.json(
-        { message: "Wrong Password" },
+        { message: "WRONG_PASSWORD" },
         { status: 401 }
       );
     }
@@ -65,6 +59,6 @@ export async function POST(request: Request) {
     });
   } catch (err) {
     console.error(err);
-    return NextResponse.json({ message: "Error interno" }, { status: 500 });
+    return NextResponse.json({ message: "Server Token Creation Error" }, { status: 500 });
   }
 }

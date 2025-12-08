@@ -1,9 +1,11 @@
 "use client";
-import { FC } from "react";
+import { FC, useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import {
   Box,
   Button,
+  SnackbarCloseReason,
   Stack,
   TextField,
   Typography,
@@ -11,9 +13,11 @@ import {
 import { useTranslations } from "next-intl";
 import * as yup from "yup";
 import { Controller, useForm } from "react-hook-form";
+
 import { yupResolver } from "@hookform/resolvers/yup";
 import { PasswordInput } from ".";
 import { useLogin } from "@/src/hooks/mutations";
+import { CustomSnackbar } from "../custom-components";
 
 const loginSchema = yup
   .object({
@@ -29,6 +33,13 @@ const loginSchema = yup
 const LogInForm: FC = () => {
   const t = useTranslations("UserRegistration");
   const loginUser = useLogin();
+  const router = useRouter();
+  const [snackbar, setSnackbar] = useState(false);
+
+  const [userNotFoundError, setUserNotFoundError] =
+    useState(false);
+  const [wrongPasswordError, setWrongPasswordError] =
+    useState(false);
   const {
     register,
     handleSubmit,
@@ -39,22 +50,39 @@ const LogInForm: FC = () => {
   });
 
   const submitHandler = (data: any) => {
+    setUserNotFoundError(false);
+    setWrongPasswordError(false);
     loginUser.mutate(data, {
-      onSuccess: (user) => {
-        console.log("Usuario logeado:", user);
-        // Aquí puedes redirigir o guardar token
+      onSuccess: () => {
+        router.push("/");
       },
       onError: (error: any) => {
-        console.log('data: ', data)
-        alert(error.message);
+        if (error.message === "USER_NOT_FOUND") {
+          setUserNotFoundError(true);
+        } else if (error.message === "WRONG_PASSWORD") {
+          setWrongPasswordError(true);
+        } else {
+          console.log("Server Error: ", error.message);
+        }
+          setSnackbar(true)
       },
     });
+  };
+
+  const handleClose = (
+    event?: React.SyntheticEvent | Event,
+    reason?: SnackbarCloseReason
+  ) => {
+    if (reason === "clickaway") {
+      return;
+    }
+
+    setSnackbar(false);
   };
 
   return (
     <form onSubmit={handleSubmit(submitHandler)}>
       <Stack direction={"column"} gap={2}>
-        
         <Box>
           <Typography variant="body1">
             {t("username")}
@@ -81,18 +109,40 @@ const LogInForm: FC = () => {
             )}
           />
         </Box>
-        <Box display={'flex'} flexDirection={'column'} alignItems={'end'}>
+        <Box
+          display={"flex"}
+          flexDirection={"column"}
+          alignItems={"end"}
+        >
           <Link href={"#"}>
-            <Typography variant="subtitle1" fontSize={11} color="primary" >Olvidaste tu contrasena?</Typography>
+            <Typography
+              variant="subtitle1"
+              fontSize={11}
+              color="primary"
+            >
+              Olvidaste tu contrasena?
+            </Typography>
           </Link>
           <Link href={"/register"}>
-            <Typography variant="subtitle1" fontSize={11} color="primary" >No te has registrado?</Typography>
+            <Typography
+              variant="subtitle1"
+              fontSize={11}
+              color="primary"
+            >
+              No te has registrado?
+            </Typography>
           </Link>
         </Box>
         <Button variant="contained" type="submit" fullWidth>
           {t("send")}
         </Button>
       </Stack>
+      <CustomSnackbar
+        open={snackbar}
+        closeHandler={handleClose}
+        severity="error"
+        text={userNotFoundError ? "Usuario no encontrado" : wrongPasswordError ? "Contrasena incorrecta" : "Ha ocurrido un error"}
+      />
     </form>
   );
 };
