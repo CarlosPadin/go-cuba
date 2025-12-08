@@ -5,7 +5,6 @@ import { useRouter } from "next/navigation";
 import {
   Box,
   Button,
-  SnackbarCloseReason,
   Stack,
   TextField,
   Typography,
@@ -18,6 +17,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { PasswordInput } from ".";
 import { useLogin } from "@/src/hooks/mutations";
 import { CustomSnackbar } from "../custom-components";
+import { useCustomSnackbar } from "@/src/hooks";
 
 const loginSchema = yup
   .object({
@@ -34,8 +34,11 @@ const LogInForm: FC = () => {
   const t = useTranslations("UserRegistration");
   const loginUser = useLogin();
   const router = useRouter();
-  const [snackbar, setSnackbar] = useState(false);
-
+  const {
+    open: snackbar,
+    openSnackbar,
+    handleClose,
+  } = useCustomSnackbar();
   const [userNotFoundError, setUserNotFoundError] =
     useState(false);
   const [wrongPasswordError, setWrongPasswordError] =
@@ -64,20 +67,9 @@ const LogInForm: FC = () => {
         } else {
           console.log("Server Error: ", error.message);
         }
-          setSnackbar(true)
+        openSnackbar();
       },
     });
-  };
-
-  const handleClose = (
-    event?: React.SyntheticEvent | Event,
-    reason?: SnackbarCloseReason
-  ) => {
-    if (reason === "clickaway") {
-      return;
-    }
-
-    setSnackbar(false);
   };
 
   return (
@@ -120,7 +112,7 @@ const LogInForm: FC = () => {
               fontSize={11}
               color="primary"
             >
-              Olvidaste tu contrasena?
+              {t("passwordForget")}
             </Typography>
           </Link>
           <Link href={"/register"}>
@@ -129,7 +121,7 @@ const LogInForm: FC = () => {
               fontSize={11}
               color="primary"
             >
-              No te has registrado?
+              {t("register")}
             </Typography>
           </Link>
         </Box>
@@ -141,7 +133,13 @@ const LogInForm: FC = () => {
         open={snackbar}
         closeHandler={handleClose}
         severity="error"
-        text={userNotFoundError ? "Usuario no encontrado" : wrongPasswordError ? "Contrasena incorrecta" : "Ha ocurrido un error"}
+        text={
+          userNotFoundError
+            ? t("userNotFound")
+            : wrongPasswordError
+            ? t("wrongPassword")
+            : t("unexpectedError")
+        }
       />
     </form>
   );
