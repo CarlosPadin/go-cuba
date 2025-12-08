@@ -45,6 +45,7 @@ const LogInForm: FC = () => {
         // Aquí puedes redirigir o guardar token
       },
       onError: (error: any) => {
+        console.log('data: ', data)
         alert(error.message);
       },
     });

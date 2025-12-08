@@ -15,6 +15,7 @@ export interface IUser {
   password: string;
   confirmPassword: string;
   email: string;
+  id: string;
 }
 
 export interface PersonalInfoFormData {

@@ -3,7 +3,7 @@ export async function loginUser(data: {
   username: string;
   password: string;
 }) {
-  const res = await fetch("/api/auth", {
+  const res = await fetch("/api/auth/login", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(data),
@@ -20,7 +20,7 @@ export async function loginUser(data: {
 
 // Called from useCreateUser hook
 export const createUser = async (data: any) => {
-  const res = await fetch("/api/users", {
+  const res = await fetch("/api/auth/signup", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(data),
