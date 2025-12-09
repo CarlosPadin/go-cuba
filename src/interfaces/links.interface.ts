@@ -1,10 +1,9 @@
 import { ReactElement } from "react";
 
-export interface navbarLink {
+export interface navbarOptions {
   link: string,
-  page: string,
+  name: string,
   icon: ReactElement,
-  show: boolean,
 }
 
 export interface socialLink {

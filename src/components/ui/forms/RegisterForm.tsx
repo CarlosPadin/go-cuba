@@ -20,7 +20,10 @@ import {
   addressInfoFields,
   personalInfoFields,
 } from "@/src/constants";
-import { useResponsive } from "@/src/hooks";
+import {
+  useCustomSnackbar,
+  useResponsive,
+} from "@/src/hooks";
 import { CustomSnackbar } from "../custom-components";
 import { useCreateUser } from "@/src/hooks/mutations/useCreateUser";
 
@@ -31,7 +34,11 @@ const RegisterForm: FC = () => {
   const router = useRouter();
   const { isMobile } = useResponsive();
   const [activeStep, setActiveStep] = useState(0);
-  const [snackbar, setSnackbar] = useState(false);
+  const {
+    open: snackbar,
+    openSnackbar,
+    handleClose,
+  } = useCustomSnackbar();
   const [error, setError] = useState(false);
   const createUser = useCreateUser();
   const methods = useForm({
@@ -45,32 +52,20 @@ const RegisterForm: FC = () => {
     } else {
       createUser.mutate(data, {
         onSuccess: () => {
-          setSnackbar(true);
           router.push("/");
         },
 
         onError: () => {
-          setSnackbar(true);
+          openSnackbar();
           setError(true);
 
           setTimeout(() => {
-            setSnackbar(false);
+            handleClose();
             setError(false);
           }, 5000);
         },
       });
     }
-  };
-
-  const handleClose = (
-    event?: React.SyntheticEvent | Event,
-    reason?: SnackbarCloseReason
-  ) => {
-    if (reason === "clickaway") {
-      return;
-    }
-
-    setSnackbar(false);
   };
 
   const handleBack = () =>
@@ -122,9 +117,7 @@ const RegisterForm: FC = () => {
             closeHandler={handleClose}
             severity={error ? "error" : "success"}
             text={
-              error
-                ? t('formError')
-                : t('completedForm')
+              error ? t("formError") : t("completedForm")
             }
           />
         </form>

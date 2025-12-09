@@ -1,5 +1,7 @@
 "use client";
-import { FC } from "react";
+import { FC, useState } from "react";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 import {
   Box,
   Button,
@@ -10,9 +12,12 @@ import {
 import { useTranslations } from "next-intl";
 import * as yup from "yup";
 import { Controller, useForm } from "react-hook-form";
+
 import { yupResolver } from "@hookform/resolvers/yup";
 import { PasswordInput } from ".";
-import Link from "next/link";
+import { useLogin } from "@/src/hooks/mutations";
+import { CustomSnackbar } from "../custom-components";
+import { useCustomSnackbar } from "@/src/hooks";
 
 const loginSchema = yup
   .object({
@@ -27,6 +32,17 @@ const loginSchema = yup
 
 const LogInForm: FC = () => {
   const t = useTranslations("UserRegistration");
+  const loginUser = useLogin();
+  const router = useRouter();
+  const {
+    open: snackbar,
+    openSnackbar,
+    handleClose,
+  } = useCustomSnackbar();
+  const [userNotFoundError, setUserNotFoundError] =
+    useState(false);
+  const [wrongPasswordError, setWrongPasswordError] =
+    useState(false);
   const {
     register,
     handleSubmit,
@@ -37,13 +53,28 @@ const LogInForm: FC = () => {
   });
 
   const submitHandler = (data: any) => {
-    console.log("Datos finales: ", data);
+    setUserNotFoundError(false);
+    setWrongPasswordError(false);
+    loginUser.mutate(data, {
+      onSuccess: () => {
+        router.push("/");
+      },
+      onError: (error: any) => {
+        if (error.message === "USER_NOT_FOUND") {
+          setUserNotFoundError(true);
+        } else if (error.message === "WRONG_PASSWORD") {
+          setWrongPasswordError(true);
+        } else {
+          console.log("Server Error: ", error.message);
+        }
+        openSnackbar();
+      },
+    });
   };
 
   return (
     <form onSubmit={handleSubmit(submitHandler)}>
       <Stack direction={"column"} gap={2}>
-        
         <Box>
           <Typography variant="body1">
             {t("username")}
@@ -70,18 +101,46 @@ const LogInForm: FC = () => {
             )}
           />
         </Box>
-        <Box display={'flex'} flexDirection={'column'} alignItems={'end'}>
+        <Box
+          display={"flex"}
+          flexDirection={"column"}
+          alignItems={"end"}
+        >
           <Link href={"#"}>
-            <Typography variant="subtitle1" fontSize={11} color="primary" >Olvidaste tu contrasena?</Typography>
+            <Typography
+              variant="subtitle1"
+              fontSize={11}
+              color="primary"
+            >
+              {t("passwordForget")}
+            </Typography>
           </Link>
           <Link href={"/register"}>
-            <Typography variant="subtitle1" fontSize={11} color="primary" >No te has registrado?</Typography>
+            <Typography
+              variant="subtitle1"
+              fontSize={11}
+              color="primary"
+            >
+              {t("register")}
+            </Typography>
           </Link>
         </Box>
         <Button variant="contained" type="submit" fullWidth>
           {t("send")}
         </Button>
       </Stack>
+      <CustomSnackbar
+        open={snackbar}
+        closeHandler={handleClose}
+        severity="error"
+        text={
+          userNotFoundError
+            ? t("userNotFound")
+            : wrongPasswordError
+            ? t("wrongPassword")
+            : t("unexpectedError")
+        }
+      />
     </form>
   );
 };

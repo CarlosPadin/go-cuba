@@ -5,38 +5,33 @@ import {
   Login,
   SupportAgent,
 } from "@mui/icons-material";
-import { navbarLink, socialLink } from "../interfaces";
+import { navbarOptions, socialLink } from "../interfaces";
 
-export const navLinks: navbarLink[] = [
+export const navOptions: navbarOptions[] = [
   {
     link: "/login",
-    page: "login",
+    name: "login",
     icon: <Login />,
-    show: true,
   },
   {
     link: "/register",
-    page: "register",
+    name: "register",
     icon: <AppRegistration />,
-    show: true,
   },
   {
     link: "/about",
-    page: "aboutUs",
+    name: "aboutUs",
     icon: <Info />,
-    show: true,
   },
   {
     link: "/support",
-    page: "support",
+    name: "support",
     icon: <SupportAgent />,
-    show: true,
   },
   {
     link: "/logout",
-    page: "logout",
+    name: "logout",
     icon: <ExitToApp />,
-    show: false,
   },
 ];
 

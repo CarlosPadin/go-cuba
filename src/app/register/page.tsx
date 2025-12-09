@@ -1,14 +1,13 @@
 import { NextPage } from "next";
 import {
   Box,
-  Container,
   Paper,
   Typography,
 } from "@mui/material";
 import { useTranslations } from "next-intl";
-import RegisterForm from "@/src/components/ui/forms/RegisterForm";
 import { getTranslations } from "next-intl/server";
-import { DotGrid } from "@/src/components/ui/react-bits";
+import RegisterForm from "@/src/components/ui/forms/RegisterForm";
+import DotGridContainer from "@/src/components/containers/DotGridContainer/DotGridContainer";
 
 export const generateMetadata = async () => {
   const t = await getTranslations();
@@ -25,36 +24,16 @@ const Signup: NextPage = () => {
     <Box
       position={"relative"}
       width={"100%"}
-      height={"120vh"}
+      sx={{ height: { xs: "1070px", sm: "800px" } }}
     >
-      <DotGrid
-        dotSize={3}
-        gap={15}
-        baseColor="#0A2463"
-        activeColor="#fffaff"
-        proximity={120}
-        shockRadius={250}
-        shockStrength={5}
-        resistance={750}
-        returnDuration={1.5}
-      />
-      <Container
-        sx={{
-          position: "absolute",
-          top: "50%",
-          left: "50%",
-          transform: "translate(-50%, -50%)",
-          display: "flex",
-          justifyContent: "center",
-        }}
-      >
+      <DotGridContainer>
         <Paper elevation={10} sx={{ p: 5 }}>
           <Typography variant="h3" marginBottom={5}>
             {t("register")}
           </Typography>
           <RegisterForm />
         </Paper>
-      </Container>
+      </DotGridContainer>
     </Box>
   );
 };

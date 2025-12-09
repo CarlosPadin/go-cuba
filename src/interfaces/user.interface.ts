@@ -1,4 +1,4 @@
-export interface User {
+export interface IUser {
   name: string;
   lastName: string;
   dateOfBirth: Date;
@@ -15,6 +15,7 @@ export interface User {
   password: string;
   confirmPassword: string;
   email: string;
+  id: string;
 }
 
 export interface PersonalInfoFormData {

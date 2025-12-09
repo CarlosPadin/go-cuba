@@ -81,6 +81,10 @@
     "uploadImage": "Cargar Imagen",
     "completedForm": "Usuario creado",
     "formError": "Hubo un error al crear el usuario",
+    "passwordForget": "Olvidaste tu contraseña?",
+    "userNotFound": "Usuario no encontrado",
+    "wrongPassword": "Contraseña incorrecta",
+    "unexpectedError": "Ha ocurrido un error",
     "Tooltips": {
       "ciHelp": "Número de pasaporte en caso de vivir en el extranjero",
       "licenceHelp": "Licencia de conducción de su país de residencia"

@@ -3,6 +3,10 @@
 #db
 yava.db
 
+#enviroment
+.env
+.env.local
+
 # dependencies
 /node_modules
 /.pnp
