@@ -31,5 +31,5 @@ export async function GET() {
     username: user.username,
   });
 
-  return NextResponse.json({ accessToken });
+  return NextResponse.json({ user, accessToken });
 }

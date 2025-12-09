@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import { FC } from "react";
 import Link from "next/link";
 
@@ -13,6 +13,7 @@ import {
 import { Close } from "@mui/icons-material";
 import { useTranslations } from "next-intl";
 import { navLinks } from "@/src/constants";
+import { useSession } from "@/src/hooks/mutations";
 
 interface Props {
   anchorEl: null | HTMLElement;
@@ -27,6 +28,18 @@ const NavbarMenu: FC<Props> = ({
 }) => {
   const t = useTranslations("Navbar");
   const theme = useTheme();
+  const { user } = useSession();
+
+  // hide login and register when the user is logged
+  const filteredLinks = navLinks.filter((link) => {
+    if (!user && link.page === "logout") return false;
+    if (
+      user &&
+      (link.page === "login" || link.page === "register")
+    )
+      return false;
+    return true;
+  });
 
   return (
     <Menu
@@ -65,23 +78,37 @@ const NavbarMenu: FC<Props> = ({
         },
       }}
     >
-      {navLinks.map(
-        (link) =>
-          link.show && (
-            <Link href={link.link} key={link.page} onClick={handleClose}>
-              <MenuItem>
-                <ListItemIcon sx={{ color: theme.palette.text.primary}}>{link.icon}</ListItemIcon>
-                <ListItemText sx={{ color: theme.palette.text.primary}}>{t(link.page)}</ListItemText>
-              </MenuItem>
-            </Link>
-          )
-      )}
+      {filteredLinks.map((link) => (
+        <Link
+          href={link.link}
+          key={link.page}
+          onClick={handleClose}
+        >
+          <MenuItem>
+            <ListItemIcon
+              sx={{ color: theme.palette.text.primary }}
+            >
+              {link.icon}
+            </ListItemIcon>
+            <ListItemText
+              sx={{ color: theme.palette.text.primary }}
+            >
+              {t(link.page)}
+            </ListItemText>
+          </MenuItem>
+        </Link>
+      ))}
       <Divider />
       <MenuItem>
-        <ListItemIcon sx={{ color: theme.palette.text.primary }}>
+        <ListItemIcon
+          sx={{ color: theme.palette.text.primary }}
+        >
           <Close />
         </ListItemIcon>
-        <ListItemText onClick={handleClose} sx={{ color: theme.palette.text.primary }}>
+        <ListItemText
+          onClick={handleClose}
+          sx={{ color: theme.palette.text.primary }}
+        >
           {t("close")}
         </ListItemText>
       </MenuItem>
