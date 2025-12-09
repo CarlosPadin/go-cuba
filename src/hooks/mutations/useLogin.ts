@@ -1,10 +1,23 @@
-"use client";
-
 import { useMutation } from "@tanstack/react-query";
-import { loginUser } from "@/src/services/auth";
 
 export function useLogin() {
   return useMutation({
-    mutationFn: loginUser,
+    mutationFn: async (data: {
+      username: string;
+      password: string;
+    }) => {
+      const res = await fetch("/api/auth/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+
+      if (!res.ok) {
+        const error = await res.json();
+        throw new Error(error.message || "Login Error");
+      }
+
+      return res.json();
+    },
   });
 }
