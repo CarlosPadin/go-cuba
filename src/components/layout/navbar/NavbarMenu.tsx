@@ -1,28 +1,22 @@
 "use client";
 import { FC, useState } from "react";
 import Link from "next/link";
-
 import {
   Menu,
   MenuItem,
   Divider,
-  ListItemIcon,
-  ListItemText,
   useTheme,
-  Modal,
-  Box,
-  Typography,
-  Stack,
-  Button,
 } from "@mui/material";
 import { Close } from "@mui/icons-material";
-import { useTranslations } from "next-intl";
+
 import { navOptions } from "@/src/constants";
 import {
   useSession,
   useLogout,
 } from "@/src/hooks/mutations";
 import { useResponsive } from "@/src/hooks";
+import { ConfirmationLogout, OptionItem } from ".";
+import { menuPaperStyles } from "@/src/constants/styles";
 
 interface Props {
   anchorEl: null | HTMLElement;
@@ -36,9 +30,8 @@ const NavbarMenu: FC<Props> = ({
   handleClose,
 }) => {
   const [logoutModal, setLogoutModal] = useState(false);
-  const t = useTranslations("Navbar");
   const theme = useTheme();
-  const { isMobile } = useResponsive();
+  const { isDesktop } = useResponsive();
   const { user } = useSession();
   const logout = useLogout();
 
@@ -64,6 +57,7 @@ const NavbarMenu: FC<Props> = ({
         open={open}
         onClose={handleClose}
         anchorEl={anchorEl}
+        disableScrollLock
         transformOrigin={{
           horizontal: "right",
           vertical: "top",
@@ -74,25 +68,7 @@ const NavbarMenu: FC<Props> = ({
         }}
         slotProps={{
           paper: {
-            sx: {
-              width: 200,
-              overflow: "hidden",
-              bgcolor: "rgba(255, 255, 255, 0.5)",
-              backdropFilter: "blur(10px)",
-              borderRadius: 5,
-              "& .MuiMenuItem-root:hover": {
-                bgcolor: theme.palette.primary.main,
-                color: theme.palette.primary.contrastText,
-              },
-              "& .MuiMenuItem-root:hover .MuiListItemIcon-root":
-                {
-                  color: theme.palette.background.default,
-                },
-              "& .MuiMenuItem-root:hover .MuiListItemText-root":
-                {
-                  color: theme.palette.background.default,
-                },
-            },
+            sx: menuPaperStyles(theme),
           },
         }}
       >
@@ -105,16 +81,11 @@ const NavbarMenu: FC<Props> = ({
                 setLogoutModal(true);
               }}
             >
-              <ListItemIcon
-                sx={{ color: theme.palette.text.primary }}
-              >
-                {option.icon}
-              </ListItemIcon>
-              <ListItemText
-                sx={{ color: theme.palette.text.primary }}
-              >
-                {t(option.name)}
-              </ListItemText>
+              <OptionItem
+                key={option.name}
+                name={option.name}
+                icon={option.icon}
+              />
             </MenuItem>
           ) : (
             <Link
@@ -123,78 +94,27 @@ const NavbarMenu: FC<Props> = ({
               onClick={handleClose}
             >
               <MenuItem>
-                <ListItemIcon
-                  sx={{ color: theme.palette.text.primary }}
-                >
-                  {option.icon}
-                </ListItemIcon>
-                <ListItemText
-                  sx={{ color: theme.palette.text.primary }}
-                >
-                  {t(option.name)}
-                </ListItemText>
+                <OptionItem
+                  name={option.name}
+                  icon={option.icon}
+                />
               </MenuItem>
             </Link>
           )
         )}
-        {isMobile && (
-          <>
-            <Divider />
-            <MenuItem>
-              <ListItemIcon
-                sx={{ color: theme.palette.text.primary }}
-              >
-                <Close />
-              </ListItemIcon>
-              <ListItemText
-                onClick={handleClose}
-                sx={{ color: theme.palette.text.primary }}
-              >
-                {t("close")}
-              </ListItemText>
-            </MenuItem>
-          </>
+        {!isDesktop && <Divider />}  {/* Menu doesn't accept a fragment as a child, that's why it's separated*/}
+        {!isDesktop && (
+          <MenuItem onClick={handleClose}>
+            <OptionItem name={"close"} icon={<Close />} />
+          </MenuItem>
         )}
       </Menu>
 
-      <Modal
+      <ConfirmationLogout
         open={logoutModal}
-        onClose={() => setLogoutModal(false)}
-      >
-        <Box
-          sx={{
-            bgcolor: "white",
-            color: "black",
-            maxWidth: "350px",
-            maxHeight: "300px",
-            borderRadius: "12px",
-            p: 3,
-            position: "absolute",
-            top: "50%",
-            left: "50%",
-            transform: "translate(-50%, -50%)",
-          }}
-        >
-          <Typography variant="h6" mb={5} textAlign={'center'}>
-            Seguro que desea cerrar la sesion??
-          </Typography>
-          <Stack direction={"row"} gap={1}>
-            <Button
-              onClick={() => setLogoutModal(false)}
-              fullWidth
-            >
-              Cancelar
-            </Button>
-            <Button
-              onClick={confirmLogout}
-              variant="contained"
-              fullWidth
-            >
-              Confirmar
-            </Button>
-          </Stack>
-        </Box>
-      </Modal>
+        closeHandler={() => setLogoutModal(false)}
+        confirm={confirmLogout}
+      />
     </>
   );
 };

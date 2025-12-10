@@ -15,12 +15,15 @@
     "city": "Ciudad"
   },
   "Navbar": {
-    "login": "Entrar",
-    "register": "Registrarse",
-    "logout": "Salir",
     "aboutUs": "Acerca de",
-    "support": "Soporte",
-    "close": "Cerrar"
+    "cancel": "Cancelar",
+    "confirm": "Confirmar",
+    "close": "Cerrar",
+    "confirmQuestion": "Seguro que desea cerrar su sesión?",
+    "login": "Entrar",
+    "logout": "Salir",
+    "register": "Registrarse",
+    "support": "Soporte"
   },
   "Footer": {
     "rights": "© 2025 GoCuba. Todos los derechos reservados.",
