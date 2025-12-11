@@ -1,9 +1,8 @@
-'use client'
+"use client";
 import { FC, ReactElement } from "react";
 import {
   ListItemIcon,
   ListItemText,
-  useTheme,
 } from "@mui/material";
 import { useTranslations } from "next-intl";
 
@@ -16,13 +15,12 @@ const OptionItem: FC<IOptionItemProps> = ({
   name,
   icon,
 }) => {
-  const theme = useTheme();
-  const listItemSx = { color: theme.palette.text.primary };
+ 
   const t = useTranslations("Navbar");
   return (
     <>
-      <ListItemIcon sx={listItemSx}>{icon}</ListItemIcon>
-      <ListItemText sx={listItemSx}>{t(name)}</ListItemText>
+      <ListItemIcon sx={{color:'#1E1B18'}}>{icon}</ListItemIcon>
+      <ListItemText>{t(name)}</ListItemText>
     </>
   );
 };

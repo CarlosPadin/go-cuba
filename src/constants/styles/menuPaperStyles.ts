@@ -12,5 +12,9 @@ export const menuPaperStyles = (theme: Theme) => (
   "& .MuiMenuItem-root:hover": {
     bgcolor: theme.palette.primary.main,
     color: theme.palette.primary.contrastText,
+    
+    "& .MuiListItemIcon-root": {
+    color: theme.palette.primary.contrastText,
+  },
   },
 });
