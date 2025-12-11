@@ -1,12 +1,15 @@
-import { useTranslations } from "next-intl";
 import styles from "./page.module.css";
-import { Box, Typography } from "@mui/material";
+import { Box } from "@mui/material";
+import ExploreCars from "../components/ui/explore-cars/ExploreCars";
+import Banner from "../components/ui/banner";
+
 
 export default function Home() {
-  const t = useTranslations();
+
   return (
     <div className={styles.page}>
       <main>
+        <Banner /> 
         <Box
           display="flex"
           flexDirection="column"
@@ -14,8 +17,8 @@ export default function Home() {
           alignItems="center"
           width="100%"
         >
-          <Typography variant="h1">Hello YaVa Client!!!</Typography>
-          <h3>{t('helloworld')}</h3>
+          <ExploreCars />
+
         </Box>
       </main>
     </div>
