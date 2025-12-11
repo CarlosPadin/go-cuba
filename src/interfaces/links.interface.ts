@@ -1,6 +1,6 @@
 import { ReactElement } from "react";
 
-export interface navbarOptions {
+export interface navbarOption {
   link: string,
   name: string,
   icon: ReactElement,

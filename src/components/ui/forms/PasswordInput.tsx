@@ -11,12 +11,14 @@ import {
 } from "@mui/material";
 
 interface PasswordInputProps {
+  error?: boolean;
   value?: string;
   fullWidth?: boolean;
   onChange?: (value: string) => void;
 }
 
 const PasswordInput: FC<PasswordInputProps> = ({
+  error = false,
   value,
   fullWidth,
   onChange,
@@ -28,6 +30,7 @@ const PasswordInput: FC<PasswordInputProps> = ({
   return (
     <OutlinedInput
       value={value}
+      error={error}
       onChange={(e) => onChange?.(e.target.value)}
       type={showPassword ? "text" : "password"}
       onPaste={(e) => e.preventDefault()}

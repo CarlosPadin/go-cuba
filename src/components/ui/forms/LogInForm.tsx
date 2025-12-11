@@ -1,6 +1,5 @@
 "use client";
 import { FC, useState } from "react";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 import {
   Box,
@@ -14,7 +13,7 @@ import * as yup from "yup";
 import { Controller, useForm } from "react-hook-form";
 
 import { yupResolver } from "@hookform/resolvers/yup";
-import { PasswordInput } from ".";
+import { HelpLinks, PasswordInput } from ".";
 import { useLogin } from "@/src/hooks/mutations";
 import { CustomSnackbar } from "../custom-components";
 import { useCustomSnackbar } from "@/src/hooks";
@@ -23,10 +22,10 @@ const loginSchema = yup
   .object({
     username: yup
       .string()
-      .required("Introduzca un nombre de usuario"),
+      .required(),
     password: yup
       .string()
-      .required("Introduzca una contrasena valida"),
+      .required(),
   })
   .required();
 
@@ -56,7 +55,7 @@ const LogInForm: FC = () => {
     setUserNotFoundError(false);
     setWrongPasswordError(false);
     loginUser.mutate(data, {
-      onSuccess: () => {
+      onSuccess: (res) => {
         router.push("/");
       },
       onError: (error: any) => {
@@ -76,7 +75,7 @@ const LogInForm: FC = () => {
     <form onSubmit={handleSubmit(submitHandler)}>
       <Stack direction={"column"} gap={2}>
         <Box>
-          <Typography variant="body1">
+          <Typography variant="body1" color={!!errors.username ? 'secondary' : ''}>
             {t("username")}
           </Typography>
           <TextField
@@ -86,7 +85,7 @@ const LogInForm: FC = () => {
           />
         </Box>
         <Box>
-          <Typography variant="body1">
+          <Typography variant="body1" color={!!errors.password ? 'secondary' : ''} >
             {t("password")}
           </Typography>
           <Controller
@@ -97,34 +96,13 @@ const LogInForm: FC = () => {
                 fullWidth
                 value={field.value || ""}
                 onChange={field.onChange}
+                error={!!errors.password}
               />
             )}
           />
         </Box>
-        <Box
-          display={"flex"}
-          flexDirection={"column"}
-          alignItems={"end"}
-        >
-          <Link href={"#"}>
-            <Typography
-              variant="subtitle1"
-              fontSize={11}
-              color="primary"
-            >
-              {t("passwordForget")}
-            </Typography>
-          </Link>
-          <Link href={"/register"}>
-            <Typography
-              variant="subtitle1"
-              fontSize={11}
-              color="primary"
-            >
-              {t("register")}
-            </Typography>
-          </Link>
-        </Box>
+        <HelpLinks />
+        {/* ---BUTTON--- */}
         <Button variant="contained" type="submit" fullWidth>
           {t("send")}
         </Button>

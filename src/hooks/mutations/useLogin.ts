@@ -1,6 +1,11 @@
-import { useMutation } from "@tanstack/react-query";
+import {
+  useMutation,
+  useQueryClient,
+} from "@tanstack/react-query";
 
 export function useLogin() {
+  const queryClient = useQueryClient();
+
   return useMutation({
     mutationFn: async (data: {
       username: string;
@@ -18,6 +23,13 @@ export function useLogin() {
       }
 
       return res.json();
+    },
+    onSuccess: (data) => {
+      queryClient.setQueryData(["session"], data.user);
+
+      queryClient.invalidateQueries({
+        queryKey: ["session"],
+      });
     },
   });
 }

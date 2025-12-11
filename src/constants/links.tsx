@@ -5,9 +5,9 @@ import {
   Login,
   SupportAgent,
 } from "@mui/icons-material";
-import { navbarOptions, socialLink } from "../interfaces";
+import { navbarOption, socialLink } from "../interfaces";
 
-export const navOptions: navbarOptions[] = [
+export const navOptions: navbarOption[] = [
   {
     link: "/login",
     name: "login",
