@@ -6,8 +6,6 @@ export function middleware(req: NextRequest) {
 
   const notAllowedPage = req.nextUrl.pathname === "/login" || "/register";
 
-  console.log('-----', req.cookies)
-  // Si ya está logueado → no permitir entrar a /login
   if (token && notAllowedPage) {
     return NextResponse.redirect(new URL("/", req.url));
   }
@@ -16,5 +14,5 @@ export function middleware(req: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/login", "/register"], // rutas que quieres invalidar
+  matcher: ["/login", "/register"],
 };
