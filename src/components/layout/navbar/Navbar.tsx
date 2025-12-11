@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 
 import { AppBar, Container, Toolbar } from "@mui/material";
-import logotypeImg from "@/public/logo/logotype.png";
+import logotypeImg from "@/public/logo/Logotype.png";
 import isotypeImg from "@/public/logo/isotype.png";
 import { NavbarMenuButton } from ".";
 import { useResponsive } from "@/src/hooks";
