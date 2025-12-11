@@ -56,7 +56,7 @@ const LogInForm: FC = () => {
     setUserNotFoundError(false);
     setWrongPasswordError(false);
     loginUser.mutate(data, {
-      onSuccess: () => {
+      onSuccess: (res) => {
         router.push("/");
       },
       onError: (error: any) => {
