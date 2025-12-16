@@ -19,7 +19,7 @@ interface PasswordInputProps {
 
 const PasswordInput: FC<PasswordInputProps> = ({
   error = false,
-  value,
+  value = "",
   fullWidth,
   onChange,
 }) => {
