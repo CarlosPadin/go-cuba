@@ -1,14 +1,19 @@
 import { NextResponse } from "next/server";
 import sql from "better-sqlite3";
 import bcrypt from "bcryptjs";
+import { v7 as uuidv7 } from "uuid";
 
 const db = sql("yava.db");
 
 export async function POST(req: Request) {
   try {
     const data = await req.json();
+    const userId = uuidv7();
 
-    const hashedPassword = await bcrypt.hash(data.password, 10);
+    const hashedPassword = await bcrypt.hash(
+      data.password,
+      10
+    );
 
     const stmt = db.prepare(`
       INSERT INTO users (
@@ -23,6 +28,7 @@ export async function POST(req: Request) {
     `);
 
     const result = stmt.run({
+      id: userId,
       ...data,
       password: hashedPassword,
     });
@@ -30,12 +36,15 @@ export async function POST(req: Request) {
     return NextResponse.json(
       {
         message: "User created",
-        id: result.lastInsertRowid,
+        id: userId,
       },
       { status: 201 }
     );
   } catch (err: any) {
     console.error("DB error:", err);
-    return NextResponse.json({ error: "Server error" }, { status: 500 });
+    return NextResponse.json(
+      { error: "Server error" },
+      { status: 500 }
+    );
   }
 }
