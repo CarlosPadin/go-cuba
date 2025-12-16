@@ -617,7 +617,7 @@ export const seedOwners = (db) => {
 export const createUsersTable = (db) => {
   db.prepare(
     `CREATE TABLE IF NOT EXISTS users (
-      id INTEGER PRIMARY KEY,
+      id TEXT PRIMARY KEY,
       name TEXT NOT NULL,
       lastName TEXT NOT NULL,
       ci TEXT NOT NULL,
@@ -632,7 +632,7 @@ export const createUsersTable = (db) => {
       email TEXT NOT NULL,
       profileImage TEXT NOT NULL,
       rating REAL NOT NULL DEFAULT 0,
-      username TEXT NOT NULL,
+      username TEXT NOT NULL UNIQUE,
       password TEXT NOT NULL
     )`
   ).run();

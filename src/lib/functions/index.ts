@@ -1,2 +1,2 @@
-export * from './form-functions'
+export * from './validators'
 export * from './jwt'
