@@ -3,7 +3,6 @@ import { FC } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-import { Car } from "@/src/interfaces";
 import {
   Box,
   Card,
@@ -12,13 +11,14 @@ import {
   useTheme,
 } from "@mui/material";
 import classes from "./CarItem.module.css";
+import { ICar } from "@/src/interfaces";
 import {
   FadeContent,
   GradientText,
 } from "@/src/components/ui/react-bits";
 
 interface Props {
-  car: Car;
+  car: ICar;
 }
 
 const CarItem: FC<Props> = ({ car }) => {
@@ -73,7 +73,7 @@ const CarItem: FC<Props> = ({ car }) => {
                   fontSize: { xs: "18px", md: "20px" },
                 }}
               >
-                <b>{car.brand.name.toUpperCase()}</b>{" "}
+                <b>{car.brand.toUpperCase()}</b>{" "}
                 {car.model.name}
               </Typography>
 

@@ -2,7 +2,7 @@
 import { FC } from "react";
 import { Box, Grid, Typography } from "@mui/material";
 import { useTranslations } from "next-intl";
-import { Car } from "@/src/interfaces";
+import { ICar } from "@/src/interfaces";
 import { getCarsByType } from "@/src/db/connection";
 import { CarItem } from "../cars";
 
@@ -17,7 +17,7 @@ const RelatedCars: FC<RelatedCarsProps> = ({
   limit,
   excludeId,
 }) => {
-  const cars: Car[] = getCarsByType({
+  const cars: ICar[] = getCarsByType({
     carType,
     limit,
     excludeId,

@@ -1,19 +1,19 @@
 "use client";
-import { Grid as SpinnerGrid } from "react-loader-spinner";
+import { ThreeDots } from "react-loader-spinner";
 import { useTheme } from "@mui/material";
 
 const LoadingSpinner = () => {
   const theme = useTheme();
   return (
-    <SpinnerGrid
+    <ThreeDots
       visible={true}
-      height="70"
-      width="70"
+      height="80"
+      width="80"
       color={theme.palette.primary.main}
-      ariaLabel="grid-loading"
-      radius="10"
+      radius="9"
+      ariaLabel="three-dots-loading"
       wrapperStyle={{}}
-      wrapperClass="grid-wrapper"
+      wrapperClass=""
     />
   );
 };

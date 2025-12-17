@@ -3,7 +3,7 @@ import Grid from "@mui/material/Grid";
 import { Container } from "@mui/material";
 
 import { getCarsByType } from "@/src/db/connection";
-import { Car } from "@/src/interfaces/cars.interface";
+import { ICar } from "@/src/interfaces/cars.interface";
 import CarItem from "@/src/components/ui/cars/CarItem";
 import CarTypeNavigation from "@/src/components/ui/car-type-navigation/CarTypeNavigation";
 import { metadata } from "../layout";
@@ -24,7 +24,7 @@ export const generateMetadata = async ({ params }: MetadataProps) => {
 
 const CarTypePage: NextPage = async ({ params }: any) => {
   const { carType } = await params;
-  const cars: Car[] = await getCarsByType({ carType });
+  const cars: ICar[] = await getCarsByType({ carType });
 
   return (
     <Container sx={{ marginTop: 15, marginBottom: 10 }}>
