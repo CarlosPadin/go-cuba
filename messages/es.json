@@ -88,6 +88,10 @@
     "userNotFound": "Usuario no encontrado",
     "wrongPassword": "Contraseña incorrecta",
     "unexpectedError": "Ha ocurrido un error",
+    "usernameAlreadyExist": "El nombre de usuario ya está en uso",
+    "emailAlreadyExist": "El correo electrónico ya está en uso",
+    "ciAlreadyExist": "La identificación (CI) ya existe",
+    "licenceAlreadyExist": "La licencia de conducción ya existe",
     "Tooltips": {
       "ciHelp": "Número de pasaporte en caso de vivir en el extranjero",
       "licenceHelp": "Licencia de conducción de su país de residencia"

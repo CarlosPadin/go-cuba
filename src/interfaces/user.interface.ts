@@ -47,6 +47,13 @@ export type UserFormData = PersonalInfoFormData &
   AddressFormData &
   AccountFormData;
 
+export interface ExistingUserCheck {
+  username: number | null;
+  email: number | null;
+  ci: number | null;
+  licence: number | null;
+}
+
 export interface FieldProps {
   name: keyof UserFormData;
   label: string;

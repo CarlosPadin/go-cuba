@@ -21,12 +21,35 @@ export const isOldEnough = (
 export const getSchemaForStep = (step: number) => {
   switch (step) {
     case 0:
-      return userValidationSchemas[0] as yup.ObjectSchema<Partial<UserFormData>>;
+      return userValidationSchemas[0] as yup.ObjectSchema<
+        Partial<UserFormData>
+      >;
     case 1:
-      return userValidationSchemas[1] as yup.ObjectSchema<Partial<UserFormData>>;
+      return userValidationSchemas[1] as yup.ObjectSchema<
+        Partial<UserFormData>
+      >;
     case 2:
-      return userValidationSchemas[2] as yup.ObjectSchema<Partial<UserFormData>>;
+      return userValidationSchemas[2] as yup.ObjectSchema<
+        Partial<UserFormData>
+      >;
     default:
-      return userValidationSchemas[0] as yup.ObjectSchema<Partial<UserFormData>>;
+      return userValidationSchemas[0] as yup.ObjectSchema<
+        Partial<UserFormData>
+      >;
+  }
+};
+
+export const registerFormErrorMessage = (error: string) => {
+  switch (error) {
+    case "USERNAME_EXISTS":
+      return "usernameAlreadyExist";
+    case "EMAIL_EXISTS":
+      return "emailAlreadyExist";
+    case "CI_EXISTS":
+      return "ciAlreadyExist";
+    case "LICENCE_EXISTS":
+      return "licenceAlreadyExist";
+    default:
+      return "formError";
   }
 };
