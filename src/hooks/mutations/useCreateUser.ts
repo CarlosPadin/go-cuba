@@ -8,9 +8,17 @@ export const useCreateUser = () =>
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
       });
+      const json = await res.json();
 
-      if (!res.ok) throw new Error("Error creating user");
+      if (!res.ok) {
+        const message =
+          json.errors
+            ? String(Object.values(json.errors)[0])
+            : "Error creating user";
 
-      return res.json();
+        throw new Error(message);
+      }
+
+      return json;
     },
   });
