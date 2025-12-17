@@ -1,6 +1,6 @@
-import { Car } from "@/src/interfaces";
+import { ICar } from "@/src/interfaces";
 
-export const parseCar = (car: any): Car => {
+export const parseCar = (car: any): ICar => {
   return {
     ...car,
     brand: typeof car.brand === "string" ? JSON.parse(car.brand) : car.brand,
@@ -8,5 +8,5 @@ export const parseCar = (car: any): Car => {
     caracteristics: typeof car.caracteristics === "string" ? JSON.parse(car.caracteristics) : car.caracteristics,
     carImage: typeof car.carImage === "string" ? JSON.parse(car.carImage) : car.carImage,
     reservedDates: typeof car.reservedDates === "string" ? JSON.parse(car.reservedDates) : car.reservedDates,
-  } as Car;
+  } as ICar;
 };

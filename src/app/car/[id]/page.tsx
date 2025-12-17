@@ -2,7 +2,7 @@ import { NextPage } from "next";
 import { Container, Divider, Grid } from "@mui/material";
 
 import { getCarById } from "@/src/db/connection";
-import { Car } from "@/src/interfaces/cars.interface";
+import { ICar } from "@/src/interfaces/cars.interface";
 import {
   RentDetails,
   CarHeader,
@@ -17,7 +17,7 @@ interface MetadataProps {
 
 export const generateMetadata = async ({ params }: MetadataProps) => {
   const {id} = await params;
-  const {model, description}: Car = getCarById(id);
+  const {model, description}: ICar = getCarById(id);
 
   return {
     title: `${model.carBrand.toUpperCase()} ${model.name}`,
@@ -27,13 +27,13 @@ export const generateMetadata = async ({ params }: MetadataProps) => {
 
 const CarPage: NextPage = async ({ params }: any) => {
   const { id } = await params;
-  const car: Car = getCarById(id);
+  const car: ICar = getCarById(id);
 
   return (
     <Container sx={{ mt: 10, mb: 4 }}>
       <ImageSwiper images={car.carImage} />
       <CarHeader
-        brand={car.brand.name}
+        brand={car.brand}
         model={car.model.name}
         year={car.year}
         features={car.caracteristics.features}

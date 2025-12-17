@@ -11,7 +11,7 @@ import {
 import { ArrowForwardIos } from "@mui/icons-material";
 import { getCarsByType } from "@/src/db/connection";
 import { CarItem } from ".";
-import { Car } from "@/src/interfaces";
+import { ICar } from "@/src/interfaces";
 import { CustomTooltip } from "@/src/components/ui/custom-components";
 
 interface Props {
@@ -21,7 +21,7 @@ interface Props {
 
 const CarsPreviewGrid: FC<Props> = ({ carType, limit }) => {
   const t = useTranslations("Explore");
-  const cars: Car[] = getCarsByType({
+  const cars: ICar[] = getCarsByType({
     carType: carType,
     limit: limit,
   });

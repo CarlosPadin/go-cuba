@@ -1,5 +1,5 @@
 
-export interface Owner {
+export interface IOwner {
   address: string,
   ci: string,
   email: string,

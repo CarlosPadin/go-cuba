@@ -1,3 +1,4 @@
+import { ReactElement } from "react";
 import {
   AppRegistration,
   ExitToApp,
@@ -5,9 +6,20 @@ import {
   Login,
   SupportAgent,
 } from "@mui/icons-material";
-import { navbarOption, socialLink } from "../interfaces";
 
-export const navOptions: navbarOption[] = [
+export interface INavbarOption {
+  link: string;
+  name: string;
+  icon: ReactElement;
+}
+
+export interface ISocialLink {
+  href: string;
+  src: string;
+  alt: string;
+}
+
+export const navOptions: INavbarOption[] = [
   {
     link: "/login",
     name: "login",
@@ -35,20 +47,20 @@ export const navOptions: navbarOption[] = [
   },
 ];
 
-export const socialLinks: socialLink[] = [
+export const socialLinks: ISocialLink[] = [
   {
-    alt: 'Facebook',
-    href: 'https://www.facebook.com',
-    src: '/logo/facebook.png'
+    alt: "Facebook",
+    href: "https://www.facebook.com",
+    src: "/logo/facebook.png",
   },
   {
-    alt: 'TikTok',
-    href: 'https://www.tiktok.com',
-    src: '/logo/tiktok.png'
+    alt: "TikTok",
+    href: "https://www.tiktok.com",
+    src: "/logo/tiktok.png",
   },
   {
-    alt: 'Instagram',
-    href: 'https://www.instagram.com',
-    src: '/logo/instagram.png'
+    alt: "Instagram",
+    href: "https://www.instagram.com",
+    src: "/logo/instagram.png",
   },
-]
+];

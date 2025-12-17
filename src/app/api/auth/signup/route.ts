@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import sql from "better-sqlite3";
 import bcrypt from "bcryptjs";
 import { v7 as uuidv7 } from "uuid";
-import { ExistingUserCheck } from "@/src/interfaces";
+import { IExistingUserCheck } from "@/src/interfaces";
 
 const db = sql("yava.db");
 
@@ -25,7 +25,7 @@ export async function POST(req: Request) {
       (SELECT 1 FROM users WHERE licence = @licence) AS licence
   `
       )
-      .get(data) as ExistingUserCheck;
+      .get(data) as IExistingUserCheck;
 
     const errors: Record<string, string> = {};
 

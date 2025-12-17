@@ -18,7 +18,7 @@ export interface IUser {
   id: string;
 }
 
-export interface PersonalInfoFormData {
+export interface IPersonalInfoFormData {
   name: string;
   lastName: string;
   dateOfBirth: Date;
@@ -27,7 +27,7 @@ export interface PersonalInfoFormData {
   licence: string;
 }
 
-export interface AddressFormData {
+export interface IAddressFormData {
   address1: string;
   address2?: string;
   country: string;
@@ -35,7 +35,7 @@ export interface AddressFormData {
   postalCode: string;
 }
 
-export interface AccountFormData {
+export interface IAccountFormData {
   profileImage?: string;
   username: string;
   password: string;
@@ -43,19 +43,19 @@ export interface AccountFormData {
   email: string;
 }
 
-export type UserFormData = PersonalInfoFormData &
-  AddressFormData &
-  AccountFormData;
+export type IUserFormData = IPersonalInfoFormData &
+  IAddressFormData &
+  IAccountFormData;
 
-export interface ExistingUserCheck {
+export interface IExistingUserCheck {
   username: number | null;
-  email: number | null;
-  ci: number | null;
-  licence: number | null;
+  email:    number | null;
+  ci:       number | null;
+  licence:  number | null;
 }
 
 export interface FieldProps {
-  name: keyof UserFormData;
+  name: keyof IUserFormData;
   label: string;
   type?: string;
 }

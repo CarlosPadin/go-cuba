@@ -1,6 +1,6 @@
-import { Car } from "../interfaces";
+import { ICar } from "../interfaces";
 
-export const mockCars: Car[] = [
+export const mockCars: ICar[] = [
   {
     brand: {
       id: "1",

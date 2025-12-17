@@ -8,9 +8,18 @@ import {
   useTheme,
 } from "@mui/material";
 import { CustomChip } from "../custom-components";
-import { CarHeaderProps } from "@/src/interfaces";
 
-const CarHeader: FC<CarHeaderProps> = ({
+export interface ICarHeaderProps {
+  brand: string;
+  model: string;
+  year: number;
+  evaluation?: number;
+  features: string[]; 
+  powerType: 'gasoline' | 'diesel' | 'electric' | 'hybrid';
+  transmissionType: 'manual' | 'automatic';
+}
+
+const CarHeader: FC<ICarHeaderProps> = ({
   brand,
   model,
   year,
