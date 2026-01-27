@@ -6,7 +6,6 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import {
   Box,
   Button,
-  SnackbarCloseReason,
   Step,
   StepLabel,
   Stepper,
@@ -14,7 +13,10 @@ import {
 import { useTranslations } from "next-intl";
 
 import { StepForm } from ".";
-import { getSchemaForStep } from "@/src/lib/functions";
+import {
+  getSchemaForStep,
+  registerFormErrorMessage,
+} from "@/src/lib/functions";
 import {
   accountInfoFields,
   addressInfoFields,
@@ -25,7 +27,10 @@ import {
   useResponsive,
 } from "@/src/hooks";
 import { CustomSnackbar } from "../custom-components";
-import { useCreateUser } from "@/src/hooks/mutations/useCreateUser";
+import {
+  useLogin,
+  useCreateUser,
+} from "@/src/hooks/mutations";
 
 const steps = ["personalData", "address", "account"];
 
@@ -39,8 +44,9 @@ const RegisterForm: FC = () => {
     openSnackbar,
     handleClose,
   } = useCustomSnackbar();
-  const [error, setError] = useState(false);
+  const [error, setError] = useState<null | string>(null);
   const createUser = useCreateUser();
+  const loginUser = useLogin();
   const methods = useForm({
     resolver: yupResolver(getSchemaForStep(activeStep)),
     mode: "onTouched",
@@ -49,23 +55,37 @@ const RegisterForm: FC = () => {
   const onSubmit = async (data: any) => {
     if (activeStep < steps.length - 1) {
       setActiveStep((prev) => prev + 1);
-    } else {
-      createUser.mutate(data, {
-        onSuccess: () => {
-          router.push("/");
-        },
-
-        onError: () => {
-          openSnackbar();
-          setError(true);
-
-          setTimeout(() => {
-            handleClose();
-            setError(false);
-          }, 5000);
-        },
-      });
+      return;
     }
+    const formattedData = {
+      ...data,
+      dateOfBirth: data.dateOfBirth?.format("YYYY-MM-DD"),
+    };
+
+    createUser.mutate(formattedData, {
+      onSuccess: async () => {
+        setError(null);
+        loginUser.mutate(
+          {
+            username: data.username,
+            password: data.password,
+          },
+          {
+            onSuccess: () => {
+              router.push("/");
+            },
+          }
+        );
+      },
+
+      onError: (error: any) => {
+        const errorMsg = registerFormErrorMessage(
+          error.message
+        );
+        openSnackbar();
+        setError(errorMsg);
+      },
+    });
   };
 
   const handleBack = () =>
@@ -116,9 +136,7 @@ const RegisterForm: FC = () => {
             open={snackbar}
             closeHandler={handleClose}
             severity={error ? "error" : "success"}
-            text={
-              error ? t("formError") : t("completedForm")
-            }
+            text={error ? t(error) : t("completedForm")}
           />
         </form>
       </Box>

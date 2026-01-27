@@ -1,51 +1,31 @@
-export interface CarBrand {
-  id: string,
-  name: string
-};
-  
-export interface CarModel {
-  id: string,
-  name: string,
-  carBrand: string,
-}
 
-export interface CarImage {
+export interface ICarImage {
   mainImage: string,
   images: string[],
 }
 
-export interface Caracteristics {
+export interface ICarCaracteristics {
   general: string[],
   rules: string[],
   features: string[],
 }
 
-export interface Car {
-  brand: CarBrand,
-  caracteristics: Caracteristics,
-  carImage: CarImage,
-  carType: 'sedan' | 'suv' | 'sports',
+export interface ICar {
+  brand: string,
+  caracteristics: ICarCaracteristics,
+  car_image: ICarImage,
+  car_type: 'sedan' | 'suv' | 'sports' | 'pickup' | 'van',
   city: string,
   color: string,
   description: string,
   id: string,
   kilometers: number,
-  model: CarModel,
-  ownerId: string,
-  pickupLocation: string,
-  powerType: 'gasoline' | 'diesel' | 'electric' | 'hybrid',
+  model: string,
+  owner_id: string,
+  pickup_location: string,
+  power_type: 'gasoline' | 'diesel' | 'electric' | 'hybrid',
   price: number,
-  reservedDates: Date[],
-  transmissionType: 'manual' | 'automatic',
+  reserved_dates: Date[],
+  transmission_type: 'manual' | 'automatic',
   year: number,
-}
-
-export interface CarHeaderProps {
-  brand: string;
-  model: string;
-  year: number;
-  evaluation?: number;
-  features: string[]; 
-  powerType: 'gasoline' | 'diesel' | 'electric' | 'hybrid';
-  transmissionType: 'manual' | 'automatic';
 }

@@ -6,10 +6,7 @@ const db = sql("yava.db");
 
 export const mockCars = [
   {
-    brand: {
-      id: "1",
-      name: "Audi",
-    },
+    brand: "Audi",
     caracteristics: {
       general: [
         "5 seats",
@@ -49,10 +46,7 @@ export const mockCars = [
     year: 2020,
   },
   {
-    brand: {
-      id: "2",
-      name: "BYD",
-    },
+    brand: "BYD",
     caracteristics: {
       general: [
         "5 seats",
@@ -92,10 +86,7 @@ export const mockCars = [
     year: 2021,
   },
   {
-    brand: {
-      id: "3",
-      name: "Porsche",
-    },
+    brand: "Porsche",
     caracteristics: {
       general: [
         "5 seats",
@@ -135,10 +126,7 @@ export const mockCars = [
     year: 2019,
   },
   {
-    brand: {
-      id: "4",
-      name: "KIA",
-    },
+    brand: "KIA",
     caracteristics: {
       general: [
         "5 seats",
@@ -178,10 +166,7 @@ export const mockCars = [
     year: 2022,
   },
   {
-    brand: {
-      id: "5",
-      name: "Lada",
-    },
+    brand: "Lada",
     caracteristics: {
       general: [
         "5 seats",
@@ -221,10 +206,7 @@ export const mockCars = [
     year: 1990,
   },
   {
-    brand: {
-      id: "6",
-      name: "Hyundai",
-    },
+    brand: "Hyundai",
     caracteristics: {
       general: [
         "5 seats",
@@ -264,10 +246,7 @@ export const mockCars = [
     year: 2018,
   },
   {
-    brand: {
-      id: "7",
-      name: "Hyundai",
-    },
+    brand: "Hyundai",
     caracteristics: {
       general: [
         "5 seats",
@@ -307,10 +286,7 @@ export const mockCars = [
     year: 2021,
   },
   {
-    brand: {
-      id: "8",
-      name: "KIA",
-    },
+    brand: "KIA",
     caracteristics: {
       general: [
         "5 seats",
@@ -350,10 +326,7 @@ export const mockCars = [
     year: 2022,
   },
   {
-    brand: {
-      id: "9",
-      name: "Tesla",
-    },
+    brand: "Tesla",
     caracteristics: {
       general: [
         "5 seats",
@@ -617,22 +590,22 @@ export const seedOwners = (db) => {
 export const createUsersTable = (db) => {
   db.prepare(
     `CREATE TABLE IF NOT EXISTS users (
-      id INTEGER PRIMARY KEY,
+      id TEXT PRIMARY KEY,
       name TEXT NOT NULL,
       lastName TEXT NOT NULL,
-      ci TEXT NOT NULL,
+      ci TEXT NOT NULL UNIQUE,
       dateOfBirth TEXT NOT NULL,
-      licence TEXT NOT NULL,
+      licence TEXT NOT NULL UNIQUE,
       phone TEXT NOT NULL,
       address1 TEXT NOT NULL,
       address2 TEXT,
       country TEXT NOT NULL,
       province TEXT NOT NULL,
       postalCode TEXT NOT NULL,
-      email TEXT NOT NULL,
+      email TEXT NOT NULL UNIQUE,
       profileImage TEXT NOT NULL,
       rating REAL NOT NULL DEFAULT 0,
-      username TEXT NOT NULL,
+      username TEXT NOT NULL UNIQUE,
       password TEXT NOT NULL
     )`
   ).run();

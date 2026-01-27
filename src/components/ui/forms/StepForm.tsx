@@ -3,14 +3,14 @@ import { useFormContext } from "react-hook-form";
 import { Grid } from "@mui/material";
 
 import FormInput from "./FormInput";
-import { FieldProps, UserFormData } from "@/src/interfaces";
+import { FieldProps, IUserFormData } from "@/src/interfaces";
 
 interface StepFormProps {
   fields: FieldProps[]
 }
 
 const StepForm: FC<StepFormProps> = ({fields}) => {
-  const { register, control, formState: {errors}, getValues } = useFormContext<UserFormData>();
+  const { register, control, formState: {errors}, getValues } = useFormContext<IUserFormData>();
 
   return (
     <Grid container spacing={2} mt={5}>

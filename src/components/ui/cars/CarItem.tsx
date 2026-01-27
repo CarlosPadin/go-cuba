@@ -3,7 +3,6 @@ import { FC } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-import { Car } from "@/src/interfaces";
 import {
   Box,
   Card,
@@ -12,16 +11,17 @@ import {
   useTheme,
 } from "@mui/material";
 import classes from "./CarItem.module.css";
+import { ICar } from "@/src/interfaces";
 import {
   FadeContent,
   GradientText,
 } from "@/src/components/ui/react-bits";
 
-interface Props {
-  car: Car;
+interface ICarItem {
+  car: ICar;
 }
 
-const CarItem: FC<Props> = ({ car }) => {
+const CarItem: FC<ICarItem> = ({ car }) => {
   const theme = useTheme();
   return (
     <>
@@ -50,7 +50,7 @@ const CarItem: FC<Props> = ({ car }) => {
               sx={{ height: { xs: "170px", sm: "270px" } }}
             >
               <Image
-                src={car.carImage.mainImage}
+                src={car.car_image.mainImage}
                 alt={`${car.id} ${car.brand} ${car.model}`}
                 fill
                 className={classes.image}
@@ -73,8 +73,8 @@ const CarItem: FC<Props> = ({ car }) => {
                   fontSize: { xs: "18px", md: "20px" },
                 }}
               >
-                <b>{car.brand.name.toUpperCase()}</b>{" "}
-                {car.model.name}
+                <b>{car.brand.toUpperCase()}</b>{" "}
+                {car.model}
               </Typography>
 
               <Typography
@@ -84,7 +84,7 @@ const CarItem: FC<Props> = ({ car }) => {
                   fontSize: { xs: "12px", md: "18px" },
                 }}
               >
-                {`${car.powerType.toUpperCase()} (${car.kilometers.toString()} km)`}
+                {`${car.power_type.toUpperCase()} (${car.kilometers.toString()} km)`}
               </Typography>
               <Box marginTop={3}>
                 <GradientText

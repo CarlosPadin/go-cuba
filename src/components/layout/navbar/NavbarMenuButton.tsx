@@ -1,15 +1,15 @@
 "use client";
 import { FC, useState, MouseEvent } from "react";
 import {
-  AccountCircle,
   Menu as MenuIcon,
 } from "@mui/icons-material";
 import { Button } from "@mui/material";
-import { NavbarMenu } from ".";
+import { MenuAvatar, NavbarMenu } from ".";
 
 const NavbarMenuButton: FC = () => {
   const [anchorEl, setAnchorEl] =
     useState<null | HTMLElement>(null);
+
   const open = Boolean(anchorEl);
   const handleClick = (
     event: MouseEvent<HTMLButtonElement>
@@ -31,7 +31,7 @@ const NavbarMenuButton: FC = () => {
         }}
         onClick={handleClick}
         startIcon={<MenuIcon />}
-        endIcon={<AccountCircle />}
+        endIcon={<MenuAvatar />}
       />
       <NavbarMenu
         anchorEl={anchorEl}

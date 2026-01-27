@@ -1,3 +1,4 @@
+'use client'
 import { FC } from "react";
 import { useTranslations } from "next-intl";
 import {
@@ -9,11 +10,11 @@ import {
   Typography,
 } from "@mui/material";
 import { OwnerInfo } from ".";
-import { Caracteristics } from "@/src/interfaces";
+import { ICarCaracteristics } from "@/src/interfaces";
 import { CountUp, PixelCard } from "../react-bits";
 
 interface CarMainProps {
-  caracteristics: Caracteristics;
+  caracteristics: ICarCaracteristics;
   description: string;
   kilometers: number;
   ownerId: string;

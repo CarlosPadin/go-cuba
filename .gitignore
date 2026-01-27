@@ -1,7 +1,10 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 #db
-yava.db
+*.db
+
+#script
+init-mysql.js
 
 #enviroment
 .env
@@ -26,6 +29,7 @@ yava.db
 
 # production
 /build
+/seed
 
 # misc
 .DS_Store

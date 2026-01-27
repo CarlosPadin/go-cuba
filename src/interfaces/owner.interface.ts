@@ -1,13 +1,13 @@
 
-export interface Owner {
+export interface IOwner {
   address: string,
   ci: string,
   email: string,
   id: string,
-  lastName: string,
+  last_name: string,
   name: string,
   phone: string,
-  profileImage: string,
+  profile_image: string,
   rating: number,
-  //licence
+  is_car_owner: boolean,
 }
