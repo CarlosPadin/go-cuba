@@ -13,7 +13,10 @@ import {
 import { useTranslations } from "next-intl";
 
 import { StepForm } from ".";
-import { getSchemaForStep, registerFormErrorMessage } from "@/src/lib/functions";
+import {
+  getSchemaForStep,
+  registerFormErrorMessage,
+} from "@/src/lib/functions";
 import {
   accountInfoFields,
   addressInfoFields,
@@ -54,8 +57,12 @@ const RegisterForm: FC = () => {
       setActiveStep((prev) => prev + 1);
       return;
     }
+    const formattedData = {
+      ...data,
+      dateOfBirth: data.dateOfBirth?.format("YYYY-MM-DD"),
+    };
 
-    createUser.mutate(data, {
+    createUser.mutate(formattedData, {
       onSuccess: async () => {
         setError(null);
         loginUser.mutate(
@@ -72,7 +79,9 @@ const RegisterForm: FC = () => {
       },
 
       onError: (error: any) => {
-        const errorMsg = registerFormErrorMessage(error.message)
+        const errorMsg = registerFormErrorMessage(
+          error.message
+        );
         openSnackbar();
         setError(errorMsg);
       },
@@ -127,9 +136,7 @@ const RegisterForm: FC = () => {
             open={snackbar}
             closeHandler={handleClose}
             severity={error ? "error" : "success"}
-            text={
-              error ? t(error) : t("completedForm")
-            }
+            text={error ? t(error) : t("completedForm")}
           />
         </form>
       </Box>

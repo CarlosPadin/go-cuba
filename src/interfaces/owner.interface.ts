@@ -9,5 +9,4 @@ export interface IOwner {
   phone: string,
   profileImage: string,
   rating: number,
-  //licence
 }

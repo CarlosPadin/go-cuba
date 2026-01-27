@@ -1,7 +1,3 @@
-export interface ICarModel {
-  name: string,
-  carBrand: string,
-}
 
 export interface ICarImage {
   mainImage: string,
@@ -18,13 +14,13 @@ export interface ICar {
   brand: string,
   caracteristics: ICarCaracteristics,
   carImage: ICarImage,
-  carType: 'sedan' | 'suv' | 'sports',
+  carType: 'sedan' | 'suv' | 'sports' | 'pickup' | 'van',
   city: string,
   color: string,
   description: string,
   id: string,
   kilometers: number,
-  model: ICarModel,
+  model: string,
   ownerId: string,
   pickupLocation: string,
   powerType: 'gasoline' | 'diesel' | 'electric' | 'hybrid',
