@@ -9,10 +9,10 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import "./swiper-styles.css";
-import { CarImage } from "@/src/interfaces";
+import { ICarImage } from "@/src/interfaces";
 import { useResponsive } from "@/src/hooks";
 
-const ImageSwiper: FC<{ images: CarImage }> = ({
+const ImageSwiper: FC<{ images: ICarImage }> = ({
   images,
 }) => {
   const { isMobile, isTablet } = useResponsive();

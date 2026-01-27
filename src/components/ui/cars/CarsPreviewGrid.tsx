@@ -30,12 +30,10 @@ const CarsPreviewGrid: FC<ICarsPreviewGrid> = ({ carType, limit }) => {
     isLoading,
     error,
   } = useQuery<ICar[]>({
-    queryKey: ["cars", carType, limit],
+    queryKey: ["CARS_BY_TYPE", carType, limit],
     queryFn: () => getCarsByType({ carType, limit }),
   });
 
-  console.log("data: ", cars)
-  console.log("error: ", error)
   return (
     <>
       <Box position={"relative"}>
