@@ -17,11 +17,11 @@ import {
   GradientText,
 } from "@/src/components/ui/react-bits";
 
-interface Props {
+interface ICarItem {
   car: ICar;
 }
 
-const CarItem: FC<Props> = ({ car }) => {
+const CarItem: FC<ICarItem> = ({ car }) => {
   const theme = useTheme();
   return (
     <>
@@ -50,7 +50,7 @@ const CarItem: FC<Props> = ({ car }) => {
               sx={{ height: { xs: "170px", sm: "270px" } }}
             >
               <Image
-                src={car.carImage.mainImage}
+                src={car.car_image.mainImage}
                 alt={`${car.id} ${car.brand} ${car.model}`}
                 fill
                 className={classes.image}
@@ -74,7 +74,7 @@ const CarItem: FC<Props> = ({ car }) => {
                 }}
               >
                 <b>{car.brand.toUpperCase()}</b>{" "}
-                {car.model.name}
+                {car.model}
               </Typography>
 
               <Typography
@@ -84,7 +84,7 @@ const CarItem: FC<Props> = ({ car }) => {
                   fontSize: { xs: "12px", md: "18px" },
                 }}
               >
-                {`${car.powerType.toUpperCase()} (${car.kilometers.toString()} km)`}
+                {`${car.power_type.toUpperCase()} (${car.kilometers.toString()} km)`}
               </Typography>
               <Box marginTop={3}>
                 <GradientText

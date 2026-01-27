@@ -3,6 +3,9 @@
 #db
 *.db
 
+#script
+init-mysql.js
+
 #enviroment
 .env
 .env.local
@@ -26,6 +29,7 @@
 
 # production
 /build
+/seed
 
 # misc
 .DS_Store

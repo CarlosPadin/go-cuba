@@ -1,12 +1,21 @@
 import { ICar } from "@/src/interfaces";
 
+const parseField = (field: any): any => {
+  if (typeof field === "string") {
+    try {
+      return JSON.parse(field);
+    } catch {
+      return field;
+    }
+  }
+  return field;
+};
+
 export const parseCar = (car: any): ICar => {
   return {
     ...car,
-    brand: typeof car.brand === "string" ? JSON.parse(car.brand) : car.brand,
-    model: typeof car.model === "string" ? JSON.parse(car.model) : car.model,
-    caracteristics: typeof car.caracteristics === "string" ? JSON.parse(car.caracteristics) : car.caracteristics,
-    carImage: typeof car.carImage === "string" ? JSON.parse(car.carImage) : car.carImage,
-    reservedDates: typeof car.reservedDates === "string" ? JSON.parse(car.reservedDates) : car.reservedDates,
+    caracteristics: parseField(car.caracteristics),
+    car_image: parseField(car.car_image),
+    reserved_dates: parseField(car.reserved_dates),
   } as ICar;
 };
