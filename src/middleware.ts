@@ -1,18 +1,36 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
+import { updateSession } from "@/src/lib/supabase";
 
-export function middleware(req: NextRequest) {
-  const token = req.cookies.get("refreshToken"); // Ejemplo
+// export function middleware(req: NextRequest) {
+//   const token = req.cookies.get("refreshToken"); // Ejemplo
 
-  const notAllowedPage = req.nextUrl.pathname === "/login" || "/register";
+//   const notAllowedPage = req.nextUrl.pathname === "/login" || "/register";
 
-  if (token && notAllowedPage) {
-    return NextResponse.redirect(new URL("/", req.url));
-  }
+//   if (token && notAllowedPage) {
+//     return NextResponse.redirect(new URL("/", req.url));
+//   }
 
-  return NextResponse.next();
+//   return NextResponse.next();
+// }
+
+// export const config = {
+//   matcher: ["/login", "/register"],
+// };
+
+export async function middleware(request: NextRequest) {
+  return await updateSession(request)
 }
 
 export const config = {
-  matcher: ["/login", "/register"],
-};
+  matcher: [
+    /*
+     * Match all request paths except for the ones starting with:
+     * - _next/static (static files)
+     * - _next/image (image optimization files)
+     * - favicon.ico (favicon file)
+     * Feel free to modify this pattern to include more paths.
+     */
+    "/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)",
+  ],
+}
