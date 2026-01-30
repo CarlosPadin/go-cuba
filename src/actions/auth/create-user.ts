@@ -1,27 +1,14 @@
 "use server";
 
+import { IUserProfile } from "@/src/interfaces";
 import { createClient } from "@/src/lib/supabase/server";
 import { revalidatePath } from "next/cache";
 
-interface CreateUserData {
-  email: string;
-  password: string;
-  username: string;
-  firstName: string;
-  lastName: string;
-  dateOfBirth: string;
-  phone: string;
-  address: string;
-  city: string;
-  state: string;
-  zipCode: string;
-}
-
-export async function createUserAction(data: CreateUserData) {
+export async function createUserAction(data: IUserProfile ) {
   try {
     const supabase = await createClient();
 
-    // Validaciones
+    // Validations
     if (!data.email || !data.password || !data.username) {
       return {
         error: "Required fields missing",
@@ -50,7 +37,7 @@ export async function createUserAction(data: CreateUserData) {
       options: {
         data: {
           username: data.username,
-          first_name: data.firstName,
+          first_name: data.name,
           last_name: data.lastName,
         },
       },
@@ -63,27 +50,28 @@ export async function createUserAction(data: CreateUserData) {
         data: null,
       };
     }
-
-    // Crear perfil en la tabla profiles
+    
+    // Create profile in the profiles table
     if (authData.user) {
       const { error: profileError } = await supabase.from("profiles").insert({
         id: authData.user.id,
-        username: data.username,
-        first_name: data.firstName,
+        username: data.name,
+        first_name: data.name,
         last_name: data.lastName,
         email: data.email,
         date_of_birth: data.dateOfBirth,
         phone: data.phone,
-        address: data.address,
-        city: data.city,
-        state: data.state,
-        zip_code: data.zipCode,
+        ci: data.ci,
+        address1: data.address1,
+        address2: data.address2,
+        country: data.country,
+        city: data.province,
+        zip_code: data.postalCode,
+        profile_image_url: data.profileImage, 
       });
 
       if (profileError) {
-        // Si falla la creación del perfil, intentar eliminar el usuario de auth
-        // Nota: Esto requiere permisos de admin, en producción considera una queue
-        console.error("Profile creation failed:", profileError);
+        console.log("Profile creation failed:", profileError);
 
         return {
           error: "Failed to create user profile",
@@ -93,7 +81,6 @@ export async function createUserAction(data: CreateUserData) {
       }
     }
 
-    // Revalidar la página de inicio
     revalidatePath("/");
 
     return {
@@ -102,7 +89,7 @@ export async function createUserAction(data: CreateUserData) {
       data: authData,
     };
   } catch (error) {
-    console.error("Unexpected error:", error);
+    console.log("Unexpected error:", error);
     return {
       error: "An unexpected error occurred",
       success: false,

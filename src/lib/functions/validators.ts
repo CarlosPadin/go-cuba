@@ -1,6 +1,6 @@
 import * as yup from "yup";
 import { userValidationSchemas } from "../validations";
-import { UserFormData } from "@/src/interfaces";
+import { IUserFormData } from "@/src/interfaces";
 
 //function to detect if a person is old enough to drive according toiys DOB
 export const isOldEnough = (
@@ -22,24 +22,25 @@ export const getSchemaForStep = (step: number) => {
   switch (step) {
     case 0:
       return userValidationSchemas[0] as yup.ObjectSchema<
-        Partial<UserFormData>
+        Partial<IUserFormData>
       >;
     case 1:
       return userValidationSchemas[1] as yup.ObjectSchema<
-        Partial<UserFormData>
+        Partial<IUserFormData>
       >;
     case 2:
       return userValidationSchemas[2] as yup.ObjectSchema<
-        Partial<UserFormData>
+        Partial<IUserFormData>
       >;
     default:
       return userValidationSchemas[0] as yup.ObjectSchema<
-        Partial<UserFormData>
+        Partial<IUserFormData>
       >;
   }
 };
 
 export const registerFormErrorMessage = (error: string) => {
+  console.log("error: ", error)
   switch (error) {
     case "USERNAME_EXISTS":
       return "usernameAlreadyExist";

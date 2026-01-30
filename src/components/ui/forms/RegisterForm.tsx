@@ -27,10 +27,7 @@ import {
   useResponsive,
 } from "@/src/hooks";
 import { CustomSnackbar } from "../custom-components";
-import {
-  useLogin,
-  useCreateUser,
-} from "@/src/hooks/mutations";
+import { useCreateUser } from "@/src/hooks/mutations";
 
 const steps = ["personalData", "address", "account"];
 
@@ -46,7 +43,6 @@ const RegisterForm: FC = () => {
   } = useCustomSnackbar();
   const [error, setError] = useState<null | string>(null);
   const createUser = useCreateUser();
-  const loginUser = useLogin();
   const methods = useForm({
     resolver: yupResolver(getSchemaForStep(activeStep)),
     mode: "onTouched",
@@ -66,10 +62,8 @@ const RegisterForm: FC = () => {
       onSuccess: () => {
         setError(null);
         openSnackbar();
-        // Esperar un momento para que se vea el mensaje de éxito
         setTimeout(() => {
           router.push("/");
-          // Ya no necesitas router.refresh() aquí porque está en el hook
         }, 1500);
       },
 
