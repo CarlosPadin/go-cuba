@@ -1,24 +1,7 @@
-import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import { updateSession } from "@/src/lib/supabase";
 
-// export function middleware(req: NextRequest) {
-//   const token = req.cookies.get("refreshToken"); // Ejemplo
-
-//   const notAllowedPage = req.nextUrl.pathname === "/login" || "/register";
-
-//   if (token && notAllowedPage) {
-//     return NextResponse.redirect(new URL("/", req.url));
-//   }
-
-//   return NextResponse.next();
-// }
-
-// export const config = {
-//   matcher: ["/login", "/register"],
-// };
-
-export async function middleware(request: NextRequest) {
+export async function proxy(request: NextRequest) {
   return await updateSession(request)
 }
 
