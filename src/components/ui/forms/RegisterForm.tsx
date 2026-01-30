@@ -63,24 +63,19 @@ const RegisterForm: FC = () => {
     };
 
     createUser.mutate(formattedData, {
-      onSuccess: async () => {
+      onSuccess: () => {
         setError(null);
-        loginUser.mutate(
-          {
-            username: data.username,
-            password: data.password,
-          },
-          {
-            onSuccess: () => {
-              router.push("/");
-            },
-          }
-        );
+        openSnackbar();
+        // Esperar un momento para que se vea el mensaje de éxito
+        setTimeout(() => {
+          router.push("/");
+          // Ya no necesitas router.refresh() aquí porque está en el hook
+        }, 1500);
       },
 
       onError: (error: any) => {
         const errorMsg = registerFormErrorMessage(
-          error.message
+          error.message,
         );
         openSnackbar();
         setError(errorMsg);

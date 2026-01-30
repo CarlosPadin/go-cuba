@@ -11,8 +11,8 @@ import { Close } from "@mui/icons-material";
 
 import { navOptions } from "@/src/constants";
 import {
-  useSession,
   useLogout,
+  useUser,
 } from "@/src/hooks/mutations";
 import { useResponsive } from "@/src/hooks";
 import { ConfirmationLogout, OptionItem } from ".";
@@ -32,7 +32,7 @@ const NavbarMenu: FC<Props> = ({
   const [logoutModal, setLogoutModal] = useState(false);
   const theme = useTheme();
   const { isDesktop } = useResponsive();
-  const { user } = useSession();
+  const { user } = useUser();
   const logout = useLogout();
 
   // hide login and register when the user is logged
@@ -48,7 +48,7 @@ const NavbarMenu: FC<Props> = ({
 
   const confirmLogout = () => {
     setLogoutModal(false);
-    logout();
+    logout.mutate();
   };
 
   return (

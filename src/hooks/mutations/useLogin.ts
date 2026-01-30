@@ -1,44 +1,14 @@
-// import {
-//   useMutation,
-//   useQueryClient,
-// } from "@tanstack/react-query";
+"use client";
 
-// export function useLogin() {
-//   const queryClient = useQueryClient();
-
-//   return useMutation({
-//     mutationFn: async (data: {
-//       username: string;
-//       password: string;
-//     }) => {
-//       const res = await fetch("/api/auth/login", {
-//         method: "POST",
-//         headers: { "Content-Type": "application/json" },
-//         body: JSON.stringify(data),
-//       });
-
-//       if (!res.ok) {
-//         const error = await res.json();
-//         throw new Error(error.message || "Login Error");
-//       }
-
-//       return res.json();
-//     },
-//     onSuccess: (data) => {
-//       queryClient.setQueryData(["session"], data.user);
-
-//       queryClient.invalidateQueries({
-//         queryKey: ["session"],
-//       });
-//     },
-//   });
-// }
-
-import { useMutation } from "@tanstack/react-query";
+import { useRouter } from "next/navigation";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { loginUserAction } from "@/src/actions/auth";
 
-export const useLogin = () =>
-  useMutation({
+export const useLogin = () => {
+  const router = useRouter();
+  const queryClient = useQueryClient();
+
+  return useMutation({
     mutationFn: async (credentials: { username: string; password: string }) => {
       const result = await loginUserAction(credentials);
 
@@ -48,4 +18,15 @@ export const useLogin = () =>
 
       return result.data;
     },
+    onSuccess: (data) => {
+      // Actualizar el cache del usuario inmediatamente
+      if (data?.user) {
+        queryClient.setQueryData(["user"], data.user);
+      }
+      // Invalidar para forzar refetch
+      queryClient.invalidateQueries({ queryKey: ["user"] });
+      // Recargar Server Components
+      router.refresh();
+    },
   });
+};

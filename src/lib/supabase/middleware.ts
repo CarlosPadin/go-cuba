@@ -37,14 +37,15 @@ export async function updateSession(request: NextRequest) {
 
   const user = data?.claims
 
-  if (
-    !user &&
-    !request.nextUrl.pathname.startsWith('/login') &&
-    !request.nextUrl.pathname.startsWith('/register')
-  ) {
-    // no user, potentially respond by redirecting the user to the login page
+  const isAuthPage = 
+    request.nextUrl.pathname.startsWith('/login') || 
+    request.nextUrl.pathname.startsWith('/register')
+
+  // If user is logged in and is trying to access a restricted page
+  // → Redirect to home page
+  if (user && isAuthPage) {
     const url = request.nextUrl.clone()
-    url.pathname = '/login'
+    url.pathname = '/'
     return NextResponse.redirect(url)
   }
 

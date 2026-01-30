@@ -1,34 +1,38 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import type { User } from "@supabase/supabase-js";
+import { useQueryClient, useQuery } from "@tanstack/react-query";
 import { createClient } from "@/src/lib/supabase/client";
 
 export const useUser = () => {
-  const [user, setUser] = useState<User | null>(null);
-  const [loading, setLoading] = useState(true);
   const supabase = createClient();
+  const queryClient = useQueryClient();
+
+  const { data: user, isLoading: loading } = useQuery({
+    queryKey: ["user"],
+    queryFn: async () => {
+      const { data: { user } } = await supabase.auth.getUser();
+      return user;
+    },
+    staleTime: Infinity, // No refetch automático, solo cuando se invalide
+  });
 
   useEffect(() => {
-    const getUser = async () => {
-      const { data: { user } } = await supabase.auth.getUser();
-      setUser(user);
-      setLoading(false);
-    };
-
-    getUser();
-
+    // Escuchar cambios de autenticación en tiempo real
     const { data: { subscription } } = supabase.auth.onAuthStateChange(
-      (_event, session) => {
-        setUser(session?.user ?? null);
-        setLoading(false);
+      (event, session) => {
+        console.log('Auth state changed:', event, session?.user);
+        // Actualizar el cache cuando cambie la sesión
+        queryClient.setQueryData(["user"], session?.user ?? null);
       }
     );
 
-    return () => subscription.unsubscribe();
-  }, []);
+    return () => {
+      subscription.unsubscribe();
+    };
+  }, [supabase, queryClient]);
 
-  return { user, loading };
+  return { user: user ?? null, loading };
 };
 
 export const useUserProfile = () => {
