@@ -1,8 +1,8 @@
 import { NextPage } from "next";
 import { Container } from "@mui/material";
 import { ICar } from "@/src/interfaces/cars.interface";
-import { CarById } from "@/src/components/containers/pages";
 import { getCarById } from "@/src/actions/cars";
+import { CarById } from "@/src/components/containers";
 
 interface MetadataProps {
   params: Promise<{ id: string }>;

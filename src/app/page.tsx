@@ -1,9 +1,7 @@
 import styles from "./page.module.css";
 import { Box } from "@mui/material";
-import ExploreCars from "../components/ui/explore-cars/ExploreCars";
-import Banner from "../components/ui/banner";
-
-
+import Banner from "@/src/components/ui/banner";
+import { ExploreCars } from "../components/containers";
 export default function Home() {
 
   return (

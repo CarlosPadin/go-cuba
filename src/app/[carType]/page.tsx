@@ -3,7 +3,7 @@ import Grid from "@mui/material/Grid";
 import { Container } from "@mui/material";
 
 import { ICar } from "@/src/interfaces/cars.interface";
-import CarItem from "@/src/components/ui/cars/CarItem";
+import CarItem from "@/src/components/ui/car-info/CarItem";
 import CarTypeNavigation from "@/src/components/ui/car-type-navigation/CarTypeNavigation";
 import { metadata } from "../layout";
 import { getCarsByType } from "@/src/actions/cars";

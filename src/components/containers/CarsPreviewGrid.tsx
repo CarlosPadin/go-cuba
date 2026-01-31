@@ -11,11 +11,11 @@ import {
 import { ArrowForwardIos } from "@mui/icons-material";
 import { useQuery } from "@tanstack/react-query";
 
-import { CarItem } from ".";
 import { ICar } from "@/src/interfaces";
 import { CustomTooltip } from "@/src/components/ui/custom-components";
 import { CarsByTypeSkeleton } from "@/src/components/ui/skeletons";
 import { getCarsByType } from "@/src/actions/cars";
+import { CarItem } from "@/src/components/ui/car-info";
 
 interface ICarsPreviewGrid {
   carType: string;

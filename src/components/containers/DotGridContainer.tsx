@@ -1,6 +1,6 @@
 import { FC, ReactNode } from "react";
 import { Container } from "@mui/material";
-import { DotGrid } from "../../ui/react-bits";
+import { DotGrid } from "@/src/components/ui/react-bits";
 
 interface IProps {
   children: ReactNode;
