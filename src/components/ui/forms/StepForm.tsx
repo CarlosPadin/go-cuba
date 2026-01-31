@@ -1,3 +1,4 @@
+'use client'
 import { FC } from "react";
 import { useFormContext } from "react-hook-form";
 import { Grid } from "@mui/material";
@@ -10,7 +11,7 @@ interface StepFormProps {
 }
 
 const StepForm: FC<StepFormProps> = ({fields}) => {
-  const { register, control, formState: {errors}, getValues } = useFormContext<IUserFormData>();
+  const { register, control, formState: {errors} } = useFormContext<IUserFormData>();
 
   return (
     <Grid container spacing={2} mt={5}>

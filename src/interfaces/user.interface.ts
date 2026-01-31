@@ -59,3 +59,21 @@ export interface FieldProps {
   label: string;
   type?: string;
 }
+
+export interface IUserProfile {
+  username: string;
+  name: string;
+  lastName: string;
+  email: string;
+  dateOfBirth: Date;
+  phone: string;
+  ci: string;
+  // licence: string;
+  address1: string;
+  address2?: string;
+  country: string;
+  province: string;
+  postalCode: string;
+  profileImage?: string;
+  password: string;
+}

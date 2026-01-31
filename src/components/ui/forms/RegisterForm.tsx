@@ -27,10 +27,7 @@ import {
   useResponsive,
 } from "@/src/hooks";
 import { CustomSnackbar } from "../custom-components";
-import {
-  useLogin,
-  useCreateUser,
-} from "@/src/hooks/mutations";
+import { useCreateUser } from "@/src/hooks/mutations";
 
 const steps = ["personalData", "address", "account"];
 
@@ -46,7 +43,6 @@ const RegisterForm: FC = () => {
   } = useCustomSnackbar();
   const [error, setError] = useState<null | string>(null);
   const createUser = useCreateUser();
-  const loginUser = useLogin();
   const methods = useForm({
     resolver: yupResolver(getSchemaForStep(activeStep)),
     mode: "onTouched",
@@ -63,24 +59,17 @@ const RegisterForm: FC = () => {
     };
 
     createUser.mutate(formattedData, {
-      onSuccess: async () => {
+      onSuccess: () => {
         setError(null);
-        loginUser.mutate(
-          {
-            username: data.username,
-            password: data.password,
-          },
-          {
-            onSuccess: () => {
-              router.push("/");
-            },
-          }
-        );
+        openSnackbar();
+        setTimeout(() => {
+          router.push("/");
+        }, 1500);
       },
 
       onError: (error: any) => {
         const errorMsg = registerFormErrorMessage(
-          error.message
+          error.message,
         );
         openSnackbar();
         setError(errorMsg);

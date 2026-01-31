@@ -1,22 +1,32 @@
 "use client";
 
-import { useQueryClient } from "@tanstack/react-query";
+import { useRouter } from "next/navigation";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { logoutUserAction } from "@/src/actions/auth";
 
 export const useLogout = () => {
+  const router = useRouter();
   const queryClient = useQueryClient();
 
-  const logout = async () => {
-    await fetch("/api/auth/logout", {
-      method: "POST",
-      credentials: "include",
-    });
+  return useMutation({
+    mutationFn: async () => {
+      const result = await logoutUserAction();
 
-    // Clean session cache
-    queryClient.setQueryData(["session"], {
-      user: null,
-      accessToken: null,
-    });
-  };
+      if (!result.success) {
+        throw new Error(result.error || "Logout failed");
+      }
 
-  return logout;
+      return result;
+    },
+    onSuccess: () => {
+      // Limpiar el cache del usuario inmediatamente
+      queryClient.setQueryData(["user"], null);
+      // Invalidar para forzar refetch
+      queryClient.invalidateQueries({ queryKey: ["user"] });
+      // Recargar Server Components
+      router.refresh();
+      // Redirigir al login
+      router.push("/");
+    },
+  });
 };
