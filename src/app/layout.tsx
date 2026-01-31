@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { ThemeRegistry } from "../theme";
 import { NextIntlClientProvider } from "next-intl";
+import { AppRouterCacheProvider } from "@mui/material-nextjs/v15-appRouter";
 
 import Box from "@mui/material/Box";
 import { Navbar } from "../components/layout/navbar";
@@ -22,6 +23,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
+        <AppRouterCacheProvider options={{ key: 'mui' }}>
+
         <ThemeRegistry>
           <NextIntlClientProvider>
             <QueryProvider>
@@ -29,7 +32,7 @@ export default function RootLayout({
                 minHeight={"100vh"}
                 display={"flex"}
                 flexDirection={"column"}
-              >
+                >
                 <Navbar />
                 <Box component="main" flex="1">
                   {children}
@@ -39,6 +42,7 @@ export default function RootLayout({
             </QueryProvider>
           </NextIntlClientProvider>
         </ThemeRegistry>
+                </AppRouterCacheProvider>
       </body>
     </html>
   );
