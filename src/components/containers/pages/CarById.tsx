@@ -16,8 +16,8 @@ import {
   RelatedCars,
 } from "@/src/components/ui/car-info";
 import ImageSwiper from "@/src/components/ui/image-swiper/ImageSwiper";
-import { getCarById } from "@/src/db/connection";
 import { ICar } from "@/src/interfaces/cars.interface";
+import { getCarById } from "@/src/actions/cars";
 
 interface ICarPage {
   carId: string;

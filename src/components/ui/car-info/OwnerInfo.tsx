@@ -9,10 +9,10 @@ import {
   Typography,
 } from "@mui/material";
 import { Star } from "@mui/icons-material";
-import { getOwnerById } from "@/src/db/connection";
 import { useQuery } from "@tanstack/react-query";
 import { IOwner } from "@/src/interfaces";
-import { OwnerSkeleton } from "../skeletons";
+import { OwnerSkeleton } from "@/src/components/ui/skeletons";
+import { getOwnerById } from "@/src/actions/owners";
 
 interface OwnerInfoProps {
   ownerId: string;

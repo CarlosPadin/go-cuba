@@ -5,9 +5,9 @@ import { useTranslations } from "next-intl";
 import { useQuery } from "@tanstack/react-query";
 
 import { ICar } from "@/src/interfaces";
-import { getCarsByType } from "@/src/db/connection";
 import { CarItem } from "@/src/components/ui/cars";
 import { CarsByTypeSkeleton } from "@/src/components/ui/skeletons";
+import { getCarsByType } from "@/src/actions/cars";
 
 interface IRelatedCarsProps {
   carType: string;

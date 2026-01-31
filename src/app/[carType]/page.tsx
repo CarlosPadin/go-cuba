@@ -2,11 +2,11 @@ import { NextPage } from "next";
 import Grid from "@mui/material/Grid";
 import { Container } from "@mui/material";
 
-import { getCarsByType } from "@/src/db/connection";
 import { ICar } from "@/src/interfaces/cars.interface";
 import CarItem from "@/src/components/ui/cars/CarItem";
 import CarTypeNavigation from "@/src/components/ui/car-type-navigation/CarTypeNavigation";
 import { metadata } from "../layout";
+import { getCarsByType } from "@/src/actions/cars";
 
 
 interface MetadataProps { 
