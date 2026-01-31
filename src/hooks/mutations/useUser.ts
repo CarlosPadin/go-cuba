@@ -1,76 +1,74 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useQueryClient } from "@tanstack/react-query";
-import type { User } from "@supabase/supabase-js";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { createClient } from "@/src/lib/supabase/client";
 
 export const useUser = () => {
-  const [user, setUser] = useState<User | null>(null);
-  const [loading, setLoading] = useState(true);
+  const [isClient, setIsClient] = useState(false);
   const supabase = createClient();
   const queryClient = useQueryClient();
 
   useEffect(() => {
-    // Obtener usuario inicial
-    const getUser = async () => {
+    setIsClient(true);
+  }, []);
+
+  const { data: user, isLoading: userLoading } = useQuery({
+    queryKey: ["user"],
+    queryFn: async () => {
       const { data: { user } } = await supabase.auth.getUser();
-      setUser(user);
-      setLoading(false);
-      // Sincronizar con React Query
-      queryClient.setQueryData(["user"], user);
-    };
+      return user;
+    },
+    enabled: isClient,
+    staleTime: Infinity,
+  });
 
-    getUser();
+  useEffect(() => {
+    if (!isClient) return;
 
-    // Escuchar cambios de autenticación
+    // Listen for auth state changes
     const { data: { subscription } } = supabase.auth.onAuthStateChange(
       (event, session) => {
-        console.log('Auth state changed:', event, session?.user);
-        const newUser = session?.user ?? null;
-        setUser(newUser);
-        setLoading(false);
-        // Sincronizar con React Query
-        queryClient.setQueryData(["user"], newUser);
+        // Update the user in the query client
+        queryClient.setQueryData(["user"], session?.user ?? null);
       }
     );
 
     return () => {
       subscription.unsubscribe();
     };
-  }, [supabase, queryClient]);
+  }, [isClient, supabase, queryClient]);
 
-  return { user, loading };
+  return { 
+    user: user ?? null, 
+    loading: !isClient || userLoading 
+  };
 };
 
 export const useUserProfile = () => {
   const { user, loading: userLoading } = useUser();
-  const [profile, setProfile] = useState<any>(null);
-  const [loading, setLoading] = useState(true);
   const supabase = createClient();
 
-  useEffect(() => {
-    const getProfile = async () => {
-      if (!user) {
-        setProfile(null);
-        setLoading(false);
-        return;
-      }
-
+  const { data: profile, isLoading: profileLoading } = useQuery({
+    queryKey: ["profile", user?.id],
+    queryFn: async () => {
+      if (!user?.id) return null;
+      
       const { data } = await supabase
         .from("profiles")
         .select("*")
         .eq("id", user.id)
         .single();
+      
+      return data;
+    },
+    enabled: !!user?.id && !userLoading, 
+    staleTime: Infinity,
+  });
 
-      setProfile(data);
-      setLoading(false);
-    };
-
-    if (!userLoading) {
-      getProfile();
-    }
-  }, [user, userLoading]);  // supabase
-
-  return { user, profile, loading: userLoading || loading };
+  return { 
+    user, 
+    profile: profile ?? null, 
+    loading: userLoading || profileLoading 
+  };
 };
