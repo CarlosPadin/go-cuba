@@ -7,7 +7,7 @@ import {
 import { useTranslations } from "next-intl";
 import { getTranslations } from "next-intl/server";
 import RegisterForm from "@/src/components/ui/forms/RegisterForm";
-import DotGridContainer from "@/src/components/containers/DotGridContainer/DotGridContainer";
+import { DotGridContainer } from "@/src/components/containers";
 
 export const generateMetadata = async () => {
   const t = await getTranslations();

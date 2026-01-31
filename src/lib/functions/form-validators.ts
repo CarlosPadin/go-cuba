@@ -1,5 +1,5 @@
 import * as yup from "yup";
-import { userValidationSchemas } from "../validations";
+import { userValidationSchemas } from "../schemas";
 import { IUserFormData } from "@/src/interfaces";
 
 //function to detect if a person is old enough to drive according toiys DOB

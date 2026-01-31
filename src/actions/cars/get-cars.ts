@@ -1,19 +1,13 @@
-import { createClient } from '@supabase/supabase-js';
+'use server'
+
+import { createClient } from "@/src/lib/supabase/server";
 import { parseCar } from '@/src/lib/functions';
-import { ICar, IOwner } from '@/src/interfaces';
+import { ICar } from '@/src/interfaces';
 
-// Initialize Supabase client
-const supabaseUrl = process.env.SUPABASE_URL || process.env.NEXT_PUBLIC_SUPABASE_URL || '';
-const supabaseKey = process.env.SUPABASE_ANON_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || '';
-
-if (!supabaseUrl || !supabaseKey) {
-  throw new Error('Missing Supabase environment variables');
-}
-
-export const supabase = createClient(supabaseUrl, supabaseKey);
-
-// Function to get all cars from the database
+// Get all cars from the database
 export const getCars = async (): Promise<ICar[]> => {
+  const supabase = await createClient();
+
   const { data, error } = await supabase
     .from('cars')
     .select('*');
@@ -23,7 +17,7 @@ export const getCars = async (): Promise<ICar[]> => {
   return (data || []).map(parseCar);
 };
 
-// Function to get cars by their type, with an optional limit
+// Get cars by their type, with an optional limit
 export const getCarsByType = async ({
   carType,
   limit,
@@ -33,6 +27,8 @@ export const getCarsByType = async ({
   limit?: number;
   excludeId?: string;
 }): Promise<ICar[]> => {
+    const supabase = await createClient();
+
   let query = supabase
     .from('cars')
     .select('*')
@@ -53,8 +49,10 @@ export const getCarsByType = async ({
   return (data || []).map(parseCar);
 };
 
-// Function to get one car by its ID
+// Get one car by its ID
 export const getCarById = async (id: string): Promise<ICar> => {
+    const supabase = await createClient();
+
   const { data, error } = await supabase
     .from('cars')
     .select('*')
@@ -65,19 +63,5 @@ export const getCarById = async (id: string): Promise<ICar> => {
   if (!data) throw new Error('Car not found');
 
   return parseCar(data);
-};
-
-// Function to get one owner by its ID
-export const getOwnerById = async (id: string): Promise<IOwner> => {
-  const { data, error } = await supabase
-    .from('owners')
-    .select('*')
-    .eq('id', id)
-    .single();
-
-  if (error) throw new Error(`Error fetching owner: ${error.message}`);
-  if (!data) throw new Error('Owner not found');
-
-  return data as IOwner;
 };
 

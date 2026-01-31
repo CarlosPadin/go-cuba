@@ -2,11 +2,8 @@
 import { FC } from "react";
 import { useQuery } from "@tanstack/react-query";
 import {
-  Box,
-  CircularProgress,
   Divider,
   Grid,
-  Typography,
 } from "@mui/material";
 
 import {
@@ -16,8 +13,8 @@ import {
   RelatedCars,
 } from "@/src/components/ui/car-info";
 import ImageSwiper from "@/src/components/ui/image-swiper/ImageSwiper";
-import { getCarById } from "@/src/db/connection";
 import { ICar } from "@/src/interfaces/cars.interface";
+import { getCarById } from "@/src/actions/cars";
 
 interface ICarPage {
   carId: string;
@@ -33,8 +30,10 @@ const CarById: FC<ICarPage> = ({ carId: id }: any) => {
     queryFn: () => getCarById(id),
   });
 
+  
   return (
     <>
+    {/* // TODO: Add isloading and error states */}
       {car && (
         <>
           <ImageSwiper images={car.car_image} />

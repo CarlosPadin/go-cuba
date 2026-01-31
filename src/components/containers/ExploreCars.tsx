@@ -1,8 +1,8 @@
 import { FC } from "react";
 import { useTranslations } from "next-intl";
 import { Container } from "@mui/material";
-import { CarsPreviewGrid } from "../cars";
-import CustomCaption from "../caption/CustomCaption";
+import CustomCaption from "@/src/components/ui/custom-components/CustomCaption";
+import { CarsPreviewGrid } from ".";
 
 const ExploreCars: FC = () => {
   const t = useTranslations();

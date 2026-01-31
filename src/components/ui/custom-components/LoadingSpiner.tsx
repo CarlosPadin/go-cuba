@@ -1,8 +1,9 @@
 "use client";
+import { FC } from "react";
 import { ThreeDots } from "react-loader-spinner";
 import { useTheme } from "@mui/material";
 
-const LoadingSpinner = () => {
+const LoadingSpinner: FC = () => {
   const theme = useTheme();
   return (
     <ThreeDots
