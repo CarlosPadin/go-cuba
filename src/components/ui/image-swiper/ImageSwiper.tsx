@@ -11,7 +11,7 @@ import "swiper/css/navigation";
 import "./swiper-styles.css";
 import { ICarImage } from "@/src/interfaces";
 import { useResponsive } from "@/src/hooks";
-import { getImageUrl } from "@/src/lib/functions";
+import { getImageUrl } from "@/src/lib/utils";
 
 const ImageSwiper: FC<{ images: ICarImage }> = ({
   images,
