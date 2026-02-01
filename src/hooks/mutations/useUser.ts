@@ -2,11 +2,11 @@
 
 import { useEffect, useState } from "react";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
-import { createClient } from "@/src/lib/supabase/client";
+import { supabase  } from "@/src/lib/supabase/client";
+import { IUserProfile } from "@/src/interfaces";
 
 export const useUser = () => {
   const [isClient, setIsClient] = useState(false);
-  const supabase = createClient();
   const queryClient = useQueryClient();
 
   useEffect(() => {
@@ -47,9 +47,8 @@ export const useUser = () => {
 
 export const useUserProfile = () => {
   const { user, loading: userLoading } = useUser();
-  const supabase = createClient();
 
-  const { data: profile, isLoading: profileLoading } = useQuery({
+  const { data: profile, isLoading: profileLoading } = useQuery<IUserProfile>({
     queryKey: ["profile", user?.id],
     queryFn: async () => {
       if (!user?.id) return null;
