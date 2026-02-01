@@ -16,7 +16,7 @@ import { StepForm } from ".";
 import {
   getSchemaForStep,
   registerFormErrorMessage,
-} from "@/src/lib/functions";
+} from "@/src/lib/utils";
 import {
   accountInfoFields,
   addressInfoFields,

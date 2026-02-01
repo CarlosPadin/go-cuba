@@ -16,7 +16,7 @@ import {
   FadeContent,
   GradientText,
 } from "@/src/components/ui/react-bits";
-import { getImageUrl } from "@/src/lib/functions";
+import { getImageUrl } from "@/src/lib/utils";
 
 interface ICarItem {
   car: ICar;

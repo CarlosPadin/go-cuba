@@ -13,7 +13,7 @@ import { useQuery } from "@tanstack/react-query";
 import { IOwner } from "@/src/interfaces";
 import { OwnerSkeleton } from "@/src/components/ui/skeletons";
 import { getOwnerById } from "@/src/actions/owners";
-import { getImageUrl } from "@/src/lib/functions";
+import { getImageUrl } from "@/src/lib/utils";
 
 interface OwnerInfoProps {
   ownerId: string;

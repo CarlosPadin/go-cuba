@@ -1,5 +1,5 @@
 import * as yup from "yup";
-import { isOldEnough } from "../functions";
+import { isOldEnough } from "../utils";
 
 export const userValidationSchemas = [
   // Personal Information

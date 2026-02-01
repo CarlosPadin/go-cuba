@@ -1,7 +1,7 @@
 'use server'
 
 import { createClient } from "@/src/lib/supabase/server";
-import { parseCar } from '@/src/lib/functions';
+import { parseCar } from '@/src/lib/utils';
 import { ICar } from '@/src/interfaces';
 
 // Get all cars from the database
