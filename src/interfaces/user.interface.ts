@@ -74,6 +74,6 @@ export interface IUserProfile {
   country: string;
   province: string;
   postalCode: string;
-  profileImage?: string;
+  profile_image_url: string;
   password: string;
 }
