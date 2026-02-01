@@ -13,6 +13,7 @@ import { useQuery } from "@tanstack/react-query";
 import { IOwner } from "@/src/interfaces";
 import { OwnerSkeleton } from "@/src/components/ui/skeletons";
 import { getOwnerById } from "@/src/actions/owners";
+import { getImageUrl } from "@/src/lib/functions";
 
 interface OwnerInfoProps {
   ownerId: string;
@@ -36,7 +37,7 @@ const OwnerInfo: FC<OwnerInfoProps> = ({ ownerId }) => {
         >
           <Avatar sx={{ width: 70, height: 70 }}>
             <Image
-              src={owner.profile_image}
+              src={getImageUrl(owner.profile_image, "avatars")}
               alt={owner.name}
               width={70}
               height={70}

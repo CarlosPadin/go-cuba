@@ -16,6 +16,7 @@ import {
   FadeContent,
   GradientText,
 } from "@/src/components/ui/react-bits";
+import { getImageUrl } from "@/src/lib/functions";
 
 interface ICarItem {
   car: ICar;
@@ -50,7 +51,7 @@ const CarItem: FC<ICarItem> = ({ car }) => {
               sx={{ height: { xs: "170px", sm: "270px" } }}
             >
               <Image
-                src={car.car_image.mainImage}
+                src={getImageUrl(car.car_image.mainImage, "cars") }
                 alt={`${car.id} ${car.brand} ${car.model}`}
                 fill
                 className={classes.image}
