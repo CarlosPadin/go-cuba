@@ -1,4 +1,5 @@
 export { default as CarHeader } from './CarHeader';
+export { default as CarItem } from './CarItem';
 export { default as CarMain } from './CarMain';
 export { default as OwnerInfo } from './OwnerInfo';
 export { default as PickupLocation } from './PickupLocation';

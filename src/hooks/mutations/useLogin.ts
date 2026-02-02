@@ -1,35 +1,32 @@
-import {
-  useMutation,
-  useQueryClient,
-} from "@tanstack/react-query";
+"use client";
 
-export function useLogin() {
+import { useRouter } from "next/navigation";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { loginUserAction } from "@/src/actions/auth";
+
+export const useLogin = () => {
+  const router = useRouter();
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationFn: async (data: {
-      username: string;
-      password: string;
-    }) => {
-      const res = await fetch("/api/auth/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
-      });
+    mutationFn: async (credentials: { username: string; password: string }) => {
+      const result = await loginUserAction(credentials);
 
-      if (!res.ok) {
-        const error = await res.json();
-        throw new Error(error.message || "Login Error");
+      if (!result.success) {
+        throw new Error(result.error || "Unknown error");
       }
 
-      return res.json();
+      return result.data;
     },
     onSuccess: (data) => {
-      queryClient.setQueryData(["session"], data.user);
-
-      queryClient.invalidateQueries({
-        queryKey: ["session"],
-      });
+      // Actualizar el cache del usuario inmediatamente
+      if (data?.user) {
+        queryClient.setQueryData(["user"], data.user);
+      }
+      // Invalidar para forzar refetch
+      queryClient.invalidateQueries({ queryKey: ["user"] });
+      // Recargar Server Components
+      router.refresh();
     },
   });
-}
+};

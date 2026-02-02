@@ -1,5 +1,5 @@
 "use client";
-import { FC, useState } from "react";
+import { FC } from "react";
 import { useRouter } from "next/navigation";
 import {
   Box,
@@ -15,8 +15,7 @@ import { Controller, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { HelpLinks, PasswordInput } from ".";
 import { useLogin } from "@/src/hooks/mutations";
-import { CustomSnackbar } from "../custom-components";
-import { useCustomSnackbar } from "@/src/hooks";
+import { useSnackbar } from "@/src/hooks";
 
 const loginSchema = yup
   .object({
@@ -33,15 +32,7 @@ const LogInForm: FC = () => {
   const t = useTranslations("UserRegistration");
   const loginUser = useLogin();
   const router = useRouter();
-  const {
-    open: snackbar,
-    openSnackbar,
-    handleClose,
-  } = useCustomSnackbar();
-  const [userNotFoundError, setUserNotFoundError] =
-    useState(false);
-  const [wrongPasswordError, setWrongPasswordError] =
-    useState(false);
+  const { showSnackbar } = useSnackbar();
   const {
     register,
     handleSubmit,
@@ -52,21 +43,17 @@ const LogInForm: FC = () => {
   });
 
   const submitHandler = (data: any) => {
-    setUserNotFoundError(false);
-    setWrongPasswordError(false);
     loginUser.mutate(data, {
       onSuccess: (res) => {
         router.push("/");
       },
       onError: (error: any) => {
-        if (error.message === "USER_NOT_FOUND") {
-          setUserNotFoundError(true);
-        } else if (error.message === "WRONG_PASSWORD") {
-          setWrongPasswordError(true);
+        if (error.message === "INVALID_USERNAME_OR_PASSWORD") {
+          showSnackbar(t("userOrPassword"), "error");
         } else {
-          console.log("Server Error: ", error.message);
+          showSnackbar(t("unexpectedError"), "error");
+          console.log("Server Error: ", error);
         }
-        openSnackbar();
       },
     });
   };
@@ -102,23 +89,10 @@ const LogInForm: FC = () => {
           />
         </Box>
         <HelpLinks />
-        {/* ---BUTTON--- */}
         <Button variant="contained" type="submit" fullWidth>
           {t("send")}
         </Button>
       </Stack>
-      <CustomSnackbar
-        open={snackbar}
-        closeHandler={handleClose}
-        severity="error"
-        text={
-          userNotFoundError
-            ? t("userNotFound")
-            : wrongPasswordError
-            ? t("wrongPassword")
-            : t("unexpectedError")
-        }
-      />
     </form>
   );
 };

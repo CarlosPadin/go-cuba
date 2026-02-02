@@ -16,37 +16,27 @@ import { StepForm } from ".";
 import {
   getSchemaForStep,
   registerFormErrorMessage,
-} from "@/src/lib/functions";
+} from "@/src/lib/utils";
 import {
   accountInfoFields,
   addressInfoFields,
   personalInfoFields,
 } from "@/src/constants";
 import {
-  useCustomSnackbar,
+  useSnackbar,
   useResponsive,
 } from "@/src/hooks";
-import { CustomSnackbar } from "../custom-components";
-import {
-  useLogin,
-  useCreateUser,
-} from "@/src/hooks/mutations";
+import { useCreateUser } from "@/src/hooks/mutations";
 
 const steps = ["personalData", "address", "account"];
 
 const RegisterForm: FC = () => {
   const t = useTranslations("UserRegistration");
   const router = useRouter();
+  const { showSnackbar } = useSnackbar();
   const { isMobile } = useResponsive();
   const [activeStep, setActiveStep] = useState(0);
-  const {
-    open: snackbar,
-    openSnackbar,
-    handleClose,
-  } = useCustomSnackbar();
-  const [error, setError] = useState<null | string>(null);
   const createUser = useCreateUser();
-  const loginUser = useLogin();
   const methods = useForm({
     resolver: yupResolver(getSchemaForStep(activeStep)),
     mode: "onTouched",
@@ -63,27 +53,18 @@ const RegisterForm: FC = () => {
     };
 
     createUser.mutate(formattedData, {
-      onSuccess: async () => {
-        setError(null);
-        loginUser.mutate(
-          {
-            username: data.username,
-            password: data.password,
-          },
-          {
-            onSuccess: () => {
-              router.push("/");
-            },
-          }
-        );
+      onSuccess: () => {
+        showSnackbar(t("completedForm"), "success");
+        setTimeout(() => {
+          router.push("/");
+        }, 1500);
       },
 
       onError: (error: any) => {
         const errorMsg = registerFormErrorMessage(
-          error.message
+          error.message,
         );
-        openSnackbar();
-        setError(errorMsg);
+        showSnackbar(t(errorMsg), "error");
       },
     });
   };
@@ -132,12 +113,6 @@ const RegisterForm: FC = () => {
                 : t("goForward")}
             </Button>
           </Box>
-          <CustomSnackbar
-            open={snackbar}
-            closeHandler={handleClose}
-            severity={error ? "error" : "success"}
-            text={error ? t(error) : t("completedForm")}
-          />
         </form>
       </Box>
     </FormProvider>

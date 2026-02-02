@@ -1,24 +1,32 @@
-import { useMutation } from "@tanstack/react-query";
+"use client";
 
-export const useCreateUser = () =>
-  useMutation({
+import { useRouter } from "next/navigation";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { createUserAction } from "@/src/actions/auth";
+
+export const useCreateUser = () => {
+  const router = useRouter();
+  const queryClient = useQueryClient();
+
+  return useMutation({
     mutationFn: async (data: any) => {
-      const res = await fetch("/api/auth/signup", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
-      });
-      const json = await res.json();
+      const result = await createUserAction(data);
 
-      if (!res.ok) {
-        const message =
-          json.errors
-            ? String(Object.values(json.errors)[0])
-            : "Error creating user";
-
-        throw new Error(message);
+      if (!result.success) {
+        throw new Error(result.error || "Unknown error");
       }
 
-      return json;
+      return result.data;
+    },
+    onSuccess: (data) => {
+      // Actualizar el cache del usuario inmediatamente
+      if (data?.user) {
+        queryClient.setQueryData(["user"], data.user);
+      }
+      // Invalidar para forzar refetch
+      queryClient.invalidateQueries({ queryKey: ["user"] });
+      // Recargar Server Components
+      router.refresh();
     },
   });
+};

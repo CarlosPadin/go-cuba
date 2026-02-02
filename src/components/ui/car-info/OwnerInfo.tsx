@@ -9,10 +9,11 @@ import {
   Typography,
 } from "@mui/material";
 import { Star } from "@mui/icons-material";
-import { getOwnerById } from "@/src/db/connection";
 import { useQuery } from "@tanstack/react-query";
 import { IOwner } from "@/src/interfaces";
-import { OwnerSkeleton } from "../skeletons";
+import { OwnerSkeleton } from "@/src/components/ui/skeletons";
+import { getOwnerById } from "@/src/actions/owners";
+import { getImageUrl } from "@/src/lib/utils";
 
 interface OwnerInfoProps {
   ownerId: string;
@@ -36,7 +37,7 @@ const OwnerInfo: FC<OwnerInfoProps> = ({ ownerId }) => {
         >
           <Avatar sx={{ width: 70, height: 70 }}>
             <Image
-              src={owner.profile_image}
+              src={getImageUrl(owner.profile_image, "avatars")}
               alt={owner.name}
               width={70}
               height={70}

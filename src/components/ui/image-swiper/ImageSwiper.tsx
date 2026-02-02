@@ -11,6 +11,7 @@ import "swiper/css/navigation";
 import "./swiper-styles.css";
 import { ICarImage } from "@/src/interfaces";
 import { useResponsive } from "@/src/hooks";
+import { getImageUrl } from "@/src/lib/utils";
 
 const ImageSwiper: FC<{ images: ICarImage }> = ({
   images,
@@ -38,7 +39,7 @@ const ImageSwiper: FC<{ images: ICarImage }> = ({
           (image, index) => (
             <SwiperSlide key={index + image}>
               <Image
-                src={image}
+                src={getImageUrl(image, "cars")}
                 alt={index + image}
                 fill
                 sizes="(max-width: 768px) 100vw, 50vw"

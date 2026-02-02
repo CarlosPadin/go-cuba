@@ -1,5 +1,5 @@
 import Box from "@mui/material/Box";
-import LoadingSpinner from "../components/layout/spinner/LoadingSpiner";
+import LoadingSpinner from "@/src/components/ui/custom-components/LoadingSpiner";
 
 export default function Loading() {
   return (

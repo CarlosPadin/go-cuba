@@ -6,7 +6,7 @@ import {
 } from "@mui/material";
 import { useTranslations } from "next-intl";
 import { LogInForm } from "@/src/components/ui/forms";
-import DotGridContainer from "@/src/components/containers/DotGridContainer/DotGridContainer";
+import { DotGridContainer } from "@/src/components/containers";
 
 const LogIn: NextPage = () => {
   const t = useTranslations("UserRegistration");

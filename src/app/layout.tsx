@@ -2,11 +2,13 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { ThemeRegistry } from "../theme";
 import { NextIntlClientProvider } from "next-intl";
+import { AppRouterCacheProvider } from "@mui/material-nextjs/v15-appRouter";
 
 import Box from "@mui/material/Box";
 import { Navbar } from "../components/layout/navbar";
 import { Footer } from "../components/layout/footer";
-import { QueryProvider } from "../providers/QueryProvider";
+import { QueryProvider } from "@/src/providers/QueryProvider";
+import { SnackbarProvider } from "@/src/providers/SnackbarProvider";
 
 export const metadata: Metadata = {
   title: "GoCuba",
@@ -22,23 +24,27 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <ThemeRegistry>
-          <NextIntlClientProvider>
-            <QueryProvider>
-              <Box
-                minHeight={"100vh"}
-                display={"flex"}
-                flexDirection={"column"}
-              >
-                <Navbar />
-                <Box component="main" flex="1">
-                  {children}
-                </Box>
-                <Footer />
-              </Box>
-            </QueryProvider>
-          </NextIntlClientProvider>
-        </ThemeRegistry>
+        <AppRouterCacheProvider options={{ key: "mui" }}>
+          <ThemeRegistry>
+            <NextIntlClientProvider>
+              <QueryProvider>
+                <SnackbarProvider>
+                  <Box
+                    minHeight={"100vh"}
+                    display={"flex"}
+                    flexDirection={"column"}
+                  >
+                    <Navbar />
+                    <Box component="main" flex="1">
+                      {children}
+                    </Box>
+                    <Footer />
+                  </Box>
+                </SnackbarProvider>
+              </QueryProvider>
+            </NextIntlClientProvider>
+          </ThemeRegistry>
+        </AppRouterCacheProvider>
       </body>
     </html>
   );
