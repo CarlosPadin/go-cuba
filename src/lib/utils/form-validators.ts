@@ -40,7 +40,6 @@ export const getSchemaForStep = (step: number) => {
 };
 
 export const registerFormErrorMessage = (error: string) => {
-  console.log("error: ", error)
   switch (error) {
     case "USERNAME_EXISTS":
       return "usernameAlreadyExist";

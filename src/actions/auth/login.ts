@@ -20,7 +20,7 @@ export async function loginUserAction(credentials: LoginData) {
 
     if (profileError || !profile) {
       return {
-        error: "Invalid username or password",
+        error: "INVALID_USERNAME_OR_PASSWORD",
         success: false,
         data: null,
       };
@@ -33,7 +33,7 @@ export async function loginUserAction(credentials: LoginData) {
 
     if (error) {
       return {
-        error: "Invalid username or password",
+        error: "INVALID_USERNAME_OR_PASSWORD",
         success: false,
         data: null,
       };
