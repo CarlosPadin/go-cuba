@@ -17,7 +17,7 @@ const Footer: FC = () => {
       pt={8}
       pb={1}
     >
-      <Grid container alignItems={"center"} >
+      <Grid container alignItems={"center"}>
         <Grid
           size={{ xs: 12, sm: 6 }}
           display={"flex"}
@@ -28,7 +28,12 @@ const Footer: FC = () => {
             width={250}
             height={250}
           >
-            <Image src={brandImg} alt="GoCuba Brand" fill />
+            <Image
+              src={brandImg}
+              alt="GoCuba Brand"
+              fill
+              sizes="(max-width: 640px) 100vw, (max-width: 1500px) 50vw, 300px"
+            />
           </Box>
         </Grid>
         <Grid size={{ xs: 12, sm: 6 }}>

@@ -23,26 +23,25 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <AppRouterCacheProvider options={{ key: 'mui' }}>
-
-        <ThemeRegistry>
-          <NextIntlClientProvider>
-            <QueryProvider>
-              <Box
-                minHeight={"100vh"}
-                display={"flex"}
-                flexDirection={"column"}
+        <AppRouterCacheProvider options={{ key: "mui" }}>
+          <ThemeRegistry>
+            <NextIntlClientProvider>
+              <QueryProvider>
+                <Box
+                  minHeight={"100vh"}
+                  display={"flex"}
+                  flexDirection={"column"}
                 >
-                <Navbar />
-                <Box component="main" flex="1">
-                  {children}
+                  <Navbar />
+                  <Box component="main" flex="1">
+                    {children}
+                  </Box>
+                  <Footer />
                 </Box>
-                <Footer />
-              </Box>
-            </QueryProvider>
-          </NextIntlClientProvider>
-        </ThemeRegistry>
-                </AppRouterCacheProvider>
+              </QueryProvider>
+            </NextIntlClientProvider>
+          </ThemeRegistry>
+        </AppRouterCacheProvider>
       </body>
     </html>
   );
