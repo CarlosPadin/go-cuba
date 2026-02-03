@@ -12,7 +12,10 @@
     "sedan": "Sedanes",
     "seeMore": "Ver más",
     "search": "Buscar",
-    "city": "Ciudad"
+    "city": "Ciudad",
+    "powerType": "Tipo de Motor",
+    "carType": "Tipo de Coche",
+    "priceRange": "Rango de Precio"
   },
   "Navbar": {
     "aboutUs": "Acerca de",

@@ -17,6 +17,7 @@ import dayjs from "dayjs";
 import { cubanCities } from "@/src/constants";
 import { useResponsive } from "@/src/hooks";
 import { useTranslations } from "next-intl";
+import Link from "next/link";
 
 const SearchBar: FC = () => {
   const currentDate = dayjs(); //Debe ser la fecha que el usuario escoja mas uno en el segundo DatePicker
@@ -106,9 +107,11 @@ const SearchBar: FC = () => {
               </LocalizationProvider>
             </>
           )}
-          <IconButton color="primary">
-            <Search />
-          </IconButton>
+          <Link href="/search">
+            <IconButton color="primary">
+              <Search />
+            </IconButton>
+          </Link>
         </Box>
       </Container>
     </>
