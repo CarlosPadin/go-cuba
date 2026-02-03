@@ -1,6 +1,6 @@
 'use client';
 
-import { FC, use, useState } from "react";
+import { FC, useState } from "react";
 import { useTranslations } from "next-intl";
 import { Slider, Stack, Typography } from "@mui/material";
 
@@ -11,7 +11,7 @@ interface PriceRangePickerProps {
 const PriceRangePicker: FC<PriceRangePickerProps> = ({
   handleChange,
 }) => {
-  const [value, setValue] = useState<number[]>([10, 50]);
+  const [value, setValue] = useState<number[]>([10, 150]);
   const t = useTranslations("Explore");
 
   return (

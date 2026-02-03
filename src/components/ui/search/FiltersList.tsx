@@ -1,6 +1,6 @@
 "use client";
 
-import { FC, useState } from "react";
+import { FC } from "react";
 import { List, ListItem } from "@mui/material";
 import AutocompleteInput from "@/src/components/ui/forms/AutocompleteInput";
 import {
@@ -9,30 +9,25 @@ import {
   powerTypes,
 } from "@/src/constants";
 import { CustomDateRangePicker, PriceRangePicker } from ".";
+import { useCarFilters } from "@/src/hooks/useCarFilters";
 
 const FiltersList: FC = () => {
-  const [city, setCity] = useState<null | string>(null);
-  const [carType, setCarType] = useState<null | string>(
-    null,
-  );
-  const [powerType, setPowerType] = useState<null | string>(
-    null,
-  );
-  const [initialDate, setInitialDate] =
-    useState<null | Date>(null);
-  const [finalDate, setFinalDate] = useState<null | Date>(
-    null,
-  );
-  const [price, setPrice] = useState<number[]>([10, 50]);
+  const {
+    filters,
+    setCity,
+    setCarType,
+    setPowerType,
+    setDateRange,
+    setPrice,
+  } = useCarFilters();
 
-  console.log("filters selected: ", {
-    city,
-    carType,
-    powerType,
-    initialDate,
-    finalDate,
-    price,
-  });
+  const initialDateChangeHandler = (date: string | null) => {
+    setDateRange([date, filters.dateRange[1]]);
+  };
+
+  const finalDateChangeHandler = (date: string | null) => {
+    setDateRange([filters.dateRange[0], date]);
+  };
 
   return (
     <List>
@@ -65,19 +60,13 @@ const FiltersList: FC = () => {
       </ListItem>
       <ListItem>
         <CustomDateRangePicker
-          handldeInitialDateChange={(date) =>
-            setInitialDate(date)
-          }
-          handleFinalDateChange={(date) =>
-            setFinalDate(date)
-          }
+          handldeInitialDateChange={initialDateChangeHandler}
+          handleFinalDateChange={finalDateChangeHandler}
         />
       </ListItem>
       <ListItem>
         <PriceRangePicker
-          handleChange={(e, newValue) =>
-            setPrice(newValue)
-          }
+          handleChange={(e, newValue) => setPrice(newValue)}
         />
       </ListItem>
     </List>

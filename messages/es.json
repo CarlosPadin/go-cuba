@@ -11,11 +11,13 @@
     "suv": "SUVs",
     "sedan": "Sedanes",
     "seeMore": "Ver más",
-    "search": "Buscar",
+    "search": "Resultados",
     "city": "Ciudad",
     "powerType": "Tipo de Motor",
     "carType": "Tipo de Coche",
-    "priceRange": "Rango de Precio"
+    "priceRange": "Rango de Precio",
+    "filters": "Filtros",
+    "noCarsFound": "No se encontraron coches con los filtros seleccionados"
   },
   "Navbar": {
     "aboutUs": "Acerca de",

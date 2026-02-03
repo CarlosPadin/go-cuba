@@ -11,8 +11,8 @@ import dayjs, { Dayjs } from "dayjs";
 import { Stack } from "@mui/material";
 
 interface CustomDateRangePickerProps {
-  handldeInitialDateChange: (date: Date | null) => void;
-  handleFinalDateChange: (date: Date | null) => void;
+  handldeInitialDateChange: (date: string | null) => void;
+  handleFinalDateChange: (date: string | null) => void;
 }
 
 const CustomDateRangePicker: FC<
@@ -25,11 +25,11 @@ const CustomDateRangePicker: FC<
   const t = useTranslations();
 
   const handleInitialChange = (value: Dayjs | null) => {
-    handldeInitialDateChange(value ? value.toDate() : null);
+    handldeInitialDateChange(value ? value.format('DD-MM-YYYY') : null);
   };
 
   const handleFinalChange = (value: Dayjs | null) => {
-    handleFinalDateChange(value ? value.toDate() : null);
+    handleFinalDateChange(value ? value.format('DD-MM-YYYY') : null);
   };
 
   return (

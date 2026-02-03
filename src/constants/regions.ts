@@ -1,9 +1,11 @@
-export const cubanCities = [
-  "La Habana",
-  "Matanzas",
-  "Varadero",
-  "Trinidad",
-  "Santiago de Cuba",
+import { Option } from "@/src/components/ui/forms/AutocompleteInput";
+
+export const cubanCities: Option[] = [
+  { value: "Havana", label: "La Habana" },
+  { value: "Matanzas", label: "Matanzas" },
+  { value: "Varadero", label: "Varadero" },
+  { value: "Trinidad", label: "Trinidad" },
+  { value: "Santiago", label: "Santiago de Cuba" },
 ];
 
 

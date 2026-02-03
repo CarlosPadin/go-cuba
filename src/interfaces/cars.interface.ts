@@ -25,7 +25,15 @@ export interface ICar {
   pickup_location: string,
   power_type: 'gasoline' | 'diesel' | 'electric' | 'hybrid',
   price: number,
-  reserved_dates: Date[],
+  reserved_dates: string[],
   transmission_type: 'manual' | 'automatic',
   year: number,
+}
+
+export interface ISearchCarsFilters {
+  city: string | null;
+  carType: string | null;
+  powerType: string | null;
+  dateRange: [string | null, string | null];
+  price: number[];
 }
