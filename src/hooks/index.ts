@@ -1,2 +1,2 @@
-export * from './useCustomSnackbar';
+export * from './useSnackbar';
 export * from './useResponsive';

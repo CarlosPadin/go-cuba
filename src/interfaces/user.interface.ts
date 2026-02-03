@@ -68,7 +68,7 @@ export interface IUserProfile {
   dateOfBirth: Date;
   phone: string;
   ci: string;
-  // licence: string;
+  licence: string;
   address1: string;
   address2?: string;
   country: string;

@@ -7,7 +7,8 @@ import { AppRouterCacheProvider } from "@mui/material-nextjs/v15-appRouter";
 import Box from "@mui/material/Box";
 import { Navbar } from "../components/layout/navbar";
 import { Footer } from "../components/layout/footer";
-import { QueryProvider } from "../providers/QueryProvider";
+import { QueryProvider } from "@/src/providers/QueryProvider";
+import { SnackbarProvider } from "@/src/providers/SnackbarProvider";
 
 export const metadata: Metadata = {
   title: "GoCuba",
@@ -27,17 +28,19 @@ export default function RootLayout({
           <ThemeRegistry>
             <NextIntlClientProvider>
               <QueryProvider>
-                <Box
-                  minHeight={"100vh"}
-                  display={"flex"}
-                  flexDirection={"column"}
-                >
-                  <Navbar />
-                  <Box component="main" flex="1">
-                    {children}
+                <SnackbarProvider>
+                  <Box
+                    minHeight={"100vh"}
+                    display={"flex"}
+                    flexDirection={"column"}
+                  >
+                    <Navbar />
+                    <Box component="main" flex="1">
+                      {children}
+                    </Box>
+                    <Footer />
                   </Box>
-                  <Footer />
-                </Box>
+                </SnackbarProvider>
               </QueryProvider>
             </NextIntlClientProvider>
           </ThemeRegistry>
