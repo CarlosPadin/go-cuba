@@ -51,7 +51,7 @@ const CustomDateRangePicker: FC<
 
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
-      <Stack direction={display} spacing={2}>
+      <Stack direction={display} spacing={2} sx={{ width: '100%' }}>
         <DatePicker
           label={t("initialDate")}
           format="DD/MM/YYYY"

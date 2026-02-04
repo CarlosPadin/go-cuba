@@ -61,7 +61,8 @@ const FilteredCars: FC = () => {
         sx={{ width: "100%" }}
         justifyContent="center"
       >
-        <Typography color="error">{error}</Typography>
+        <Typography color="error">{error}</Typography>{" "}
+        {/* //TODO: Translate */}
       </Grid>
     );
   }
@@ -75,15 +76,13 @@ const FilteredCars: FC = () => {
         sx={{ width: "100%" }}
         justifyContent="center"
       >
-        <Typography>
-          {t("noCarsFound")}
-        </Typography>
+        <Typography>{t("noCarsFound")}</Typography>
       </Grid>
     );
   }
 
   return (
-    <Stack direction={"column"} spacing={1}>
+    <Stack direction={"column"}>
       <Typography
         variant="h4"
         display={"flex"}
@@ -91,15 +90,10 @@ const FilteredCars: FC = () => {
       >
         {t("search")}
       </Typography>
-      <Grid
-        container
-        spacing={2}
-        p={2}
-        sx={{ width: "100%" }}
-      >
+      <Grid container>
         {cars.map((car) => (
-          <Grid key={car.id} size={{ md: 6, lg: 4 }}>
-            <CarItem car={car} key={car.id} />
+          <Grid key={car.id} size={{ xs: 6, md: 4, lg: 4 }}>
+            <CarItem car={car} />
           </Grid>
         ))}
       </Grid>

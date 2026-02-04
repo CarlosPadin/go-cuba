@@ -28,7 +28,7 @@ export default function RootLayout({
             <NextIntlClientProvider>
               <QueryProvider>
                 <Box
-                  minHeight={"100vh"}
+                  minHeight={"200vh"}
                   display={"flex"}
                   flexDirection={"column"}
                 >

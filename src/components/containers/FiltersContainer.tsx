@@ -8,12 +8,28 @@ import {
 } from "@mui/material";
 import FiltersList from "@/src/components/ui/search/FiltersList";
 
-const FiltersContainer: FC = () => {
+interface FiltersContainerProps {
+  isDesktop?: boolean;
+}
+
+const FiltersContainer: FC<FiltersContainerProps> = ({
+  isDesktop = true,
+}) => {
   const t = useTranslations("Explore");
+
   return (
-    <Paper elevation={10} sx={{ p: 2, borderRadius: 4, height: "100%" }}>
+    <Paper
+      elevation={isDesktop ? 10 : 0}
+      sx={{ p: 2, borderRadius: 4, height: "100%" }}
+    >
       <Stack direction="column" spacing={2}>
-        <Typography variant="h4" display={'flex'} justifyContent={'center'}>{t("filters")}</Typography>
+        <Typography
+          variant="h4"
+          display={"flex"}
+          justifyContent={"center"}
+        >
+          {t("filters")}
+        </Typography>
         <Divider variant="middle" />
         <FiltersList />
       </Stack>
