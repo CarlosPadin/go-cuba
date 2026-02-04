@@ -16,7 +16,7 @@ import {
 import { useTranslations } from "next-intl";
 
 import { countries } from "@/src/constants";
-import CustomDatePicker from "../date-picker/CustomDatePicker";
+import CustomDatePicker from "./CustomDatePicker";
 import { CustomTooltip } from "../custom-components";
 import { ImageInput, PasswordInput } from ".";
 

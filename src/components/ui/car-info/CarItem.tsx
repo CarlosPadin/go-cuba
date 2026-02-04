@@ -37,6 +37,7 @@ const CarItem: FC<ICarItem> = ({ car }) => {
             elevation={10}
             sx={{
               maxWidth: 300,
+              minWidth: 150,
               m: 1,
               mb: 2,
               borderRadius: {xs: 3, sm: 5},

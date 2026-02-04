@@ -1,18 +1,25 @@
 {
-  "initialDate": "Fecha Inicial",
-  "finalDate": "Fecha Final",
   "date": "Fecha",
   "hour": "Hora",
   "pay": "Pagar",
   "registerPageDesc": "Register in our web app to make the proccess of renting faster",
   "Explore": {
+    "initialDate": "Fecha Inicial",
+    "finalDate": "Fecha Final",
     "caption": "Encuentre el auto perfecto para usted entre todas las opciones.",
     "sports": "Deportivos",
     "suv": "SUVs",
     "sedan": "Sedanes",
     "seeMore": "Ver más",
     "search": "Buscar",
-    "city": "Ciudad"
+    "customSearch": "Búsqueda personalizada",
+    "results": "Resultados",
+    "city": "Ciudad",
+    "powerType": "Tipo de Motor",
+    "carType": "Tipo de Coche",
+    "priceRange": "Rango de Precio",
+    "filters": "Filtros",
+    "noCarsFound": "No se encontraron coches con los filtros seleccionados"
   },
   "Navbar": {
     "aboutUs": "Acerca de",

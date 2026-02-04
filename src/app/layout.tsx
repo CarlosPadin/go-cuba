@@ -30,7 +30,7 @@ export default function RootLayout({
               <QueryProvider>
                 <SnackbarProvider>
                   <Box
-                    minHeight={"100vh"}
+                    minHeight={"200vh"}
                     display={"flex"}
                     flexDirection={"column"}
                   >
