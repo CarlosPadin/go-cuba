@@ -92,6 +92,7 @@ const SearchBar: FC = () => {
               background: "rgba(255, 255, 255, 1)",
               boxShadow: "0 2px 8px rgba(0,0,0,0.12)",
               padding: "12px",
+              gap: 2,
             }}
           >
             <Box sx={{ minWidth: 200 }}>
