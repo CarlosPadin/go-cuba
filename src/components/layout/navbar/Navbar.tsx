@@ -41,6 +41,7 @@ const Navbar: FC = () => {
                 src={logotypeImg}
                 alt={"GoCuba logotype"}
                 height={50}
+                priority
               />
             </Link>
             <NavbarMenuButton />

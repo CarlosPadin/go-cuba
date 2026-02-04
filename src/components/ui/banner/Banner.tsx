@@ -1,7 +1,7 @@
 import { FC } from "react";
-import { LiquidEther } from "../../ui/react-bits";
 import { Box } from "@mui/material";
-import SearchBar from "../../ui/search-bar";
+import { LiquidEther } from "@/src/components/ui/react-bits";
+import { SearchBar } from "@/src/components/ui/search";
 
 const Banner: FC = () => {
   return (

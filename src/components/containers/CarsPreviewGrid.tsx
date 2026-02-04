@@ -52,7 +52,7 @@ const CarsPreviewGrid: FC<ICarsPreviewGrid> = ({ carType, limit }) => {
         >
           {t(carType)}
         </Typography>
-        <Link href={carType}>
+        <Link href={`/search?carType=${carType}`}>
           <CustomTooltip title={t("seeMore")}>
             <ArrowForwardIos
               sx={{
@@ -71,7 +71,7 @@ const CarsPreviewGrid: FC<ICarsPreviewGrid> = ({ carType, limit }) => {
       {error && (
         <Box display="flex" justifyContent="center" p={4}>
           <Typography color="error">
-            Error loading cars
+            Error loading cars  // TODO: translate
           </Typography>
         </Box>
       )}

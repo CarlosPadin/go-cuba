@@ -37,6 +37,7 @@ const CarItem: FC<ICarItem> = ({ car }) => {
             elevation={10}
             sx={{
               maxWidth: 300,
+              minWidth: 150,
               m: 1,
               mb: 2,
               borderRadius: {xs: 3, sm: 5},
@@ -55,6 +56,7 @@ const CarItem: FC<ICarItem> = ({ car }) => {
                 alt={`${car.id} ${car.brand} ${car.model}`}
                 fill
                 className={classes.image}
+                sizes="(max-width: 640px) 100vw, (max-width: 1500px) 50vw, 300px"
               />
               <Typography
                 variant="button"
