@@ -1,7 +1,7 @@
 import { Option } from "@/src/components/ui/forms/AutocompleteInput";
 
 export const carTypes: Option[] = [
-  {value: 'sport', label: 'Sport'},
+  {value: 'sports', label: 'Sport'},
   {value: 'sedan', label: 'Sedan'},
   {value: 'suv', label: 'SUV'},
   {value: 'pickup', label: 'Pickup'},

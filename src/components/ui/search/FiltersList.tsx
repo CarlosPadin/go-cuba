@@ -36,14 +36,25 @@ const FiltersList: FC = () => {
     const minPrice = searchParams.get("minPrice");
     const maxPrice = searchParams.get("maxPrice");
 
-    if (city) setCity(city);
-    if (carType) setCarType(carType);
-    if (powerType) setPowerType(powerType);
-    if (initialDate && finalDate)
-      setDateRange([initialDate, finalDate]);
-    if (minPrice && maxPrice)
-      setPrice([Number(minPrice), Number(maxPrice)]);
-  }, []);
+// Just in case the filters are not in sync with the URL
+  if (city && city !== filters.city) setCity(city);
+  if (carType && carType !== filters.carType) setCarType(carType);
+  if (powerType && powerType !== filters.powerType) setPowerType(powerType);
+  
+  if (initialDate && finalDate) {
+    const urlDateRange: [string, string] = [initialDate, finalDate];
+    if (JSON.stringify(urlDateRange) !== JSON.stringify(filters.dateRange)) {
+      setDateRange(urlDateRange);
+    }
+  }
+  
+  if (minPrice && maxPrice) {
+    const urlPriceRange = [Number(minPrice), Number(maxPrice)];
+    if (JSON.stringify(urlPriceRange) !== JSON.stringify(filters.price)) {
+      setPrice(urlPriceRange);
+    }
+  }
+  }, [searchParams]);
 
   const initialDateChangeHandler = (
     date: string | null,

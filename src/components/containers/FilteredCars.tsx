@@ -82,7 +82,7 @@ const FilteredCars: FC = () => {
   }
 
   return (
-    <Stack direction={"column"}>
+    <Stack direction={"column"} sx={{ width: '100%' }}>
       <Typography
         variant="h4"
         display={"flex"}
