@@ -1,0 +1,68 @@
+.animatedButton {
+  position: relative;
+  overflow: visible !important;
+  z-index: 1;
+}
+
+.animatedButton::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, #D8315B, #0A2463, #3E92CC, #ec6d19);
+  background-size: 300% 300%;
+  border-radius: 15px;
+  z-index: -1;
+  animation: gradientMove 5s ease infinite;
+}
+
+.animatedButton::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  /* background: #0A2463; */
+  border-radius: 15px;
+  z-index: -1;
+}
+
+.shine {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
+  transform: skewX(-25deg);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.animatedButton:active .shine {
+  animation: shine 0.5s ease-in-out;
+}
+
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes shine {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 200%;
+  }
+}
