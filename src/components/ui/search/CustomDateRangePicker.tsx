@@ -11,6 +11,9 @@ import dayjs, { Dayjs } from "dayjs";
 import { Stack } from "@mui/material";
 
 interface CustomDateRangePickerProps {
+  display?: "column" | "row";
+  initialDate?: string | null;
+  finalDate?: string | null;
   handldeInitialDateChange: (date: string | null) => void;
   handleFinalDateChange: (date: string | null) => void;
 }
@@ -18,28 +21,43 @@ interface CustomDateRangePickerProps {
 const CustomDateRangePicker: FC<
   CustomDateRangePickerProps
 > = ({
+  display = "column",
+  initialDate,
+  finalDate,
   handldeInitialDateChange,
   handleFinalDateChange,
 }) => {
   const currentDate = dayjs();
-  const t = useTranslations();
+  const t = useTranslations("Explore");
 
   const handleInitialChange = (value: Dayjs | null) => {
-    handldeInitialDateChange(value ? value.format('DD-MM-YYYY') : null);
+    handldeInitialDateChange(
+      value ? value.format("DD-MM-YYYY") : null,
+    );
   };
 
   const handleFinalChange = (value: Dayjs | null) => {
-    handleFinalDateChange(value ? value.format('DD-MM-YYYY') : null);
+    handleFinalDateChange(
+      value ? value.format("DD-MM-YYYY") : null,
+    );
   };
+
+  const initialValue = initialDate
+    ? dayjs(initialDate, "DD-MM-YYYY")
+    : null;
+  const finalValue = finalDate
+    ? dayjs(finalDate, "DD-MM-YYYY")
+    : null;
 
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
-      <Stack direction={"column"} spacing={2}>
+      <Stack direction={display} spacing={2}>
         <DatePicker
           label={t("initialDate")}
           format="DD/MM/YYYY"
           minDate={currentDate}
           onChange={handleInitialChange}
+          value={initialValue}
           slotProps={{
             field: { clearable: true },
             textField: {
@@ -58,6 +76,7 @@ const CustomDateRangePicker: FC<
           format="DD/MM/YYYY"
           minDate={currentDate}
           onChange={handleFinalChange}
+          value={finalValue}
           slotProps={{
             field: { clearable: true },
             textField: {

@@ -1,6 +1,7 @@
 "use client";
 
-import { FC } from "react";
+import { FC, useEffect } from "react";
+import { useSearchParams } from "next/navigation";
 import { List, ListItem } from "@mui/material";
 import AutocompleteInput from "@/src/components/ui/forms/AutocompleteInput";
 import {
@@ -10,8 +11,10 @@ import {
 } from "@/src/constants";
 import { CustomDateRangePicker, PriceRangePicker } from ".";
 import { useCarFilters } from "@/src/hooks/useCarFilters";
+import { useFilterSync } from "@/src/hooks/useFilterSync";
 
 const FiltersList: FC = () => {
+  const searchParams = useSearchParams();
   const {
     filters,
     setCity,
@@ -21,7 +24,30 @@ const FiltersList: FC = () => {
     setPrice,
   } = useCarFilters();
 
-  const initialDateChangeHandler = (date: string | null) => {
+  useFilterSync(filters);
+
+  // Read query params if exists and update filters
+  useEffect(() => {
+    const city = searchParams.get("city");
+    const carType = searchParams.get("carType");
+    const powerType = searchParams.get("powerType");
+    const initialDate = searchParams.get("initialDate");
+    const finalDate = searchParams.get("finalDate");
+    const minPrice = searchParams.get("minPrice");
+    const maxPrice = searchParams.get("maxPrice");
+
+    if (city) setCity(city);
+    if (carType) setCarType(carType);
+    if (powerType) setPowerType(powerType);
+    if (initialDate && finalDate)
+      setDateRange([initialDate, finalDate]);
+    if (minPrice && maxPrice)
+      setPrice([Number(minPrice), Number(maxPrice)]);
+  }, []);
+
+  const initialDateChangeHandler = (
+    date: string | null,
+  ) => {
     setDateRange([date, filters.dateRange[1]]);
   };
 
@@ -35,6 +61,7 @@ const FiltersList: FC = () => {
         <AutocompleteInput
           label="city"
           options={cubanCities}
+          value={filters.city}
           handleChange={(e, citySelected) =>
             setCity(citySelected)
           }
@@ -44,6 +71,7 @@ const FiltersList: FC = () => {
         <AutocompleteInput
           label="carType"
           options={carTypes}
+          value={filters.carType}
           handleChange={(e, carTypeSelected) =>
             setCarType(carTypeSelected)
           }
@@ -53,6 +81,7 @@ const FiltersList: FC = () => {
         <AutocompleteInput
           label="powerType"
           options={powerTypes}
+          value={filters.powerType}
           handleChange={(e, powerTypeSelected) =>
             setPowerType(powerTypeSelected)
           }
@@ -60,7 +89,11 @@ const FiltersList: FC = () => {
       </ListItem>
       <ListItem>
         <CustomDateRangePicker
-          handldeInitialDateChange={initialDateChangeHandler}
+          initialDate={filters.dateRange[0]}
+          finalDate={filters.dateRange[1]}
+          handldeInitialDateChange={
+            initialDateChangeHandler
+          }
           handleFinalDateChange={finalDateChangeHandler}
         />
       </ListItem>

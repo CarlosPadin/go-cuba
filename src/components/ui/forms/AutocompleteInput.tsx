@@ -10,6 +10,7 @@ export interface Option {
 }
 
 interface AutocompleteInputProps {
+  value?: string | null;
   options: Option[];
   label: string;
 
@@ -17,22 +18,28 @@ interface AutocompleteInputProps {
 }
 
 const AutocompleteInput: FC<AutocompleteInputProps> = ({
+  value,
   options,
   label,
   handleChange,
 }) => {
   const t = useTranslations("Explore");
 
-  const valueGetter = (e: any, option: Option | null) => handleChange(e, option?.value);
+  const valueGetter = (e: any, option: Option | null) =>
+    handleChange(e, option?.value);
+
+  const selectedOption =
+    options.find((opt) => opt.value === value) || null;
 
   return (
     <Autocomplete
+      value={selectedOption}
       disablePortal
       options={options}
       getOptionLabel={(option) => option.label}
       onChange={valueGetter}
       sx={{
-        width: '100%',
+        width: "100%",
       }}
       renderInput={(params) => (
         <TextField
