@@ -23,7 +23,7 @@ const SearchPage: NextPage = () => {
 
   return (
     <FiltersProvider>
-      <Container sx={{ mt: 15, mb: 4 }}>
+      <Container sx={{ mt: 15, mb: 4, height: '200vh' }}>
         {/* Filters button for mobile/tablet */}
         {!isDesktop && (
           <Paper
