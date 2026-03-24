@@ -13,12 +13,6 @@ export interface INavbarOption {
   icon: ReactElement;
 }
 
-export interface ISocialLink {
-  href: string;
-  src: string;
-  alt: string;
-}
-
 export const navOptions: INavbarOption[] = [
   {
     link: "/login",
@@ -47,20 +41,4 @@ export const navOptions: INavbarOption[] = [
   },
 ];
 
-export const socialLinks: ISocialLink[] = [
-  {
-    alt: "Facebook",
-    href: "https://www.facebook.com",
-    src: "/logo/facebook.png",
-  },
-  {
-    alt: "TikTok",
-    href: "https://www.tiktok.com",
-    src: "/logo/tiktok.png",
-  },
-  {
-    alt: "Instagram",
-    href: "https://www.instagram.com",
-    src: "/logo/instagram.png",
-  },
-];
+

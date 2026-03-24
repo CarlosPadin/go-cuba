@@ -36,7 +36,14 @@
     "rights": "© 2025 GoCuba. Todos los derechos reservados.",
     "followUs": "Síguenos",
     "cancellationPolicy": "Política de cancelación",
-    "privacy": "Privacidad"
+    "privacy": "Privacidad",
+    "tagline": "Explora Cuba sin límites",
+    "description": "Tu plataforma de renta de autos en Cuba. Encuentra el vehículo ideal para recorrer La Habana, Viñales, Trinidad y más destinos únicos de la isla. Reserva fácil, viaja libre.",
+    "quickLinks": "Navegación",
+    "linkHome": "Inicio",
+    "linkExplore": "Explorar",
+    "linkAbout": "Acerca de",
+    "linkSupport": "Soporte"
   },
   "Car": {
     "generalCaracteristics": "Características Generales",

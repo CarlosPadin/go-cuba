@@ -1,3 +1,16 @@
 {
-  "helloworld": "Hello world"
+  "helloworld": "Hello world",
+  "Footer": {
+    "rights": "© 2025 GoCuba. All rights reserved.",
+    "followUs": "Follow us",
+    "cancellationPolicy": "Cancellation Policy",
+    "privacy": "Privacy",
+    "tagline": "Explore Cuba without limits",
+    "description": "Your car rental platform in Cuba. Find the perfect vehicle to discover Havana, Viñales, Trinidad, and the island's most unique destinations. Easy booking, travel free.",
+    "quickLinks": "Navigation",
+    "linkHome": "Home",
+    "linkExplore": "Explore",
+    "linkAbout": "About us",
+    "linkSupport": "Support"
+  }
 }

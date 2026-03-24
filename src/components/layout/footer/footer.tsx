@@ -1,10 +1,15 @@
 "use client";
 import { FC } from "react";
 import Image from "next/image";
-import { Box, Grid, useTheme } from "@mui/material";
+import { Box, Container, Divider, Grid, useTheme } from "@mui/material";
 
 import brandImg from "@/public/logo/brand-dark.png";
-import { FooterDescription, FooterLegal } from ".";
+import {
+  FooterDescription,
+  FooterLegal,
+  FooterNavigation,
+  SocialLinks,
+} from ".";
 
 const Footer: FC = () => {
   const theme = useTheme();
@@ -13,21 +18,17 @@ const Footer: FC = () => {
     <Box
       bgcolor={theme.palette.primary.main}
       color={theme.palette.background.default}
-      px={10}
       pt={8}
       pb={1}
     >
-      <Grid container alignItems={"center"}>
+      <Container>
+      <Grid container spacing={4} alignItems={"center"}>
         <Grid
-          size={{ xs: 12, sm: 6 }}
+          size={{ xs: 12, md: 4 }}
           display={"flex"}
-          justifyContent={{ xs: "center", sm: "initial" }}
+          justifyContent={{ xs: "center", md: "flex-start" }}
         >
-          <Box
-            position={"relative"}
-            width={250}
-            height={250}
-          >
+          <Box position={"relative"} width={220} height={220}>
             <Image
               src={brandImg}
               alt="GoCuba Brand"
@@ -36,11 +37,23 @@ const Footer: FC = () => {
             />
           </Box>
         </Grid>
-        <Grid size={{ xs: 12, sm: 6 }}>
+
+        <Grid size={{ xs: 12, md: 4 }} display={"flex"} justifyContent={"center"}>
           <FooterDescription />
         </Grid>
+
+        <Grid size={{ xs: 12, md: 4 }} display={"flex"} justifyContent={{ xs: "center", md: "flex-end" }}>
+          <FooterNavigation />
+        </Grid>
+
+        <Grid size={{ xs: 12 }} display={"flex"} justifyContent={"center"}>
+          <SocialLinks />
+        </Grid>
       </Grid>
+
+      <Divider sx={{ mt: 6, borderColor: "rgba(255,250,255,0.15)" }} />
       <FooterLegal />
+      </Container>
     </Box>
   );
 };
