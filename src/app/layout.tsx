@@ -3,6 +3,7 @@ import "./globals.css";
 import { ThemeRegistry } from "../theme";
 import { NextIntlClientProvider } from "next-intl";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v15-appRouter";
+import { Analytics } from "@vercel/analytics/next"
 
 import Box from "@mui/material/Box";
 import { Navbar } from "../components/layout/navbar";
@@ -37,6 +38,7 @@ export default function RootLayout({
                     <Navbar />
                     <Box component="main" flex="1">
                       {children}
+                      <Analytics />
                     </Box>
                     <Footer />
                   </Box>
