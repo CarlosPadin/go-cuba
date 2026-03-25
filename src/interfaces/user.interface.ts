@@ -76,4 +76,6 @@ export interface IUserProfile {
   postalCode: string;
   profile_image_url: string;
   password: string;
+  active: boolean;
+  is_admin: boolean;
 }
