@@ -1,4 +1,6 @@
 
+export type SubscriptionPlan = '1M' | '3M' | '6M' | '1Y';
+
 export interface IOwner {
   address: string,
   ci: string,
@@ -10,4 +12,8 @@ export interface IOwner {
   profile_image: string,
   rating: number,
   is_car_owner: boolean,
+  active?: boolean,
+  subscription?: SubscriptionPlan | null,
+  last_payment_date?: string | null,
+  subscription_expires_at?: string | null,
 }
